@@ -30,7 +30,8 @@
   --clr-green-dark: hsl(90, 30%, 33%);
   --clr-green-light: hsl(90, 42%, 60%);
   --clr-black: #222;
-  --mainBackground: #f1f5f8;
+  --mainBackground: #f0e3c0;
+  --oldBackground: #f1f5f8;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
@@ -84,6 +85,9 @@ img {
   width: 100%;
   display: block;
 }
+.section {
+  padding: 5rem 0;
+}
 
 /*
 =============== 
@@ -91,7 +95,7 @@ Navbar
 ===============
 */
 nav {
-  background: var(--clr-white);
+  background: #f5f0e4;
   box-shadow: var(--light-shadow);
 }
 .nav-header {
@@ -180,6 +184,7 @@ Footer
   bottom: 0;
   width: 100%;
   text-align: center;
+  height: 30px;
 }
 
 .social-icons,
@@ -192,15 +197,64 @@ Footer
   color: var(--clr-green-dark);
   transition: var(--transition);
 }
-.social-icons a:hover,
+
 .contact p:hover {
   color: var(--clr-green-light);
   font-size: 1.5rem;
 }
+.social-icons a:hover {
+  color: var(--clr-red-light);
+}
 .social-icons {
   float: left;
+  font-size: 1.5rem;
 }
-.contact {
+.contact,
+.social-data {
   font-weight: bold;
+  text-transform: capitalize;
+  color: var(--clr-green-dark);
+}
+.social-data {
+  font-size: 1rem;
+  margin-right: 3px;
+}
+/*
+=============== 
+Buttons
+===============
+*/
+.btn {
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: var(--clr-green-dark);
+  border: 2px solid var(--clr-green-dark);
+  padding: 0.45rem 0.8rem;
+  display: inline-block;
+  transition: var(--transition);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: transparent;
+  border-radius: var(--radius);
+}
+.btn-backhome {
+  margin-top: 0.6rem;
+}
+.btn-backhome:hover {
+  border-color: var(--clr-red-light);
+  color: var(--clr-red-light);
+  font-size: 0.9rem;
+}
+/* 
+====== 
+Error
+======
+*/
+.error-page {
+  display: flex;
+  justify-content: center;
+}
+.error-container {
+  text-align: center;
   text-transform: capitalize;
 }
