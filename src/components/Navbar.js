@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.png";
+import logo from "../logo.png";
 import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
