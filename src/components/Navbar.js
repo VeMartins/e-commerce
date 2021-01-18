@@ -42,9 +42,11 @@ const Navbar = () => {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/cart">Cart</Link>
+              <Link to="/help">Contact Us</Link>
             </li>
           </ul>
+
+          <Link to="/cart">Cart</Link>
         </div>
       </div>
     </nav>

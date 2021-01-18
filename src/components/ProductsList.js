@@ -13,9 +13,9 @@ const ProductsList = () => {
     return <h2>No Products Available</h2>;
   }
   return (
-    <section>
+    <section className="section">
       <h2> Products</h2>
-      <div>
+      <div className="products-list">
         {products.map((item) => {
           return <Product key={item.id} {...item} />;
         })}
