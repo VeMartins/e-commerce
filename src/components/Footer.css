@@ -1,0 +1,46 @@
+/*
+=============== 
+Footer
+===============
+*/
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 2.5rem;
+}
+
+.social-icons,
+.contact {
+  display: inline;
+}
+.social-icons a,
+.contact p {
+  margin: 0 0.5rem;
+  color: var(--clr-green-dark);
+  transition: var(--transition);
+}
+
+.contact p:hover {
+  color: var(--clr-green-light);
+  font-size: 1.5rem;
+}
+.social-icons a:hover {
+  color: var(--clr-red-light);
+}
+.social-icons {
+  float: left;
+  font-size: 1.5rem;
+}
+.contact,
+.social-data {
+  font-weight: bold;
+  text-transform: capitalize;
+  color: var(--clr-green-dark);
+}
+.social-data {
+  font-size: 1rem;
+  margin-right: 3px;
+}

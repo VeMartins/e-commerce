@@ -87,6 +87,14 @@ const products = [
     img: "./images/toteBag2.jpg",
     desc: `Cotton bag`,
   },
+  {
+    id: 12,
+    title: " reversible tote bag",
+    category: "eco-friendly alternatives",
+    price: 15.99,
+    img: "./images/reversibleBag.png",
+    desc: `Cotton bag`,
+  },
 ];
 
 export default products;

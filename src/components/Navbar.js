@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
-import logo from "../logo.png";
+import logo from "../srcImages/logo.png";
 import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {

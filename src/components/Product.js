@@ -1,4 +1,5 @@
 import React from "react";
+import "./Product.css";
 import { Link } from "react-router-dom";
 
 const Product = ({ id, title, category, price, img, desc }) => {

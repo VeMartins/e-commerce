@@ -1,60 +1,104 @@
 import React from "react";
-
+import "./About.css";
+import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
+import PillowStack from "../srcImages/pillowStack.png";
+import FabricStack from "../srcImages/fabric-stack.png";
 const About = () => {
   return (
     <section className="section-about">
-      <h1>Botânica ArteLab</h1>
       <div className="about-container">
-        <div className="eng-container">
-          <img
-            src="./images/Botanica.jpg"
-            alt="card and leaf manual pressing "
-            className="aboutPhoto"
-          />
-          <div className="about-info">
-            <h2>About Us </h2>
-            <p>
-              This project was born in 2017 from a strong desire and impulse to
-              eternalize the ephemeral beauty of nature and register the beauty
-              of life and its cycles in different ways. We want to preserve the
-              nature that surrounds us, alive and beautiful as it is. Therefore,
-              the need to create products that offer ecological and sustainable
-              solutions for our daily lives and for the planet emerged.
-            </p>
-            <h3>How we do it</h3>
-            <p>
-              We work with nature through manual pressing and natural dyes using
-              traditional techniques. In an attempt to increase the useful life
-              of a material, we also resort to the recycling of textiles and
-              other materials/waste, transforming them into a new product.
-            </p>
+        <header className="about-title">
+          <h2>Welcome</h2>
+          <p>
+            Botânica ArteLab is an environmentally friendly botanic and textile
+            art company based in Azores-Portugal.
+          </p>
+        </header>
+        <div className="photo-container box-style">
+          <div className="element-center photo-div">
+            <img
+              src="./images/sof.png"
+              alt="photoOfTheArtist"
+              className="about-photos element-center"
+            />
           </div>
         </div>
-        <div className="eng-container">
-          <img
-            src="./images/Botanica.jpg"
-            alt="card and leaf manual pressing "
-            className="aboutPhoto"
-          />
-          <div className="about-info">
-            <h2>Sobre Nós</h2>
-
-            <p>
-              Este projeto nasceu em 2017, com uma forte vontade de eternizar o
-              efémero da natureza. Manifestou-se como um impulso para registrar
-              a beleza da vida e seus ciclos, de diferentes maneiras. Queremos
-              preservar a natureza que nos rodeia, viva e bela como ela é. Por
-              isso, surgiu rapidamente a necessidade de criar produtos que
-              ofereçam soluções ecológicas e sustentáveis para o nosso dia a dia
-              e para o planeta.
-            </p>
-            <h3>Como o fazemos</h3>
-            <p>
-              Trabalhamos com a natureza na estampagem manual e tinturaria
-              vegetal com métodos artesanais, numa tentativa de aumentar a vida
-              útil de um material. Recorremos também à reciclagem de têxteis e
-              outros materiais/desperdicios transformando-os num novo produto.
-            </p>
+        <div className="about-info">
+          <div className="about-us about-sections">
+            <div className="about-parag left-box box-style">
+              <p>
+                This project was born in 2017 from a strong desire and impulse
+                to eternalize the ephemeral beauty of nature and register the
+                beauty of life and its cycles in different ways. We want to
+                preserve the nature that surrounds us, alive and beautiful as it
+                is. Therefore, the need to create products that offer ecological
+                and sustainable solutions for our daily lives and for the planet
+                emerged.
+              </p>
+            </div>
+            <div
+              className="about-text radius-top right-box"
+              style={{
+                backgroundImage: `url(${PillowStack})`,
+              }}
+            >
+              <h2 className="element-center">About Us</h2>
+            </div>
+          </div>
+          <div className="our-process about-sections">
+            <div className="process-parag left-box box-style ">
+              <p>
+                We work with nature through manual pressing and natural dyes
+                using traditional techniques. In an attempt to increase the
+                useful life of a material, we also resort to the recycling of
+                textiles and other materials/waste, transforming them into a new
+                product.
+              </p>
+            </div>
+            <div
+              className="process-text radius-top right-box"
+              style={{
+                backgroundImage: `url(${FabricStack})`,
+              }}
+            >
+              <h2 className="element-center">Our Process</h2>
+            </div>
+          </div>
+          <div className="connect  about-sections">
+            <div className="connect-parag left-box box-style">
+              <p>
+                Info, orders and partnerships to <b> fake_email@gmail.com </b>
+                <br /> Based in Azores-Portugal
+              </p>
+              <ul className="footer-list">
+                <li className="social-icons">
+                  <span className="social-data">Connect</span>
+                  <a
+                    href="http://facebook.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaFacebook />
+                  </a>
+                </li>
+                <li className="social-icons">
+                  <a
+                    href="https://www.instagram.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaInstagramSquare />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="photo-div box-style right-box">
+              <img
+                src="./images/sof6.jpg"
+                alt="artist and island-view"
+                className="about-photos element-center connect-img"
+              />
+            </div>
           </div>
         </div>
       </div>
