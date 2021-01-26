@@ -3,6 +3,7 @@
 About Page
 ======
 */
+
 .section-about {
   padding-bottom: 2.5rem;
   max-height: 100%;
@@ -15,14 +16,14 @@ About Page
     "info";
   gap: 1rem;
   justify-items: center;
+  background: linear-gradient(#f5deb3, var(--mainBackground));
 }
 .about-title {
   grid-area: header;
-  padding-top: 1rem;
-  max-width: 90%;
-  text-transform: capitalize;
-  text-align: center;
+
+  background-color: #f5deb3;
 }
+
 .about-info h2 {
   background-color: white;
   text-align: center;

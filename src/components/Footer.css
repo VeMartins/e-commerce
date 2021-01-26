@@ -10,6 +10,11 @@ Footer
   width: 100%;
   text-align: center;
   height: 2.5rem;
+  padding-top: 0.6rem;
+}
+.footer-list {
+  padding-top: 0.5rem;
+  border-top: solid 1px var(--clr-footer-border);
 }
 
 .social-icons,

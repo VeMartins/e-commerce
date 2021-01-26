@@ -5,7 +5,7 @@ Navbar
 */
 
 nav {
-  background: #f5f0e4;
+  background: var(--clr-beige-light);
   box-shadow: var(--light-shadow);
 }
 .nav-header {

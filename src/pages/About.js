@@ -7,8 +7,8 @@ const About = () => {
   return (
     <section className="section-about">
       <div className="about-container">
-        <header className="about-title">
-          <h2>Welcome</h2>
+        <header className="about-title titles">
+          <h1>Welcome</h1>
           <p>
             Botânica ArteLab is an environmentally friendly botanic and textile
             art company based in Azores-Portugal.

@@ -2,6 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../context";
 import Loading from "./Loading";
 import Product from "./Product";
+import Categories from "./Categories";
 
 const ProductsList = () => {
   const { products, loading } = useGlobalContext();
@@ -14,11 +15,20 @@ const ProductsList = () => {
   }
   return (
     <section className="section">
-      <h2> Products</h2>
-      <div className="products-list">
-        {products.map((item) => {
-          return <Product key={item.id} {...item} />;
-        })}
+      <header>
+        <div className="titles">
+          <h2> Products</h2>
+        </div>
+        <div>
+          <Categories />
+        </div>
+      </header>
+      <div className="page-width">
+        <ul className="content-container grid">
+          {products.map((item) => {
+            return <Product key={item.id} {...item} />;
+          })}
+        </ul>
       </div>
     </section>
   );

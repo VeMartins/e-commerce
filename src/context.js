@@ -7,24 +7,25 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState(data);
 
-  const fetchProducts = () => {
-    setLoading(true);
+  useEffect(() => {
+    const fetchProducts = () => {
+      setLoading(true);
 
-    try {
-      if (products) {
-        const newProducts = products.map((item) => {
-          const { id, title, category, price, img, desc } = item;
-          return { id, title, category, price, img, desc };
-        });
-        setProducts(newProducts);
+      try {
+        if (data) {
+          const newProducts = data.map((item) => {
+            const { id, title, category, price, img, desc } = item;
+            return { id, title, category, price, img, desc };
+          });
+          setProducts(newProducts);
+
+          setLoading(false);
+        }
+      } catch (error) {
+        console.log(error);
         setLoading(false);
       }
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
+    };
     fetchProducts();
   }, []);
 
@@ -33,6 +34,7 @@ const AppProvider = ({ children }) => {
       value={{
         products,
         loading,
+        setProducts,
       }}
     >
       {children}
