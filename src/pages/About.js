@@ -17,7 +17,7 @@ const About = () => {
         <div className="photo-container box-style">
           <div className="element-center photo-div">
             <img
-              src="./images/sof.png"
+              src="./images/sofi.png"
               alt="photoOfTheArtist"
               className="about-photos element-center"
             />

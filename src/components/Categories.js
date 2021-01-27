@@ -7,22 +7,26 @@ const allCategories = ["all", ...new Set(data.map((item) => item.category))];
 const Categories = () => {
   const { setProducts, products } = useGlobalContext();
 
-  const [categories, setCategories] = useState(allCategories);
+  const [categories] = useState(allCategories);
   const [filteredData, setFilteredData] = useState(products);
-  const [filterValue, setFilterValue] = useState("price-high");
+  const [filterValue, setFilterValue] = useState("alph-az");
+  const [sortValue] = useState("all");
 
-  const filterItems = (category) => {
-    if (category === "all") {
-      const allItems = [...data];
-      setProducts(allItems);
-      setFilteredData(allItems);
+  const filterItems = useCallback(
+    (category) => {
+      if (category === "all") {
+        const allItems = [...data];
+        setProducts(allItems);
+        setFilteredData(allItems);
 
-      return;
-    }
-    const newItems = data.filter((item) => item.category === category);
-    setProducts(newItems);
-    setFilteredData(newItems);
-  };
+        return;
+      }
+      const newItems = data.filter((item) => item.category === category);
+      setProducts(newItems);
+      setFilteredData(newItems);
+    },
+    [setProducts]
+  );
 
   const sortTitles = useCallback(
     (sortType) => {
@@ -68,7 +72,7 @@ const Categories = () => {
           break;
         default:
           setProducts(newArr.sort(compareValues("title")));
-          setFilterValue("price-high");
+          setFilterValue("alph-az");
       }
     },
     [filteredData, setProducts]
@@ -77,7 +81,9 @@ const Categories = () => {
   useEffect(() => {
     sortTitles(filterValue);
   }, [sortTitles, filterValue]);
-
+  useEffect(() => {
+    filterItems(sortValue);
+  }, [filterItems, sortValue]);
   return (
     <div className="categories">
       <div className="filter-container">
