@@ -8,7 +8,6 @@ const Footer = () => {
     <footer className="footer">
       <ul className="footer-list">
         <li className="social-icons">
-          <span className="social-data">Share</span>
           <a
             href="http://facebook.com/"
             target="_blank"

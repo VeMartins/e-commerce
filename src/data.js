@@ -5,15 +5,19 @@ const products = [
     category: "pillows",
     price: 15.99,
     img: "./images/almofada1.jpg",
-    desc: `handmade throw pillow `,
+    desc: `single leaf pillow `,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 2,
     title: "pillow c",
     category: "pillows",
-    price: 14.99,
+    price: 17.99,
     img: "./images/almofada2.jpg",
-    desc: `handmade throw pillow `,
+    desc: `autumn leaves pillow `,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 3,
@@ -21,7 +25,9 @@ const products = [
     category: "pillows",
     price: 16.99,
     img: "./images/almofada3.jpg",
-    desc: `handmade throw pillow `,
+    desc: `mirror-effect leaves pillow `,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 4,
@@ -29,7 +35,9 @@ const products = [
     category: "accessories",
     price: 5.99,
     img: "./images/earrings.jpg",
-    desc: `wolf bitters  `,
+    desc: `black sand bottle earrings `,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 5,
@@ -37,7 +45,9 @@ const products = [
     category: "accessories",
     price: 5.99,
     img: "./images/pendant1.jpg",
-    desc: `I'm baby woke mlkshk  `,
+    desc: `flower preserved in resin  `,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 6,
@@ -45,55 +55,69 @@ const products = [
     category: "masks",
     price: 8,
     img: "./images/mascaras_tecidos.jpg",
-    desc: `hammock freegan`,
+    desc: `cotton mask with pocket for filter`,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 7,
     title: "sanitary pads",
     category: "sanitary",
-    price: 12.99,
+    price: 35,
     img: "./images/pensos_flores.jpg",
-    desc: `I'm baby woke mlkshk`,
+    desc: `pack of 5 sanitary pads`,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 8,
     title: "sanitary pads",
     category: "sanitary",
-    price: 15.99,
+    price: 6,
     img: "./images/pensos_mundo.jpg",
-    desc: `wolf bitters`,
+    desc: `single sanitary pad`,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 9,
     title: "produce bags",
     category: "produce",
-    price: 6,
-    img: "./images/sacoPesca.jpg",
-    desc: `Made from recycled`,
+    price: 16,
+    img: "./images/produceBags.png",
+    desc: `pack of 3 fishing net produce bags `,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 10,
-    title: "tote bags",
+    title: "tote bag",
     category: "bags",
-    price: 5.99,
+    price: 13,
     img: "./images/toteBag1.jpg",
-    desc: `Cotton bag`,
+    desc: `Nature lover tote bag`,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 11,
-    title: "tote bags",
+    title: "tote bag",
     category: "bags",
-    price: 15.99,
+    price: 13,
     img: "./images/toteBag2.jpg",
-    desc: `Cotton bag`,
+    desc: `leaves in the pocket tote bag`,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
   {
     id: 12,
-    title: "reversible",
+    title: "tote bag",
     category: "bags",
     price: 18,
     img: "./images/reversibleBag.png",
-    desc: `Cotton bag`,
+    desc: `reversible tote bag`,
+    detail:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
   },
 ];
 

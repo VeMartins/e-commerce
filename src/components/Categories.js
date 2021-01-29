@@ -12,6 +12,7 @@ const Categories = () => {
   const [filterValue, setFilterValue] = useState("alph-az");
   const [sortValue] = useState("all");
 
+  //filter by category
   const filterItems = useCallback(
     (category) => {
       if (category === "all") {
@@ -27,7 +28,7 @@ const Categories = () => {
     },
     [setProducts]
   );
-
+  // sort by type --> name(alphabetical, reverse alphabetical), price(low, high)
   const sortTitles = useCallback(
     (sortType) => {
       function compareValues(sortBy, order = "asc") {
@@ -78,12 +79,16 @@ const Categories = () => {
     [filteredData, setProducts]
   );
 
+  // to sort all items in alphabethic order on each render
   useEffect(() => {
     sortTitles(filterValue);
   }, [sortTitles, filterValue]);
+
+  // to sort all items by category on each render ('all')
   useEffect(() => {
     filterItems(sortValue);
   }, [filterItems, sortValue]);
+
   return (
     <div className="categories">
       <div className="filter-container">
