@@ -44,7 +44,7 @@ const products = [
     desc: `black sand bottle earrings `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
+    thumbOne: "./images/thumbnails/thumbnail1.png",
     thumbnail2: "./images/thumbnails/thumbnail2.png",
   },
   {
