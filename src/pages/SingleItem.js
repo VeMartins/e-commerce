@@ -35,7 +35,7 @@ const SingleItem = () => {
   if (!product) {
     return <h2>no item to display</h2>;
   }
-  const { title, price, img, desc, detail } = product;
+  const { title, price, img, desc, detail, thumbnail1, thumbnail2 } = product;
 
   return (
     <main>
@@ -49,7 +49,7 @@ const SingleItem = () => {
           <div className="see-more-photos">
             <ul className="photos-list">
               <li>
-                same photo<p>link to photo above</p>
+                <img src={`.${thumbnail1}`} alt={`thumbnail1 ${title}`} />
               </li>
               <li>
                 other photo<p>link to another photo</p>
