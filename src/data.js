@@ -8,8 +8,8 @@ const products = [
     desc: `single leaf pillow `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 2,
@@ -20,8 +20,8 @@ const products = [
     desc: `autumn leaves pillow `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 3,
@@ -32,8 +32,8 @@ const products = [
     desc: `mirror-effect leaves pillow `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 4,
@@ -44,8 +44,8 @@ const products = [
     desc: `black sand bottle earrings `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbOne: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbOne: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 5,
@@ -56,8 +56,8 @@ const products = [
     desc: `flower preserved in resin  `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 6,
@@ -68,8 +68,8 @@ const products = [
     desc: `cotton mask with pocket for filter`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 7,
@@ -80,8 +80,8 @@ const products = [
     desc: `pack of 5 sanitary pads`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 8,
@@ -92,8 +92,8 @@ const products = [
     desc: `single sanitary pad`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 9,
@@ -104,8 +104,8 @@ const products = [
     desc: `pack of 3 fishing net produce bags `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 10,
@@ -116,8 +116,8 @@ const products = [
     desc: `Nature lover tote bag`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 11,
@@ -128,8 +128,8 @@ const products = [
     desc: `leaves in the pocket tote bag`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
   {
     id: 12,
@@ -140,8 +140,8 @@ const products = [
     desc: `reversible tote bag`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
-    thumbnail1: "./images/thumbnails/thumbnail1.png",
-    thumbnail2: "./images/thumbnails/thumbnail2.png",
+    thumbnail1: "./images/thumbnail1.png",
+    thumbnail2: "./images/thumbnail2.png",
   },
 ];
 
