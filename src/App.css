@@ -91,9 +91,9 @@ img {
   display: block;
 }
 
-/*.section {
-  padding: 5rem 0;
-}*/
+.section {
+  padding-bottom: 2.5rem;
+}
 
 /*
 =============== 
@@ -195,11 +195,8 @@ ProductList
 .page-width {
   margin: 0 auto;
   max-width: var(--fullWidth);
-
-  padding-right: 1rem;
 }
 .content-container {
-  margin-left: -1rem;
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
@@ -215,7 +212,7 @@ ProductList
 
 @media screen and (min-width: 749px) {
   .page-width {
-    padding-right: 2rem;
+    padding: 0 1rem;
   }
   .content-container {
     margin-bottom: -2rem;

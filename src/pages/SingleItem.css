@@ -9,16 +9,7 @@
   width: 90%;
   align-self: center;
 }
-.detail-photo {
-  height: 50vh;
-}
-.photos-list {
-  display: flex;
-}
-.photos-list li {
-  padding-right: 20px;
-  margin-top: 10px;
-}
+
 .info-box {
   width: 100%;
   display: flex;
@@ -85,4 +76,38 @@
   .main-detail-container {
     flex-direction: row;
   }
+}
+/*
+======================
+ImageThumbnail Styles
+======================
+*/
+.zoom-btn {
+  width: 2rem;
+  margin: 0 5px 5px 0;
+  font-weight: 900;
+  font-size: 1rem;
+}
+.zoom-btn:hover {
+  font-weight: 900;
+}
+
+.thumbnail img {
+  height: 100%;
+  border-radius: 3%;
+}
+.thumbnail-list {
+  display: grid;
+  grid-template-rows: 70%;
+  grid-template-columns: 45% 45%;
+  gap: 10%;
+  justify-items: center;
+}
+.thumbnail-list li {
+  margin-top: 10px;
+  width: 80%;
+}
+.featured-photo {
+  height: 50vh;
+  border-radius: 3%;
 }

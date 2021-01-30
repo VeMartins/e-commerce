@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./SingleItem.css";
+import ImageThumbnail from "../components/ImageThumbnail";
 import Loading from "../components/Loading";
 import data from "../data"; // if using an external api would need to fetch the data again
 import { useParams } from "react-router-dom";
@@ -35,28 +36,12 @@ const SingleItem = () => {
   if (!product) {
     return <h2>no item to display</h2>;
   }
-  const { title, price, img, desc, detail, thumbnail1, thumbnail2 } = product;
+  const { title, price, desc, detail } = product;
 
   return (
     <main>
       <section className="page-width main-detail-container">
-        <div className="pic-container">
-          <div>
-            <div>
-              <img src={`.${img}`} alt={title} className="detail-photo" />
-            </div>
-          </div>
-          <div className="see-more-photos">
-            <ul className="photos-list">
-              <li>
-                <img src={`.${thumbnail1}`} alt={`thumbnail1 ${title}`} />
-              </li>
-              <li>
-                other photo<p>link to another photo</p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <ImageThumbnail {...product} />
         <div className="info-box">
           <div className="details-container">
             <h1>{title}</h1>
