@@ -13,7 +13,10 @@
   --mainBackground: #f0e3c0;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --home-items-border: 1px solid #deb887;
+  --border-single-item: 2px solid #deb887;
   --radius: 0.25rem;
+  --radius-single-item: 3%;
   --transition: all 0.3s linear;
   --mainSpacing: 0.3rem;
   --spacing: 0.1rem;
@@ -52,11 +55,9 @@ body {
 body {
   font-family: var(--mainFont), BlinkMacSystemFont, Cantarell, "Open Sans",
     "Helvetica Neue";
-  color: var(--clr-primary-1);
+  color: var(--clr-black);
   background: var(--mainBackground);
-  line-height: 1.4;
   font-size: 1.1rem;
-  font-weight: 300;
 }
 
 main {
@@ -101,7 +102,6 @@ Buttons
 ===============
 */
 .btn {
-  text-transform: uppercase;
   font-weight: bold;
   letter-spacing: var(--mainSpacing);
   color: var(--clr-green-dark);
@@ -109,19 +109,25 @@ Buttons
   padding: 0.45rem 0.8rem;
   display: inline-block;
   transition: var(--transition);
-  cursor: pointer;
   font-size: 0.8rem;
   background: transparent;
-  border-radius: var(--radius);
   width: fit-content;
   height: fit-content;
 }
-.btn-backhome {
-  margin-top: 0.6rem;
+.btn,
+.btn-details {
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: var(--radius);
 }
-.btn-backhome:hover {
-  border-color: var(--clr-red-light);
-  color: var(--clr-red-light);
+.btn-backhome {
+  margin: 5rem 30vw;
+}
+
+.btn-details {
+  background: var(--clr-green-dark);
+  color: white;
+  border-color: var(--clr-green-dark);
 }
 .btn-details:hover {
   color: var(--clr-green-dark);
@@ -130,12 +136,19 @@ Buttons
   font-weight: bold;
   transition: var(--transition);
 }
-.btn-details {
-  background: var(--clr-green-dark);
-  color: white;
-  border-color: var(--clr-green-dark);
-  text-transform: uppercase;
-  border-radius: var(--radius);
+.zoom-btn {
+  width: 2rem;
+  margin: 0 5px 5px 0;
+  font-weight: 900;
+  font-size: 1rem;
+}
+.zoom-btn:hover {
+  font-weight: 900;
+}
+.add-cart-btn {
+  width: 50%;
+  height: var(--fullHeight-width);
+  border: solid 2px var(--clr-black);
 }
 /* 
 ====== 

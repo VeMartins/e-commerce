@@ -21,7 +21,10 @@ const Product = ({ id, title, price, img, desc }) => {
                   <span className="hidden">Regular price</span>
                 </dt>
                 <dd>
-                  <span> {price}€</span>
+                  <span>
+                    {" "}
+                    {price}€ <span className="shipping">+ shipping</span>
+                  </span>
                 </dd>
               </div>
               <div className="sale price hidden">

@@ -3,7 +3,7 @@ import "./SingleItem.css";
 import ImageThumbnail from "../components/ImageThumbnail";
 import Loading from "../components/Loading";
 import data from "../data"; // if using an external api would need to fetch the data again
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { FaFacebook, FaPinterest } from "react-icons/fa";
 
 const SingleItem = () => {
@@ -34,13 +34,17 @@ const SingleItem = () => {
     return <Loading />;
   }
   if (!product) {
-    return <h2>no item to display</h2>;
+    return (
+      <Link to="/" className="btn btn-backhome btn-details">
+        No item to display, Go Back to Home Page!
+      </Link>
+    );
   }
   const { title, price, desc, detail } = product;
 
   return (
-    <main>
-      <section className="page-width main-detail-container">
+    <main className="main-singleItem-page">
+      <section className=" main-detail-container">
         <ImageThumbnail {...product} />
         <div className="info-box">
           <div className="details-container">
@@ -52,7 +56,10 @@ const SingleItem = () => {
                     <span className="hidden">Regular price</span>
                   </dt>
                   <dd>
-                    <span> {price} €</span>
+                    <span>
+                      {" "}
+                      {price} € <span className="shipping">+ shipping</span>
+                    </span>
                   </dd>
                 </div>
                 <div className="price sale hidden">
@@ -83,6 +90,7 @@ const SingleItem = () => {
             </form>
           </div>
           <div className="description-container">
+            <h4>Product Description</h4>
             <p>{desc}</p>
             <p>{detail}</p>
           </div>

@@ -10,7 +10,7 @@ const ImageThumbnail = ({ thumbnail2, img, title }) => {
 
   return (
     <div className="pic-container">
-      <div>
+      <div className="pic-middle-container">
         <div>
           <TransformWrapper
             defaultScale={1}

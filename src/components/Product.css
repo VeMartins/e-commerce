@@ -23,32 +23,30 @@ PRODUCT
 }
 .item-inner-container {
   position: relative;
-  height: 100%;
-  min-height: 100%;
-  display: grid;
-
+  height: var(--fullHeight-width);
+  min-height: var(--fullHeight-width);
   padding: 0.8rem;
+  border: var(--home-items-border);
+  display: grid;
   justify-items: center;
   grid-template-rows: 40% auto;
 }
 .img-container {
   position: relative;
-
-  width: 100%;
+  width: var(--fullHeight-width);
 }
 .img-inner-container {
   padding-top: 100%;
 }
 .item-photo {
-  max-width: 750px;
-  max-height: 750px;
+  width: var(--fullHeight-width);
   display: block;
   position: absolute;
   top: 0;
   margin: 0 auto;
-  border: 0;
-  height: 100%;
+  height: var(--fullHeight-width);
   border-radius: var(--radius);
+  border: var(--home-items-border);
 }
 .info-container {
   text-transform: capitalize;
@@ -70,7 +68,7 @@ PRODUCT
 .price-container {
   display: flex;
   flex-flow: column wrap;
-  width: 100%;
+  width: var(--fullHeight-width);
   margin-top: 0;
   margin-bottom: 0;
   color: var(--clr-black);
@@ -87,7 +85,6 @@ PRODUCT
 }
 .btn {
   font-size: 0.6rem;
-
   font-weight: bold;
 }
 .item-width {
@@ -102,7 +99,7 @@ PRODUCT
 }
 @media screen and (max-width: 319px) {
   .item-width {
-    width: 100%;
+    width: var(--fullHeight-width);
   }
   .content-item {
     padding: 0 1rem;
@@ -111,12 +108,12 @@ PRODUCT
 
 @media screen and (min-width: 550px) and (max-width: 750px) {
   .img-container {
-    width: 100%;
+    width: var(--fullHeight-width);
     max-width: 250px;
     max-height: 250px;
   }
   .item-photo {
-    width: 100%;
+    width: var(--fullHeight-width);
     max-width: 250px;
     max-height: 250px;
   }
