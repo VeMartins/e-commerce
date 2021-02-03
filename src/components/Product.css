@@ -74,15 +74,7 @@ PRODUCT
   color: var(--clr-black);
   padding-top: 5px;
 }
-.hidden {
-  position: absolute;
-  overflow: hidden;
-  margin: 0;
-  height: 1rem;
-  width: 1px;
-  padding: 0;
-  clip: rect(0 0 0 0);
-}
+
 .btn {
   font-size: 0.6rem;
   font-weight: bold;

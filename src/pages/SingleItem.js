@@ -89,10 +89,10 @@ const SingleItem = () => {
               </div>
             </form>
           </div>
-          <div className="description-container">
-            <h4>Product Description</h4>
-            <p>{desc}</p>
-            <p>{detail}</p>
+          <div className="box-style-look m-top-2">
+            <h4 className="m-around">Product Description</h4>
+            <p className="m-around">{desc}</p>
+            <p className="m-around">{detail}</p>
           </div>
           <ul className="social-container">
             <li>

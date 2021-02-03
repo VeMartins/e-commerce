@@ -44,21 +44,6 @@
   margin-top: 1rem;
 }
 
-.description-container {
-  margin-top: 2rem;
-  text-transform: capitalize;
-  background: var(--clr-beige-light);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-  border-radius: var(--radius);
-  padding: 1rem 0;
-}
-.description-container p,
-.description-container h4 {
-  margin: 5px 5%;
-}
-.description-container h4 {
-  margin-bottom: 1rem;
-}
 .social-container {
   display: flex;
   margin: 15px 5% 5px 5%;
