@@ -1,8 +1,11 @@
 import React from "react";
-import "./Product.css";
 import { Link } from "react-router-dom";
+import Price from "./Price";
 
-const Product = ({ id, title, price, img, desc }) => {
+import "./Product.css";
+
+const Product = (props) => {
+  const { id, title, price, img, desc, sale, product } = props;
   return (
     <li className="content-item item-width ">
       <Link to={`/${title}/${id}`}>
@@ -15,27 +18,7 @@ const Product = ({ id, title, price, img, desc }) => {
           <div className="info-container">
             <div className="item-title">{title}</div>
             <p>{desc}</p>
-            <dl className="price-container">
-              <div className="price">
-                <dt>
-                  <span className="hidden">Regular price</span>
-                </dt>
-                <dd>
-                  <span>
-                    {" "}
-                    {price}€ <span className="shipping">+ shipping</span>
-                  </span>
-                </dd>
-              </div>
-              <div className="sale price hidden">
-                <dt>
-                  <span>Sale Price</span>
-                </dt>
-                <dd>
-                  <span> {price}€ </span>
-                </dd>
-              </div>
-            </dl>
+            <Price price={price} id={id} product={product} sale={sale} />
           </div>
         </div>
       </Link>

@@ -63,10 +63,7 @@
 .social-container span {
   padding-left: 4px;
 }
-.shipping {
-  font-size: smaller;
-  color: var(--clr-grey-dark);
-}
+
 @media screen and (min-width: 750px) {
   .main-singleItem-page {
     max-width: var(--fullHeight-width);

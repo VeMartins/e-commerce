@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 
 import ImageThumbnail from "../components/ImageThumbnail";
 import Loading from "../components/Loading";
+import Price from "../components/Price";
 import data from "../data"; // if using an external api would need to fetch the data again
 
 import "./SingleItem.css";
@@ -42,7 +43,7 @@ const SingleItem = () => {
       </Link>
     );
   }
-  const { title, price, desc, detail } = product;
+  const { title, desc, detail } = product;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,27 +58,7 @@ const SingleItem = () => {
           <div className="details-container">
             <h1>{title}</h1>
             <div className="price">
-              <dl className="price-container">
-                <div className="price">
-                  <dt>
-                    <span className="hidden">Regular price</span>
-                  </dt>
-                  <dd>
-                    <span>
-                      {" "}
-                      {price} € <span className="shipping">+ shipping</span>
-                    </span>
-                  </dd>
-                </div>
-                <div className="price sale hidden">
-                  <dt>
-                    <span>Sale Price</span>
-                  </dt>
-                  <dd>
-                    <span>{price}</span>
-                  </dd>
-                </div>
-              </dl>
+              <Price {...product} product={product} />
             </div>
             <form className="details-form" onSubmit={handleSubmit}>
               <div className="quantity">

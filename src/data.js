@@ -10,6 +10,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 2,
+    sale: 10.99,
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 2,
+    sale: 0,
   },
   {
     id: 3,
@@ -34,6 +38,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 0,
+    sale: 14.99,
   },
   {
     id: 4,
@@ -46,6 +52,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 6,
+    sale: 0,
   },
   {
     id: 5,
@@ -58,6 +66,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 0,
+    sale: 0,
   },
   {
     id: 6,
@@ -70,6 +80,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 2,
+    sale: 7,
   },
   {
     id: 7,
@@ -82,6 +94,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 2,
+    sale: 0,
   },
   {
     id: 8,
@@ -94,6 +108,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 8,
+    sale: 0,
   },
   {
     id: 9,
@@ -106,6 +122,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 2,
+    sale: 0,
   },
   {
     id: 10,
@@ -118,6 +136,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 2,
+    sale: 12,
   },
   {
     id: 11,
@@ -130,6 +150,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 2,
+    sale: 12,
   },
   {
     id: 12,
@@ -142,6 +164,8 @@ const products = [
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
+    stock: 2,
+    sale: 16.99,
   },
 ];
 

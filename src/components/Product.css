@@ -51,7 +51,6 @@ PRODUCT
 .info-container {
   text-transform: capitalize;
   display: grid;
-  grid-auto-rows: 33%;
   align-items: center;
   color: var(--clr-grey-dark);
   width: 100%;
@@ -65,30 +64,15 @@ PRODUCT
   font-weight: bold;
   padding-top: 5px;
 }
-.price-container {
-  display: flex;
-  flex-flow: column wrap;
-  width: var(--fullHeight-width);
-  margin-top: 0;
-  margin-bottom: 0;
-  color: var(--clr-black);
-  padding-top: 5px;
-}
 
 .btn {
   font-size: 0.6rem;
   font-weight: bold;
 }
 .item-width {
-  width: 45%;
+  width: 80%;
 }
-.price {
-  font-weight: bold;
-}
-.sale {
-  color: var(--clr-red-dark);
-  font-size: 16px;
-}
+
 @media screen and (max-width: 319px) {
   .item-width {
     width: var(--fullHeight-width);
@@ -98,7 +82,7 @@ PRODUCT
   }
 }
 
-@media screen and (min-width: 550px) and (max-width: 750px) {
+@media screen and (min-width: 540px) and (max-width: 750px) {
   .img-container {
     width: var(--fullHeight-width);
     max-width: 250px;

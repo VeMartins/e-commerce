@@ -29,7 +29,7 @@ const ProductsList = () => {
       <div className="page-width">
         <ul className="content-container grid">
           {products.map((item) => {
-            return <Product key={item.id} {...item} />;
+            return <Product key={item.id} {...item} product={item} />;
           })}
         </ul>
       </div>
