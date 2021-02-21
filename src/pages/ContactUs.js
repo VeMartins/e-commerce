@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import envelope from "../srcImages/envelope.jpg";
+import "./ContactUs.css";
 
 const ContactUs = () => {
   const [status, setStatus] = useState("Submit");

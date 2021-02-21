@@ -1,0 +1,67 @@
+/* 
+====== 
+Contact page 
+======
+*/
+.section-contact {
+  padding-bottom: 2.5rem;
+  min-height: 100vw;
+}
+.section-contact main {
+  width: 90vw;
+}
+
+.contact-container {
+  margin: 1rem auto 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.contact-container img {
+  width: 30vw;
+  padding: 0;
+}
+.w-60 {
+  width: 60vw;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+.contact-form label {
+  margin-right: 5px;
+}
+.contact-form button {
+  align-self: center;
+}
+.contact-inputs {
+  padding: 2px;
+  border: var(--mainBackground) solid 3px;
+  width: 80%;
+}
+.contact-inputs:focus {
+  outline: var(--mainBackground) solid 3px;
+  border: var(--clr-green-dark) solid 2px;
+}
+.top-border-parag {
+  text-align: center;
+  font-style: italic;
+  font-family: var(--headersFont);
+  border-top: var(--mainBackground) solid 1px;
+  width: 80%;
+  margin: 0.5rem auto 0 auto;
+}
+
+@media screen and (max-width: 500px) {
+  .contact-container {
+    flex-direction: column;
+  }
+  .contact-container img {
+    width: 90vw;
+    height: 70vw;
+  }
+  .contact-container .w-60 {
+    width: 90vw;
+  }
+}

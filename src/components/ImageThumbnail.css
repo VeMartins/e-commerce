@@ -1,0 +1,34 @@
+/*
+======================
+ImageThumbnail Styles
+======================
+*/
+
+.thumbnail img {
+  height: var(--fullHeight-width);
+  border-radius: var(--radius-single-item);
+  border: var(--border-single-item);
+}
+.thumbnail-list {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 70%;
+  grid-template-columns: 45% 45%;
+  gap: 10%;
+  justify-items: center;
+}
+.thumbnail-list li {
+  margin-top: 10px;
+  width: 80%;
+}
+.featured-photo {
+  height: 50vh;
+  border-radius: var(--radius-single-item);
+  border: var(--border-single-item);
+}
+.pic-middle-container {
+  width: var(--fullHeight-width);
+  display: flex;
+  justify-content: center;
+}

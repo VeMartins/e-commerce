@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
+
 //pages
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -11,8 +11,18 @@ import ContactUs from "./pages/ContactUs";
 //components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Loading from "./components/Loading";
+import { useGlobalContext } from "./context";
+
+import "./App.css";
 
 function App() {
+  const { loading } = useGlobalContext();
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Router>
       <Navbar />

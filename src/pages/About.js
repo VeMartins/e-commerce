@@ -1,8 +1,11 @@
 import React from "react";
-import "./About.css";
 import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
+
 import PillowStack from "../srcImages/pillowStack.png";
 import FabricStack from "../srcImages/fabric-stack.png";
+
+import "./About.css";
+
 const About = () => {
   return (
     <section className="section-about">

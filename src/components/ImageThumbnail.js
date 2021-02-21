@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
+import "./ImageThumbnail.css";
+
 const ImageThumbnail = ({ thumbnail2, img, title }) => {
   const [srcImg, setSrcImg] = useState(`.${img}`);
 

@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "./Error.css";
+
 const Error = () => {
   return (
     <section className="error-page section">

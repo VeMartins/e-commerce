@@ -1,8 +1,11 @@
 import React from "react";
+
 import { useGlobalContext } from "../context";
 import Loading from "./Loading";
 import Product from "./Product";
 import Categories from "./Categories";
+
+import "./ProductsList.css";
 
 const ProductsList = () => {
   const { products, loading } = useGlobalContext();

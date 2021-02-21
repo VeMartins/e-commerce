@@ -1,0 +1,31 @@
+/*
+====== 
+ProductList
+======
+*/
+.page-width {
+  margin: 0 auto;
+  max-width: var(--fullWidth);
+}
+.content-container {
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.grid {
+  margin: 0;
+  padding: 0;
+}
+.grid::after {
+  clear: both;
+  display: table;
+}
+
+@media screen and (min-width: 749px) {
+  .page-width {
+    padding: 0 1rem;
+  }
+  .content-container {
+    margin-bottom: -2rem;
+  }
+}

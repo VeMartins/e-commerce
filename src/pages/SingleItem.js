@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./SingleItem.css";
+import { FaFacebook, FaPinterest } from "react-icons/fa";
+import { useParams, Link } from "react-router-dom";
+
 import ImageThumbnail from "../components/ImageThumbnail";
 import Loading from "../components/Loading";
 import data from "../data"; // if using an external api would need to fetch the data again
-import { useParams, Link } from "react-router-dom";
-import { FaFacebook, FaPinterest } from "react-icons/fa";
+
+import "./SingleItem.css";
 
 const SingleItem = () => {
   const [loading, setLoading] = useState(false);
@@ -42,6 +44,11 @@ const SingleItem = () => {
   }
   const { title, price, desc, detail } = product;
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("button pressed");
+  };
+
   return (
     <main className="main-singleItem-page">
       <section className=" main-detail-container">
@@ -72,7 +79,7 @@ const SingleItem = () => {
                 </div>
               </dl>
             </div>
-            <form className="details-form">
+            <form className="details-form" onSubmit={handleSubmit}>
               <div className="quantity">
                 <label htmlFor="quantity">Quantity</label>
                 <input
@@ -83,7 +90,7 @@ const SingleItem = () => {
                 ></input>
               </div>
               <div className="add-cart">
-                <button className="btn-details add-cart-btn">
+                <button className="btn-details add-cart-btn" type="submit">
                   <span>Add to cart</span>
                 </button>
               </div>
