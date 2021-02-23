@@ -179,3 +179,14 @@ Buttons
   height: var(--fullHeight-width);
   border: solid 2px var(--clr-black);
 }
+
+/****Card Style*/
+.item-style {
+  background: var(--clr-beige-light);
+  box-shadow: var(--lightShadow);
+  transition: var(--transition);
+  border-radius: var(--radius);
+}
+.item-style:hover {
+  box-shadow: var(--dark-shadow);
+}

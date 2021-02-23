@@ -12,15 +12,6 @@ PRODUCT
   padding: 0 0.5rem;
 }
 
-.item-style {
-  background: var(--clr-beige-light);
-  box-shadow: var(--lightShadow);
-  transition: var(--transition);
-  border-radius: var(--radius);
-}
-.item-style:hover {
-  box-shadow: var(--dark-shadow);
-}
 .item-inner-container {
   position: relative;
   height: var(--fullHeight-width);
@@ -98,6 +89,9 @@ PRODUCT
   }
   .item-inner-container {
     grid-auto-rows: 50%;
+  }
+  .content-item {
+    margin: 0 0 1rem 0;
   }
 }
 @media screen and (min-width: 750px) {

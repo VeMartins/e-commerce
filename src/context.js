@@ -1,33 +1,34 @@
 import React, { useContext, useState, useEffect } from "react";
-import data from "./data";
+import axios from "axios";
+
+//import data from "./data";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState(data);
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchProducts = () => {
+    const fetchProducts = async () => {
       setLoading(true);
 
       try {
-        if (data) {
-          const newProducts = data.map((item) => {
-            const { id, title, category, price, img, desc } = item;
-            return { id, title, category, price, img, desc };
-          });
-          setProducts(newProducts);
-
-          setLoading(false);
-        }
-      } catch (error) {
-        console.log(error);
+        const { data } = await axios.get("/api/products");
+        setProducts(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message || "Something went wrong please try again.");
         setLoading(false);
       }
     };
     fetchProducts();
   }, []);
+
+  const clearError = () => {
+    setError(null);
+  };
 
   return (
     <AppContext.Provider
@@ -35,6 +36,9 @@ const AppProvider = ({ children }) => {
         products,
         loading,
         setProducts,
+        error,
+        setError,
+        clearError,
       }}
     >
       {children}

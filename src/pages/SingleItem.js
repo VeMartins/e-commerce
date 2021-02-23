@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { FaFacebook, FaPinterest } from "react-icons/fa";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 
 import ImageThumbnail from "../components/ImageThumbnail";
-import Loading from "../components/Loading";
+import Loading from "../components/shared/Loading";
 import Price from "../components/Price";
-import data from "../data"; // if using an external api would need to fetch the data again
 
 import "./SingleItem.css";
 
 const SingleItem = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState(null);
   const { id } = useParams(); // will come as string so will need to use parseInt to use the id because id is an integer in data.js
   useEffect(() => {
     setLoading(true);
-    const fetchSingleProduct = () => {
+    const fetchSingleProduct = async () => {
       try {
-        if (data) {
-          const newItem = data.find((item) => item.id === parseInt(id));
-
-          setProduct(newItem);
-          setLoading(false);
-        } else {
-          setProduct(null);
-        }
+        const { data } = await axios.get("/api/products");
+        const item = await data.find((item) => item.id === parseInt(id));
+        setProduct(item);
+        setLoading(false);
       } catch (error) {
         console.log(error);
+        setProduct(null);
         setLoading(false);
       }
     };
@@ -39,7 +37,7 @@ const SingleItem = () => {
   if (!product) {
     return (
       <Link to="/" className="btn btn-backhome btn-details">
-        No item to display, Go Back to Home Page!
+        No item to display, click to go Back to Home Page.
       </Link>
     );
   }
@@ -52,6 +50,13 @@ const SingleItem = () => {
 
   return (
     <main className="main-singleItem-page">
+      <div className="back-results">
+        <Link to="/">
+          {" "}
+          <MdKeyboardArrowLeft /> Back to results
+        </Link>
+      </div>
+
       <section className=" main-detail-container">
         <ImageThumbnail {...product} />
         <div className="info-box">

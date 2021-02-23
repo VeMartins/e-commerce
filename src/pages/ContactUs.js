@@ -4,7 +4,7 @@ import envelope from "../srcImages/envelope.jpg";
 import "./ContactUs.css";
 
 const ContactUs = () => {
-  const [status, setStatus] = useState("Submit");
+  const [status] = useState("Submit");
   const handleSubmit = (e) => {
     e.preventDefault();
   };

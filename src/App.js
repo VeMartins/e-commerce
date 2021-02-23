@@ -9,9 +9,9 @@ import Error from "./pages/Error";
 import CartContainer from "./pages/CartContainer";
 import ContactUs from "./pages/ContactUs";
 //components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Loading from "./components/Loading";
+import Navbar from "./components/shared/Navbar";
+import Footer from "./components/shared/Footer";
+import Loading from "./components/shared/Loading";
 import { useGlobalContext } from "./context";
 
 import "./App.css";

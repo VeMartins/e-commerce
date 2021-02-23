@@ -1,15 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import ErrorModal from "../components/shared/ErrorModal";
+import { useGlobalContext } from "../context";
 import "./Error.css";
 
 const Error = () => {
+  const { error, clearError } = useGlobalContext();
   return (
-    <section className="error-page section">
+    <section>
+      {error && (
+        <ErrorModal
+          header="Ooops! Nothing to see here."
+          onClear={clearError}
+          error={error}
+        />
+      )}
+
       <div className="error-container">
-        <h1>Ooops! Nothing to see here.</h1>
         <Link to="/" className="btn btn-backhome btn-details">
-          Home
+          Back to Home Page
         </Link>
       </div>
     </section>
