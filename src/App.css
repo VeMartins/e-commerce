@@ -2,6 +2,7 @@
   /* darkest grey - used for headings */
   --clr-black: #222;
   --clr-grey-dark: #5e5d5c;
+  --clr-grey-light: grey;
   --clr-white: #fff;
   --clr-red-dark: hsl(360, 67%, 44%);
   --clr-red-light: hsl(360, 71%, 66%);
@@ -122,7 +123,6 @@ img {
   background: var(--clr-beige-light);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
-  padding: 1rem 0;
 }
 
 /*
@@ -133,8 +133,7 @@ Buttons
 .btn {
   font-weight: bold;
   letter-spacing: var(--mainSpacing);
-  color: var(--clr-green-dark);
-  border: 2px solid var(--clr-green-dark);
+
   padding: 0.45rem 0.8rem;
   display: inline-block;
   transition: var(--transition);
@@ -146,7 +145,6 @@ Buttons
 .btn,
 .btn-details {
   cursor: pointer;
-  text-transform: uppercase;
   border-radius: var(--radius);
 }
 .btn-backhome {
@@ -156,12 +154,12 @@ Buttons
 .btn-details {
   background: var(--clr-green-dark);
   color: white;
-  border-color: var(--clr-green-dark);
+  text-transform: uppercase;
+  border: 2px solid var(--clr-green-dark);
 }
 .btn-details:hover {
   color: var(--clr-green-dark);
   background: var(--clr-green-lightest);
-  border-color: var(--clr-green-dark);
   font-weight: bold;
   transition: var(--transition);
 }
@@ -178,6 +176,29 @@ Buttons
   width: 50%;
   height: var(--fullHeight-width);
   border: solid 2px var(--clr-black);
+}
+
+.clear-btn {
+  color: var(--clr-red-dark);
+  letter-spacing: var(--spacing);
+  cursor: pointer;
+  font-size: 0.85rem;
+  background: transparent;
+  margin-top: 0.5rem;
+  transition: var(--transition);
+  padding: 0.2rem;
+  text-transform: capitalize;
+  border: solid 1px var(--clr-red-dark);
+  border-radius: var(--radius);
+}
+.remove-btn {
+  border: none;
+  color: var(--clr-red-dark);
+}
+
+.clear-btn:hover {
+  background: var(--clr-red-dark);
+  color: var(--clr-white);
 }
 
 /****Card Style*/

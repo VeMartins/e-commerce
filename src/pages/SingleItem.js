@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaFacebook, FaPinterest } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams, Link } from "react-router-dom";
@@ -7,28 +7,41 @@ import axios from "axios";
 import ImageThumbnail from "../components/ImageThumbnail";
 import Loading from "../components/shared/Loading";
 import Price from "../components/Price";
+import { useGlobalContext } from "../context";
 
 import "./SingleItem.css";
 
 const SingleItem = () => {
+  const quantityRef = useRef(null);
+
+  const { addToCart, getTotal } = useGlobalContext();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState(null);
   const { id } = useParams(); // will come as string so will need to use parseInt to use the id because id is an integer in data.js
   useEffect(() => {
+    const source = axios.CancelToken.source(); //cleanup
     setLoading(true);
     const fetchSingleProduct = async () => {
       try {
-        const { data } = await axios.get("/api/products");
+        const { data } = await axios.get("/api/products", {
+          cancelToken: source.token, //cleanup
+        });
         const item = await data.find((item) => item.id === parseInt(id));
         setProduct(item);
         setLoading(false);
       } catch (error) {
-        console.log(error);
-        setProduct(null);
-        setLoading(false);
+        if (axios.isCancel(error)) {
+        } else {
+          setProduct(null);
+          setLoading(false);
+          throw error;
+        }
       }
     };
     fetchSingleProduct();
+    return () => {
+      source.cancel(); //cleanup
+    };
   }, [id]);
 
   if (loading) {
@@ -45,7 +58,9 @@ const SingleItem = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("button pressed");
+    const quantity = quantityRef.current.value;
+    addToCart(product, parseInt(quantity));
+    getTotal();
   };
 
   return (
@@ -69,6 +84,7 @@ const SingleItem = () => {
               <div className="quantity">
                 <label htmlFor="quantity">Quantity</label>
                 <input
+                  ref={quantityRef}
                   type="number"
                   id="quantity"
                   min="1"
@@ -82,10 +98,10 @@ const SingleItem = () => {
               </div>
             </form>
           </div>
-          <div className="box-style-look m-top-2">
-            <h4 className="m-around">Product Description</h4>
-            <p className="m-around">{desc}</p>
-            <p className="m-around">{detail}</p>
+          <div className="box-style-look description">
+            <h4 className="description__title">Product Description</h4>
+            <p className="description__description">{desc}</p>
+            <p className="description__detail">{detail}</p>
           </div>
           <ul className="social-container">
             <li>

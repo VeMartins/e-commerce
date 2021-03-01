@@ -4,9 +4,13 @@ Navbar
 ===============
 */
 
-nav {
+.nav-container {
   background: var(--clr-beige-light);
   box-shadow: var(--light-shadow);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 .nav-header {
   display: flex;
@@ -52,6 +56,19 @@ nav {
   overflow: hidden;
   transition: var(--transition);
 }
+.right-nav-link-2 a {
+  display: flex;
+  align-items: center;
+}
+
+.cart-count {
+  margin: 0 5px 0 3px;
+  font-size: smaller;
+  color: hsl(90, 42%, 40%);
+}
+.basket {
+  font-size: 1.5rem;
+}
 
 @media screen and (min-width: 800px) {
   .nav-center {
@@ -76,6 +93,8 @@ nav {
     width: var(--fullHeight-width);
     flex-direction: row;
     justify-content: flex-start;
+    height: 3rem;
+    align-items: center;
   }
 
   .links-container a {
@@ -86,7 +105,10 @@ nav {
     padding: 0;
     background: transparent;
   }
-  .cart-link {
+  .right-nav-link-1 {
     margin-left: auto;
+  }
+  .right-nav-link-2 a {
+    margin-left: 10px;
   }
 }

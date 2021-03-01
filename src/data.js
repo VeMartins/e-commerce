@@ -12,6 +12,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 10.99,
+    amount: 1,
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 0,
+    amount: 1,
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 0,
     sale: 14.99,
+    amount: 1,
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 6,
     sale: 0,
+    amount: 1,
   },
   {
     id: 5,
@@ -68,6 +72,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 0,
     sale: 0,
+    amount: 1,
   },
   {
     id: 6,
@@ -82,6 +87,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 7,
+    amount: 1,
   },
   {
     id: 7,
@@ -96,6 +102,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 0,
+    amount: 1,
   },
   {
     id: 8,
@@ -110,6 +117,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 8,
     sale: 0,
+    amount: 1,
   },
   {
     id: 9,
@@ -124,6 +132,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 0,
+    amount: 1,
   },
   {
     id: 10,
@@ -138,6 +147,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 12,
+    amount: 1,
   },
   {
     id: 11,
@@ -152,6 +162,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 12,
+    amount: 1,
   },
   {
     id: 12,
@@ -166,6 +177,7 @@ const products = [
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 16.99,
+    amount: 1,
   },
 ];
 

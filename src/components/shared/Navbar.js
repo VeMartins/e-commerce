@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./Navbar.css";
-import { Link } from "react-router-dom";
-import logo from "../../srcImages/logo.png";
 import { FaBars } from "react-icons/fa";
+import { RiShoppingBasketFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
+
+import { useGlobalContext } from "../../context";
+import logo from "../../srcImages/logo.png";
+
+import "./Navbar.css";
 
 const Navbar = () => {
+  const { totalAmount } = useGlobalContext();
   const [showLinks, setShowLinks] = useState(false);
   const refLinksContainer = useRef(null);
   const linksRef = useRef(null);
@@ -20,7 +25,7 @@ const Navbar = () => {
   }, [showLinks]);
 
   return (
-    <nav>
+    <nav className="nav-container">
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
@@ -45,8 +50,15 @@ const Navbar = () => {
             <li>
               <Link to="/help">Contact Us</Link>
             </li>
-            <li className="cart-link">
-              <Link to="/cart">Cart</Link>
+            <li className="right-nav-link-1">
+              <Link to="/signIn">Sign in</Link>
+            </li>
+            <li className="right-nav-link-2">
+              <Link to="/cart">
+                <RiShoppingBasketFill className="basket" />
+
+                <span className="cart-count">{totalAmount}</span>
+              </Link>
             </li>
           </ul>
         </div>

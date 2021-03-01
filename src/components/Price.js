@@ -11,8 +11,7 @@ const Price = ({ price, id, stock, sale, product }) => {
         </dt>
         <dd>
           <span className={sale > 0 ? "dinamic-size" : "price"}>
-            {" "}
-            {price} €{" "}
+            {price} <small> € </small>
             <span className={sale > 0 ? "hidden" : "shipping"}>+ shipping</span>
           </span>
         </dd>
@@ -24,7 +23,8 @@ const Price = ({ price, id, stock, sale, product }) => {
           </dt>
           <dd>
             <span>
-              {sale} € <span className="shipping">+ shipping</span>
+              {sale}
+              <small> € </small> <span className="shipping">+ shipping</span>
             </span>
           </dd>
         </div>

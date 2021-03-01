@@ -22,6 +22,18 @@
 .details-container {
   width: var(--fullHeight-width);
 }
+.description {
+  padding: 5%;
+  margin-top: 2rem;
+}
+.description > p,
+.description > h4 {
+  margin-top: 0.5rem;
+}
+.description__description {
+  color: var(--clr-grey-dark);
+  font-style: italic;
+}
 
 .details-container h1 {
   text-transform: uppercase;
@@ -69,16 +81,10 @@
   color: var(--clr-green-dark);
 }
 @media screen and (min-width: 750px) {
-  .main-singleItem-page {
-    max-width: var(--fullHeight-width);
-    height: 100vh;
-  }
   .main-detail-container {
     display: grid;
     grid-template-columns: 45% 50%;
     gap: 5%;
-    width: var(--fullHeight-width);
-    height: 100%;
   }
   .pic-container {
     margin-left: 2rem;

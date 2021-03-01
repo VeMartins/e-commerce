@@ -8,6 +8,7 @@ import SingleItem from "./pages/SingleItem";
 import Error from "./pages/Error";
 import CartContainer from "./pages/CartContainer";
 import ContactUs from "./pages/ContactUs";
+import SignIn from "./pages/SignIn";
 //components
 import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route exact path="/:title/:id">
           <SingleItem />
+        </Route>
+        <Route exact path="/signIn">
+          <SignIn />
         </Route>
         <Route exact path="/cart">
           <CartContainer />

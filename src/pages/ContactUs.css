@@ -5,20 +5,18 @@ Contact page
 */
 .section-contact {
   padding-bottom: 2.5rem;
-  min-height: 100vw;
-}
-.section-contact main {
-  width: 90vw;
 }
 
 .contact-container {
-  margin: 1rem auto 0 auto;
+  margin: 2rem auto 0 auto;
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
-  width: 100%;
+  width: 90%;
 }
 .contact-container img {
-  width: 30vw;
+  width: 100%;
+  height: 100%;
   padding: 0;
 }
 .w-60 {
@@ -38,7 +36,7 @@ Contact page
 .contact-inputs {
   padding: 2px;
   border: var(--mainBackground) solid 3px;
-  width: 80%;
+  width: 100%;
 }
 .contact-inputs:focus {
   outline: var(--mainBackground) solid 3px;
@@ -50,18 +48,27 @@ Contact page
   font-family: var(--headersFont);
   border-top: var(--mainBackground) solid 1px;
   width: 80%;
-  margin: 0.5rem auto 0 auto;
+  margin: 1rem auto 0 auto;
+  align-self: end;
+}
+.contact-details {
+  padding: 5%;
+  display: grid;
+  grid-auto-rows: auto;
+}
+.contact__details-first-child {
+  margin-top: 2rem;
 }
 
-@media screen and (max-width: 500px) {
-  .contact-container {
-    flex-direction: column;
-  }
+@media screen and (max-width: 499px) {
   .contact-container img {
-    width: 90vw;
     height: 70vw;
   }
-  .contact-container .w-60 {
-    width: 90vw;
+}
+@media screen and (min-width: 500px) {
+  .contact-container {
+    display: grid;
+    grid-auto-columns: 40% auto;
+    grid-auto-flow: column;
   }
 }

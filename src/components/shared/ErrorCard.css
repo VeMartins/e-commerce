@@ -16,7 +16,7 @@
 .error-card h2 {
   margin: 1rem;
 }
-button {
+.error-card button {
   width: 40%;
   height: 2rem;
   margin-bottom: 1rem;
