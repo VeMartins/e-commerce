@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../context/context";
 import Loading from "./shared/Loading";
 import Product from "./Product";
 import ErrorModal from "./shared/ErrorModal";
@@ -9,7 +9,7 @@ import Categories from "./Categories";
 import "./ProductsList.css";
 
 const ProductsList = () => {
-  const { products, loading, error, clearError } = useGlobalContext();
+  const { clearError, products, loading, error } = useGlobalContext();
 
   return (
     <React.Fragment>

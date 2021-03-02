@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../context/context";
 import "./Categories.css";
 
 const Categories = () => {

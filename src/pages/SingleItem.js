@@ -4,20 +4,30 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
+import ErrorModal from "../components/shared/ErrorModal";
 import ImageThumbnail from "../components/ImageThumbnail";
 import Loading from "../components/shared/Loading";
 import Price from "../components/Price";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../context/context";
 
 import "./SingleItem.css";
 
 const SingleItem = () => {
   const quantityRef = useRef(null);
 
-  const { addToCart, getTotal } = useGlobalContext();
+  const {
+    addToCart,
+    getTotal,
+    hasError,
+    clearError,
+    error,
+  } = useGlobalContext();
+
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState(null);
+
   const { id } = useParams(); // will come as string so will need to use parseInt to use the id because id is an integer in data.js
+
   useEffect(() => {
     const source = axios.CancelToken.source(); //cleanup
     setLoading(true);
@@ -47,6 +57,7 @@ const SingleItem = () => {
   if (loading) {
     return <Loading />;
   }
+
   if (!product) {
     return (
       <Link to="/" className="btn btn-backhome btn-details">
@@ -54,17 +65,28 @@ const SingleItem = () => {
       </Link>
     );
   }
-  const { title, desc, detail } = product;
+
+  const { title, desc, detail, stock } = product;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const quantity = quantityRef.current.value;
-    addToCart(product, parseInt(quantity));
-    getTotal();
+    const quantity = parseInt(quantityRef.current.value);
+    if (stock < quantity || stock === 0) {
+      return hasError(true);
+    } else {
+      addToCart(product, quantity);
+      getTotal();
+    }
   };
 
   return (
     <main className="main-singleItem-page">
+      {error && (
+        <ErrorModal
+          header={`Sorry, only ${stock} item(s) in stock `}
+          onClear={clearError}
+        />
+      )}
       <div className="back-results">
         <Link to="/">
           {" "}
@@ -92,7 +114,11 @@ const SingleItem = () => {
                 ></input>
               </div>
               <div className="add-cart">
-                <button className="btn-details add-cart-btn" type="submit">
+                <button
+                  className="btn-details add-cart-btn"
+                  type="submit"
+                  disabled={stock <= 0 ? "disabled" : ""}
+                >
                   <span>Add to cart</span>
                 </button>
               </div>

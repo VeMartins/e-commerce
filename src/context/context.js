@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useReducer, useCallback } from "react";
 import axios from "axios";
 
-import reducer from "./reducer";
+import reducer from "../reducers/reducer";
+import cartReducer from "../reducers/cart-reducer";
 
 const AppContext = React.createContext();
 const initialState = {
@@ -9,46 +10,56 @@ const initialState = {
   loading: false,
   products: [],
   error: false,
-  cart: [],
-  total: 0,
-  amount: 0,
-  totalAmount: 0,
   allCategories: [],
   categories: [],
   filteredData: [],
   filterValue: "alph-az",
   sortValue: "all",
 };
+const cartInitialState = {
+  cart: [],
+  total: 0,
+  amount: 0,
+  totalAmount: 0,
+};
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [stateCart, dispatchCart] = useReducer(cartReducer, cartInitialState);
 
+  //cart actions
   const addToCart = (product, quantity) => {
-    dispatch({ type: "ADD_TO_CART", payload: { product, quantity } });
+    dispatchCart({ type: "ADD_TO_CART", payload: { product, quantity } });
   };
   const updateAmount = (id, quantity) => {
-    dispatch({ type: "UPDATE_AMOUNT", payload: { id, quantity } });
+    dispatchCart({ type: "UPDATE_AMOUNT", payload: { id, quantity } });
   };
   const getTotal = useCallback(() => {
-    dispatch({ type: "GET_TOTAL" });
+    dispatchCart({ type: "GET_TOTAL" });
   }, []);
   const clearCart = () => {
-    dispatch({ type: "CLEAR_CART" });
+    dispatchCart({ type: "CLEAR_CART" });
   };
 
   const removeItem = (id) => {
-    dispatch({ type: "REMOVE", payload: id });
+    dispatchCart({ type: "REMOVE", payload: id });
   };
   const increaseItem = (id) => {
-    dispatch({ type: "INCREASE", payload: id });
+    dispatchCart({ type: "INCREASE", payload: id });
   };
   const decreaseItem = (id) => {
-    dispatch({ type: "DECREASE", payload: id });
+    dispatchCart({ type: "DECREASE", payload: id });
+  };
+  const hasError = (error) => {
+    dispatch({
+      type: "ERROR",
+      payload: error,
+    });
   };
   const clearError = () => {
     dispatch({ type: "CLEAR_ERROR" });
   };
-
+  // other state actions
   const sortTitles = useCallback((sortType) => {
     dispatch({ type: "SORT_ITEMS", payload: sortType });
   }, []);
@@ -60,6 +71,8 @@ const AppProvider = ({ children }) => {
     },
     [sortTitles, state.filterValue]
   );
+
+  // fetching products
   useEffect(() => {
     const source = axios.CancelToken.source(); //cleanup
     const fetchProducts = async () => {
@@ -96,11 +109,13 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
+        ...stateCart,
         clearCart,
         removeItem,
         increaseItem,
         decreaseItem,
         clearError,
+        hasError,
         filterItems,
         sortTitles,
         addToCart,

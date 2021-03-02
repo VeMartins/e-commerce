@@ -1,7 +1,7 @@
 import React from "react";
 
 import CartItem from "../components/CartItem";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../context/context";
 
 import "./CartContainer.css";
 

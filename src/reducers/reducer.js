@@ -96,119 +96,18 @@ const reducer = (state, action) => {
         return { ...state, products: sorted, filterValue: "alph-az" };
     }
   }
-  // Cart
 
-  if (action.type === "CLEAR_CART") {
-    return { ...state, cart: [], totalAmount: 0 };
-  }
-  if (action.type === "REMOVE") {
-    const filterRemove = () => {
-      return state.cart.filter((cartItem) => {
-        return cartItem.id !== action.payload;
-      });
-    };
-
-    return {
-      ...state,
-      cart: filterRemove(),
-    };
-  }
-  if (action.type === "ADD_TO_CART") {
-    let cartCopy = [...state.cart];
-
-    let existingItem = cartCopy.find(
-      (cartItem) => cartItem.id === action.payload.product.id
-    );
-
-    if (existingItem) {
-      existingItem.amount += action.payload.quantity;
-      state.totalAmount += action.payload.quantity;
-      console.log(existingItem.amount);
-    } else {
-      state.amount = action.payload.product.amount;
-      action.payload.product.amount = action.payload.quantity;
-      state.totalAmount = state.totalAmount + action.payload.quantity;
-      cartCopy.push(action.payload.product);
-    }
-
-    return {
-      ...state,
-      cart: cartCopy,
-    };
-  }
-  /*if (action.type === "UPDATE_AMOUNT") {
-    let cartCopy = [...state.cart];
-    let existingItem = cartCopy.find(
-      (cartItem) => cartItem.id === action.payload.id
-    );
-    if (!existingItem) return;
-
-    existingItem.amount += action.payload.quantity;
-
-    return { ...state, cart: cartCopy };
-  }*/
-
-  if (action.type === "INCREASE") {
-    let tempCart = state.cart.map((cartItem) => {
-      if (cartItem.id === action.payload) {
-        return {
-          ...cartItem,
-          amount: cartItem.amount + 1,
-        };
-      }
-      return cartItem;
-    });
-    return { ...state, cart: tempCart, totalAmount: state.totalAmount + 1 };
-  }
-  if (action.type === "DECREASE") {
-    let tempCart = state.cart
-      .map((cartItem) => {
-        if (cartItem.id === action.payload) {
-          return { ...cartItem, amount: cartItem.amount - 1 };
-        }
-        return cartItem;
-      })
-      .filter((cartItem) => cartItem.amount !== 0); // only return the item if the amount does not = to 0
-    return { ...state, cart: tempCart, totalAmount: state.totalAmount - 1 };
-  }
-  if (action.type === "GET_TOTAL") {
-    let { total, amount } = state.cart.reduce(
-      (cartTotal, cartItem) => {
-        const { price, amount } = cartItem;
-        const itemTotal = price * amount;
-
-        cartTotal.total += itemTotal;
-        cartTotal.amount += amount;
-        return cartTotal;
-      },
-      {
-        total: 0,
-        amount: 0,
-      }
-    );
-    total = parseFloat(total.toFixed(2));
-    return { ...state, total, amount };
-  }
-  if (action.type === "LOADING") {
-    return { ...state, loading: true };
-  }
-
-  if (action.type === "DISPLAY_CART") {
-    return {
-      ...state,
-      cart: action.payload,
-      loading: false,
-      error: false,
-    };
-  }
   if (action.type === "ERROR") {
     return { ...state, loading: false, error: action.payload };
   }
   if (action.type === "CLEAR_ERROR") {
     return { ...state, error: false };
   }
+  if (action.type === "LOADING") {
+    return { ...state, loading: true };
+  }
   //return state;
-  throw new Error("no matching action type");
+  throw new Error(`no matching action type ${action.type}`);
 };
 
 export default reducer;

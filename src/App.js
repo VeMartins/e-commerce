@@ -13,7 +13,7 @@ import SignIn from "./pages/SignIn";
 import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
 import Loading from "./components/shared/Loading";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "./context/context";
 
 import "./App.css";
 

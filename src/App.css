@@ -133,7 +133,6 @@ Buttons
 .btn {
   font-weight: bold;
   letter-spacing: var(--mainSpacing);
-
   padding: 0.45rem 0.8rem;
   display: inline-block;
   transition: var(--transition);
@@ -141,6 +140,9 @@ Buttons
   background: transparent;
   width: fit-content;
   height: fit-content;
+}
+.btn-center {
+  align-self: center;
 }
 .btn,
 .btn-details {

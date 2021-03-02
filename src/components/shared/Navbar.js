@@ -3,7 +3,7 @@ import { FaBars } from "react-icons/fa";
 import { RiShoppingBasketFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
-import { useGlobalContext } from "../../context";
+import { useGlobalContext } from "../../context/context";
 import logo from "../../srcImages/logo.png";
 
 import "./Navbar.css";

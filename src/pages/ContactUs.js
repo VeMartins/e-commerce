@@ -60,7 +60,10 @@ const ContactUs = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn-details btn m-top-2">
+              <button
+                type="submit"
+                className="btn-details btn m-top-2 btn-center"
+              >
                 {status}
               </button>
             </form>

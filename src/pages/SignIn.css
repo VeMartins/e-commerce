@@ -1,0 +1,19 @@
+.signin {
+  width: 90%;
+  margin: 2rem auto 0 auto;
+  padding: 5%;
+}
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+
+.login-input-card {
+  width: 100%;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1%;
+}

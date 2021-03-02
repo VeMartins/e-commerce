@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import Price from "./Price";
+import ImgNotAvailable from "../srcImages/product_image_not_available.png";
 
 import "./Product.css";
 
@@ -24,5 +26,33 @@ const Product = (props) => {
       </Link>
     </li>
   );
+};
+Product.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  img: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  detail: PropTypes.string.isRequired,
+  thumbnail2: PropTypes.string.isRequired,
+  thumbnail1: PropTypes.string.isRequired,
+  stock: PropTypes.number.isRequired,
+  sale: PropTypes.number.isRequired,
+  amount: PropTypes.number.isRequired,
+};
+Product.defaultProps = {
+  //id: no default
+  title: "No name available",
+  category: "all",
+  price: 35,
+  img: ImgNotAvailable,
+  desc: "no description available",
+  detail: "no product detail available",
+  thumbnail2: ImgNotAvailable,
+  thumbnail1: ImgNotAvailable,
+  stock: 0,
+  sale: 35,
+  amount: 0,
 };
 export default Product;

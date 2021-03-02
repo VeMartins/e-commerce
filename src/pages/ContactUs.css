@@ -30,9 +30,7 @@ Contact page
 .contact-form label {
   margin-right: 5px;
 }
-.contact-form button {
-  align-self: center;
-}
+
 .contact-inputs {
   padding: 2px;
   border: var(--mainBackground) solid 3px;

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import ErrorModal from "../components/shared/ErrorModal";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../context/context";
 import "./Error.css";
 
 const Error = () => {
