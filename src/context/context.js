@@ -15,6 +15,7 @@ const initialState = {
   filteredData: [],
   filterValue: "alph-az",
   sortValue: "all",
+  showLinks: false,
 };
 const cartInitialState = {
   cart: [],
@@ -49,6 +50,13 @@ const AppProvider = ({ children }) => {
   };
   const decreaseItem = (id) => {
     dispatchCart({ type: "DECREASE", payload: id });
+  };
+
+  const closeTopbar = () => {
+    dispatch({ type: "TOPBAR_CLOSE" });
+  };
+  const toggleTopbar = () => {
+    dispatch({ type: "TOPBAR_TOGGLE" });
   };
   const hasError = (error) => {
     dispatch({
@@ -103,7 +111,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     getTotal();
-  }, [state.cart, getTotal]);
+  }, [stateCart.cart, getTotal]);
 
   return (
     <AppContext.Provider
@@ -114,6 +122,9 @@ const AppProvider = ({ children }) => {
         removeItem,
         increaseItem,
         decreaseItem,
+
+        closeTopbar,
+        toggleTopbar,
         clearError,
         hasError,
         filterItems,

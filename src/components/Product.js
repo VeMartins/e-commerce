@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import Price from "./Price";
+import { Price } from "./";
 import ImgNotAvailable from "../srcImages/product_image_not_available.png";
 
 import "./Product.css";

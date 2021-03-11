@@ -8,7 +8,7 @@
   text-align: center;
   display: block;
 }
-.error-card a,
+
 .error-card h3,
 .error-card p,
 .error-card h4,
@@ -20,6 +20,11 @@
   width: 40%;
   height: 2rem;
   margin-bottom: 1rem;
+}
+.error-card a {
+  margin: 0;
+  padding: 0.5rem 1.7rem;
+  text-align: center;
 }
 @media (min-width: 768px) {
   .error-card {

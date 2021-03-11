@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { formatPrice } from "../utils/helpers";
 import { useGlobalContext } from "../context/context";
 
 import "./CartItem.css";
@@ -14,9 +15,7 @@ const CartItem = ({ id, img, title, price, amount }) => {
       </Link>
       <div>
         <h4>{title}</h4>
-        <h4 className="item-price">
-          {price} <small> € </small>
-        </h4>
+        <h4 className="item-price">{formatPrice(price)}</h4>
         {/* remove button */}
         <button className="remove-btn clear-btn" onClick={() => removeItem(id)}>
           remove

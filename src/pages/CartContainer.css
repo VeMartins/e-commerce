@@ -4,11 +4,29 @@
   margin: 0 auto;
   margin-top: 40px;
   padding: 2.5rem 0;
-  max-width: 50rem;
+  max-width: 60rem;
+}
+.cart-header h2 {
+  box-shadow: 0 2px 20px rgb(0 0 0 / 20%);
+  padding: 1rem;
+}
+.cart-header {
+  box-shadow: 0 2px 20px rgb(0 0 0 / 20%);
+  color: var(--clr-grey-dark);
 }
 .empty-cart {
-  text-transform: capitalize;
+  display: grid;
+  justify-content: space-around;
+  justify-items: center;
+  grid-template-rows: 1fr 1fr;
   padding: 1rem;
+  text-align: center;
+  font-size: 2rem;
+}
+@media screen and (max-width: 450px) {
+  .empty-cart a {
+    padding-top: 1rem;
+  }
 }
 .cart h2 {
   text-transform: uppercase;

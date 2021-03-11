@@ -106,6 +106,13 @@ const reducer = (state, action) => {
   if (action.type === "LOADING") {
     return { ...state, loading: true };
   }
+
+  if (action.type === "TOPBAR_CLOSE") {
+    return { ...state, showLinks: false };
+  }
+  if (action.type === "TOPBAR_TOGGLE") {
+    return { ...state, showLinks: !state.showLinks };
+  }
   //return state;
   throw new Error(`no matching action type ${action.type}`);
 };

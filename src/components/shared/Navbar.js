@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { FaBars } from "react-icons/fa";
-import { RiShoppingBasketFill } from "react-icons/ri";
+import React, { useRef, useEffect } from "react";
+import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import { useGlobalContext } from "../../context/context";
@@ -9,8 +8,13 @@ import logo from "../../srcImages/logo.png";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { totalAmount } = useGlobalContext();
-  const [showLinks, setShowLinks] = useState(false);
+  const {
+    totalAmount,
+    showLinks,
+    closeTopbar,
+    toggleTopbar,
+  } = useGlobalContext();
+
   const refLinksContainer = useRef(null);
   const linksRef = useRef(null);
 
@@ -28,13 +32,10 @@ const Navbar = () => {
     <nav className="nav-container">
       <div className="nav-center">
         <div className="nav-header">
-          <Link to="/">
+          <Link to="/" onClick={closeTopbar}>
             <img src={logo} alt="Botanica Art Lab logo" className="logo"></img>
           </Link>
-          <button
-            className="nav-toggle"
-            onClick={() => setShowLinks(!showLinks)}
-          >
+          <button className="nav-toggle" onClick={toggleTopbar}>
             <FaBars />
           </button>
         </div>
@@ -42,22 +43,33 @@ const Navbar = () => {
         <div className="links-container" ref={refLinksContainer}>
           <ul className="nav-links" ref={linksRef}>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={closeTopbar}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={closeTopbar}>
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/help">Contact Us</Link>
+              <Link to="/help" onClick={closeTopbar}>
+                Contact
+              </Link>
             </li>
             <li className="right-nav-link-1">
-              <Link to="/signIn">Sign in</Link>
+              <Link to="/signIn" onClick={closeTopbar}>
+                Login
+              </Link>
             </li>
             <li className="right-nav-link-2">
-              <Link to="/cart">
-                <RiShoppingBasketFill className="basket" />
+              <Link to="/cart" onClick={closeTopbar}>
+                Cart
+                <span className="basket">
+                  <FaShoppingCart />
 
-                <span className="cart-count">{totalAmount}</span>
+                  <span className="cart-count">{totalAmount}</span>
+                </span>
               </Link>
             </li>
           </ul>

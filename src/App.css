@@ -63,6 +63,9 @@ body {
 
 main {
   padding-bottom: 2.5rem; /* footer height*/
+}
+.section {
+  padding-bottom: 2.5rem;
   max-width: var(--fullWidth);
   margin: auto;
 }
@@ -108,9 +111,6 @@ img {
   padding-top: 2rem;
 }
 
-.section {
-  padding-bottom: 2.5rem;
-}
 .titles {
   padding-top: 1rem;
   width: 100%;
@@ -122,6 +122,16 @@ img {
   text-transform: capitalize;
   background: var(--clr-beige-light);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+.top-radius {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+.bottom-radius {
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+.radius {
   border-radius: var(--radius);
 }
 
@@ -137,7 +147,6 @@ Buttons
   display: inline-block;
   transition: var(--transition);
   font-size: 0.8rem;
-  background: transparent;
   width: fit-content;
   height: fit-content;
 }

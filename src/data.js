@@ -3,7 +3,7 @@ const products = [
     id: 1,
     title: "pillow a",
     category: "pillows",
-    price: 15.99,
+    price: 1599,
     img: "./images/almofada1.jpg",
     desc: `single leaf pillow `,
     detail:
@@ -11,14 +11,14 @@ const products = [
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
-    sale: 10.99,
+    sale: 1099,
     amount: 1,
   },
   {
     id: 2,
     title: "pillow c",
     category: "pillows",
-    price: 17.99,
+    price: 1799,
     img: "./images/almofada2.jpg",
     desc: `autumn leaves pillow `,
     detail:
@@ -33,7 +33,7 @@ const products = [
     id: 3,
     title: "pillow b",
     category: "pillows",
-    price: 16.99,
+    price: 1699,
     img: "./images/almofada3.jpg",
     desc: `mirror-effect leaves pillow `,
     detail:
@@ -41,14 +41,14 @@ const products = [
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 0,
-    sale: 14.99,
+    sale: 1499,
     amount: 1,
   },
   {
     id: 4,
     title: "earrings",
     category: "accessories",
-    price: 5.99,
+    price: 599,
     img: "./images/earrings.jpg",
     desc: `black sand bottle earrings `,
     detail:
@@ -63,7 +63,7 @@ const products = [
     id: 5,
     title: "pendant",
     category: "accessories",
-    price: 5.99,
+    price: 599,
     img: "./images/pendant1.jpg",
     desc: `flower preserved in resin  `,
     detail:
@@ -78,7 +78,7 @@ const products = [
     id: 6,
     title: "face mask",
     category: "masks",
-    price: 8,
+    price: 800,
     img: "./images/mascaras_tecidos.jpg",
     desc: `cotton mask with pocket for filter`,
     detail:
@@ -86,14 +86,14 @@ const products = [
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
-    sale: 7,
+    sale: 700,
     amount: 1,
   },
   {
     id: 7,
     title: "sanitary pads",
     category: "sanitary",
-    price: 35,
+    price: 3500,
     img: "./images/pensos_flores.jpg",
     desc: `pack of 5 sanitary pads`,
     detail:
@@ -108,7 +108,7 @@ const products = [
     id: 8,
     title: "sanitary pads",
     category: "sanitary",
-    price: 6,
+    price: 600,
     img: "./images/pensos_mundo.jpg",
     desc: `single sanitary pad`,
     detail:
@@ -123,7 +123,7 @@ const products = [
     id: 9,
     title: "produce bags",
     category: "produce",
-    price: 16,
+    price: 1600,
     img: "./images/produceBags.png",
     desc: `pack of 3 fishing net produce bags `,
     detail:
@@ -138,7 +138,7 @@ const products = [
     id: 10,
     title: "tote bag",
     category: "bags",
-    price: 13,
+    price: 1300,
     img: "./images/toteBag1.jpg",
     desc: `Nature lover tote bag`,
     detail:
@@ -146,14 +146,14 @@ const products = [
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
-    sale: 12,
+    sale: 1200,
     amount: 1,
   },
   {
     id: 11,
     title: "tote bag",
     category: "bags",
-    price: 13,
+    price: 1300,
     img: "./images/toteBag2.jpg",
     desc: `leaves in the pocket tote bag`,
     detail:
@@ -161,14 +161,14 @@ const products = [
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
-    sale: 12,
+    sale: 1200,
     amount: 1,
   },
   {
     id: 12,
     title: "tote bag",
     category: "bags",
-    price: 18,
+    price: 1800,
     img: "./images/reversibleBag.jpg",
     desc: `reversible tote bag`,
     detail:
@@ -176,7 +176,7 @@ const products = [
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
-    sale: 16.99,
+    sale: 1699,
     amount: 1,
   },
 ];

@@ -1,10 +1,14 @@
 import React from "react";
-import ProductsList from "../components/ProductsList";
+import { ProductsList } from "../components";
+import { PageHeader } from "../components";
 
 const Home = () => {
   return (
     <main>
-      <ProductsList />
+      <PageHeader title="Home" />
+      <section>
+        <ProductsList />
+      </section>
     </main>
   );
 };

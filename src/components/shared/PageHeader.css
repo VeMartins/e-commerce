@@ -1,0 +1,21 @@
+.pageHeader-section {
+  background: var(--clr-beige-light);
+  width: 100%;
+  min-height: 15vh;
+  display: flex;
+  align-items: center;
+
+  color: var(--clr-green-dark);
+}
+.section-center-pageHeader {
+  width: 90%;
+  margin: auto;
+}
+.pageHeader-section a {
+  color: var(--clr-green-light);
+  padding: 0.5rem;
+  transition: var(--transition);
+}
+.pageHeader-section a:hover {
+  color: var(--clr-green-dark);
+}

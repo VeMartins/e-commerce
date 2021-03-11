@@ -12,26 +12,32 @@ Footer
   height: 2.5rem;
   padding-top: 0.6rem;
 }
-.footer-list {
+.footer-ul {
   padding-top: 0.5rem;
   border-top: solid 1px var(--clr-footer-border);
+  display: grid;
+  grid-auto-flow: column;
 }
+.footer-li {
+  text-transform: capitalize;
 
-.social-icons,
-.contact {
-  display: inline;
-}
-.social-icons a,
-.contact p {
-  margin: 0 0.5rem;
-  color: var(--clr-green-dark);
   transition: var(--transition);
 }
 
-.contact p:hover {
-  color: var(--clr-green-light);
-  font-size: 1.5rem;
+.copy-rights {
+  font-size: 0.8rem;
+  max-width: fit-content;
+  margin: 0;
+  justify-self: end;
 }
+.copy-rights span {
+  color: black;
+}
+.social-icons a {
+  margin: 0 0.5rem;
+  color: var(--clr-green-dark);
+}
+
 .social-icons a:hover {
   color: var(--clr-red-light);
 }
@@ -39,12 +45,7 @@ Footer
   float: right;
   font-size: 1rem;
 }
-.contact,
-.social-data {
-  font-weight: bold;
-  text-transform: capitalize;
-  color: var(--clr-green-dark);
-}
+
 .social-data {
   font-size: 1rem;
   margin-right: 3px;

@@ -1,10 +1,8 @@
 import React from "react";
 
 import { useGlobalContext } from "../context/context";
-import Loading from "./shared/Loading";
-import Product from "./Product";
-import ErrorModal from "./shared/ErrorModal";
-import Categories from "./Categories";
+
+import { Loading, Product, ErrorModal, Categories } from "./";
 
 import "./ProductsList.css";
 
@@ -19,15 +17,13 @@ const ProductsList = () => {
           error={error}
           onClear={clearError}
           header="Failed to load products, please try again later."
+          linkText={"Okay"}
         />
       )}
 
       {!error && !loading && (
-        <section className="section">
+        <article className="section">
           <header>
-            <div className="titles">
-              <h2> Products</h2>
-            </div>
             <div>
               <Categories />
             </div>
@@ -39,7 +35,7 @@ const ProductsList = () => {
               })}
             </ul>
           </div>
-        </section>
+        </article>
       )}
     </React.Fragment>
   );

@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import ErrorCard from "./ErrorCard";
+import { ErrorCard } from "../";
 
 const ErrorModal = (props) => {
   return (
@@ -8,7 +9,8 @@ const ErrorModal = (props) => {
       header={props.header}
       footer={
         <button className="btn-details" onClick={props.onClear}>
-          Okay
+          {props.linkText}
+          {props.link}
         </button>
       }
     >

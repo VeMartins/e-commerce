@@ -2,17 +2,19 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //pages
-import Home from "./pages/Home";
-import About from "./pages/About";
-import SingleItem from "./pages/SingleItem";
-import Error from "./pages/Error";
-import CartContainer from "./pages/CartContainer";
-import ContactUs from "./pages/ContactUs";
-import SignIn from "./pages/SignIn";
+import {
+  Home,
+  About,
+  SingleItem,
+  Error,
+  CartContainer,
+  ContactUs,
+  SignIn,
+} from "./pages";
+
 //components
-import Navbar from "./components/shared/Navbar";
-import Footer from "./components/shared/Footer";
-import Loading from "./components/shared/Loading";
+import { Navbar, Footer, Loading } from "./components";
+
 import { useGlobalContext } from "./context/context";
 
 import "./App.css";
@@ -46,7 +48,7 @@ function App() {
         <Route exact path="/cart">
           <CartContainer />
         </Route>
-        <Route exact path="*">
+        <Route path="*">
           <Error />
         </Route>
       </Switch>

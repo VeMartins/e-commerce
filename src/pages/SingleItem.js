@@ -4,10 +4,8 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
-import ErrorModal from "../components/shared/ErrorModal";
-import ImageThumbnail from "../components/ImageThumbnail";
-import Loading from "../components/shared/Loading";
-import Price from "../components/Price";
+import { ErrorModal, ImageThumbnail, Loading, Price } from "../components";
+
 import { useGlobalContext } from "../context/context";
 
 import "./SingleItem.css";
@@ -21,6 +19,7 @@ const SingleItem = () => {
     hasError,
     clearError,
     error,
+    closeTopbar,
   } = useGlobalContext();
 
   const [loading, setLoading] = useState(true);
@@ -60,9 +59,14 @@ const SingleItem = () => {
 
   if (!product) {
     return (
-      <Link to="/" className="btn btn-backhome btn-details">
-        No item to display, click to go Back to Home Page.
-      </Link>
+      <section>
+        <ErrorModal
+          header="Ooops! No item to display."
+          onClear={clearError}
+          error={error}
+          link={<Link to="/">Back to Home Page</Link>}
+        />
+      </section>
     );
   }
 
@@ -80,11 +84,12 @@ const SingleItem = () => {
   };
 
   return (
-    <main className="main-singleItem-page">
+    <main className="main-singleItem-page" onMouseOver={closeTopbar}>
       {error && (
         <ErrorModal
           header={`Sorry, only ${stock} item(s) in stock `}
           onClear={clearError}
+          linkText={"Okay"}
         />
       )}
       <div className="back-results">
@@ -102,27 +107,29 @@ const SingleItem = () => {
             <div className="price">
               <Price {...product} product={product} />
             </div>
-            <form className="details-form" onSubmit={handleSubmit}>
-              <div className="quantity">
-                <label htmlFor="quantity">Quantity</label>
-                <input
-                  ref={quantityRef}
-                  type="number"
-                  id="quantity"
-                  min="1"
-                  defaultValue="1"
-                ></input>
-              </div>
-              <div className="add-cart">
-                <button
-                  className="btn-details add-cart-btn"
-                  type="submit"
-                  disabled={stock <= 0 ? "disabled" : ""}
-                >
-                  <span>Add to cart</span>
-                </button>
-              </div>
-            </form>
+            {stock > 0 && (
+              <form className="details-form" onSubmit={handleSubmit}>
+                <div className="quantity">
+                  <label htmlFor="quantity">Quantity</label>
+                  <input
+                    ref={quantityRef}
+                    type="number"
+                    id="quantity"
+                    min="1"
+                    defaultValue="1"
+                  ></input>
+                </div>
+                <div className="add-cart">
+                  <button
+                    className="btn-details add-cart-btn"
+                    type="submit"
+                    disabled={stock <= 0 ? "disabled" : ""}
+                  >
+                    <span>Add to cart</span>
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
           <div className="box-style-look description">
             <h4 className="description__title">Product Description</h4>

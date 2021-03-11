@@ -70,3 +70,13 @@ Contact page
     grid-auto-flow: column;
   }
 }
+@media screen and (min-width: 800px) {
+  .section-contact {
+    width: 80vw;
+    max-width: 1170px;
+    margin: auto;
+  }
+  .contact-container {
+    margin-top: 4rem;
+  }
+}

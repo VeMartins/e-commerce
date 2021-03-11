@@ -5,7 +5,7 @@ Navbar
 */
 
 .nav-container {
-  background: var(--clr-beige-light);
+  background: var(--mainBackground);
   box-shadow: var(--light-shadow);
   position: sticky;
   top: 0;
@@ -36,8 +36,8 @@ Navbar
 }
 
 .links-container a {
-  color: #9fbd82;
-  font-size: 1rem;
+  color: var(--clr-green-dark);
+  font-size: 1.3rem;
   font-weight: bold;
   text-transform: capitalize;
   letter-spacing: var(--spacing);
@@ -46,8 +46,8 @@ Navbar
   transition: var(--transition);
 }
 .links-container a:hover {
-  color: var(--clr-green-dark);
-  background: var(--clr-green-light);
+  color: var(--mainBackground);
+  background: var(--clr-green-dark);
   padding-left: 1.5rem;
 }
 
@@ -62,22 +62,38 @@ Navbar
 }
 
 .cart-count {
-  margin: 0 5px 0 3px;
-  font-size: smaller;
-  color: hsl(90, 42%, 40%);
+  position: absolute;
+  top: -10px;
+  right: -16px;
+  background: hsl(90, 55%, 75%);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.9rem;
+
+  padding: 11px;
+  color: var(--clr-green-dark);
 }
 .basket {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.basket svg {
+  height: 1.6rem;
+  margin-left: 5px;
 }
 
 @media screen and (min-width: 800px) {
   .nav-center {
-    max-width: 95vw;
+    max-width: 100%;
     margin: 0 auto;
     display: grid;
     align-items: center;
     grid-template-columns: auto auto;
-    padding: 1rem;
   }
   .nav-header {
     padding: 0;
@@ -104,11 +120,18 @@ Navbar
   .links-container a:hover {
     padding: 0;
     background: transparent;
+    color: var(--clr-green-light);
   }
   .right-nav-link-1 {
     margin-left: auto;
   }
+  .right-nav-link-2 {
+    padding-right: 5%;
+  }
   .right-nav-link-2 a {
     margin-left: 10px;
+  }
+  .logo {
+    margin-left: 30%;
   }
 }
