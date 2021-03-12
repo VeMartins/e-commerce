@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { formatPrice } from "../utils/helpers";
-import { useGlobalContext } from "../context/context";
+import { useCartContext } from "../context/cart-context";
 
 import "./CartItem.css";
 
 const CartItem = ({ id, img, title, price, amount }) => {
-  const { removeItem, increaseItem, decreaseItem } = useGlobalContext();
+  const { removeItem, increaseItem, decreaseItem } = useCartContext();
   return (
     <article className="cart-item">
       <Link to="/">

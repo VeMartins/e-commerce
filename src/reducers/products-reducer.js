@@ -1,4 +1,4 @@
-const reducer = (state, action) => {
+const productsReducer = (state, action) => {
   //Initial State
 
   const allCategories = [
@@ -15,19 +15,44 @@ const reducer = (state, action) => {
       error: false,
     };
   }
-  if (action.type === "DISPLAY_SINGLE_ITEM") {
+  if (action.type === "LOAD_PRODUCTS") {
     return {
       ...state,
-      singleProduct: action.payload,
-      loading: false,
-      error: false,
     };
   }
+
   if (action.type === "INITIAL_CATEGORIES") {
     return {
       ...state,
       allCategories: allCategories,
       categories: allCategories,
+    };
+  }
+  if (action.type === "SINGLE_PRODUCT_LOADING") {
+    return {
+      ...state,
+      single_product_loading: true,
+      single_product_error: false,
+    };
+  }
+  if (action.type === "DISPLAY_SINGLE_PRODUCT") {
+    return {
+      ...state,
+      single_product_loading: false,
+      single_product: action.payload,
+    };
+  }
+  if (action.type === "SINGLE_PRODUCT_ERROR") {
+    return {
+      ...state,
+      single_product_loading: false,
+      single_product_error: action.payload,
+    };
+  }
+  if (action.type === "CLEAR_SINGLE_PRODUCT_ERROR") {
+    return {
+      ...state,
+      single_product_error: false,
     };
   }
 
@@ -113,8 +138,9 @@ const reducer = (state, action) => {
   if (action.type === "TOPBAR_TOGGLE") {
     return { ...state, showLinks: !state.showLinks };
   }
+
   //return state;
   throw new Error(`no matching action type ${action.type}`);
 };
 
-export default reducer;
+export default productsReducer;

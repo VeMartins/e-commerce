@@ -14,3 +14,6 @@ export const info = [
       " We work with nature through manual pressing and natural dyes using traditional techniques. In an attempt to increase the useful life of a material, we also resort to the recycling of textiles and other materials/waste, transforming them into a new product.",
   },
 ];
+
+export const products_url =
+  "https://my-botanica-api-project.herokuapp.com/products";

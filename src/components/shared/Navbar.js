@@ -2,18 +2,15 @@ import React, { useRef, useEffect } from "react";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import { useGlobalContext } from "../../context/context";
+import { useGlobalContext } from "../../context/products-context";
+import { useCartContext } from "../../context/cart-context";
 import logo from "../../srcImages/logo.png";
 
 import "./Navbar.css";
 
 const Navbar = () => {
-  const {
-    totalAmount,
-    showLinks,
-    closeTopbar,
-    toggleTopbar,
-  } = useGlobalContext();
+  const { showLinks, closeTopbar, toggleTopbar } = useGlobalContext();
+  const { amount } = useCartContext();
 
   const refLinksContainer = useRef(null);
   const linksRef = useRef(null);
@@ -68,7 +65,7 @@ const Navbar = () => {
                 <span className="basket">
                   <FaShoppingCart />
 
-                  <span className="cart-count">{totalAmount}</span>
+                  <span className="cart-count">{amount}</span>
                 </span>
               </Link>
             </li>

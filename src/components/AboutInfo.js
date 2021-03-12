@@ -1,8 +1,8 @@
 import React from "react";
 
 import { info } from "../utils/constants";
-import PillowStack from "../srcImages/pillowStack.png";
-import FabricStack from "../srcImages/fabric-stack.png";
+//import PillowStack from "../srcImages/pillowStack.png";
+//import FabricStack from "../srcImages/fabric-stack.png";
 
 const AboutInfo = ({ src }) => {
   return (

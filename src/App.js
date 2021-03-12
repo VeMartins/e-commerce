@@ -15,7 +15,7 @@ import {
 //components
 import { Navbar, Footer, Loading } from "./components";
 
-import { useGlobalContext } from "./context/context";
+import { useGlobalContext } from "./context/products-context";
 
 import "./App.css";
 
@@ -39,9 +39,8 @@ function App() {
         <Route exact path="/help">
           <ContactUs />
         </Route>
-        <Route exact path="/:title/:id">
-          <SingleItem />
-        </Route>
+        <Route exact path="/:title/:id" children={<SingleItem />} />
+
         <Route exact path="/signIn">
           <SignIn />
         </Route>

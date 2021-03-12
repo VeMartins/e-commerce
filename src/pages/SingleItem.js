@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { FaFacebook, FaPinterest } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 
 import { ErrorModal, ImageThumbnail, Loading, Price } from "../components";
-
-import { useGlobalContext } from "../context/context";
+import { useGlobalContext } from "../context/products-context";
+import { useCartContext } from "../context/cart-context";
 
 import "./SingleItem.css";
 
@@ -14,44 +13,21 @@ const SingleItem = () => {
   const quantityRef = useRef(null);
 
   const {
-    addToCart,
-    getTotal,
+    fetchSingleProduct,
     hasError,
-    clearError,
-    error,
+    clearSingleError,
+    single_product_loading: loading,
+    single_product: product,
+    single_product_error: error,
     closeTopbar,
   } = useGlobalContext();
 
-  const [loading, setLoading] = useState(true);
-  const [product, setProduct] = useState(null);
-
+  const { addToCart, getTotal } = useCartContext();
   const { id } = useParams(); // will come as string so will need to use parseInt to use the id because id is an integer in data.js
 
   useEffect(() => {
-    const source = axios.CancelToken.source(); //cleanup
-    setLoading(true);
-    const fetchSingleProduct = async () => {
-      try {
-        const { data } = await axios.get("/api/products", {
-          cancelToken: source.token, //cleanup
-        });
-        const item = await data.find((item) => item.id === parseInt(id));
-        setProduct(item);
-        setLoading(false);
-      } catch (error) {
-        if (axios.isCancel(error)) {
-        } else {
-          setProduct(null);
-          setLoading(false);
-          throw error;
-        }
-      }
-    };
-    fetchSingleProduct();
-    return () => {
-      source.cancel(); //cleanup
-    };
-  }, [id]);
+    fetchSingleProduct(`/api/products/`, id);
+  }, [fetchSingleProduct, id]);
 
   if (loading) {
     return <Loading />;
@@ -62,7 +38,7 @@ const SingleItem = () => {
       <section>
         <ErrorModal
           header="Ooops! No item to display."
-          onClear={clearError}
+          onClear={clearSingleError}
           error={error}
           link={<Link to="/">Back to Home Page</Link>}
         />
@@ -75,7 +51,8 @@ const SingleItem = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const quantity = parseInt(quantityRef.current.value);
-    if (stock < quantity || stock === 0) {
+    if (quantity > stock) {
+      quantityRef.current.value = stock;
       return hasError(true);
     } else {
       addToCart(product, quantity);
@@ -88,7 +65,7 @@ const SingleItem = () => {
       {error && (
         <ErrorModal
           header={`Sorry, only ${stock} item(s) in stock `}
-          onClear={clearError}
+          onClear={clearSingleError}
           linkText={"Okay"}
         />
       )}

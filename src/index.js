@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { AppProvider } from "./context/context";
+import { AppProvider } from "./context/products-context";
+import { CartProvider } from "./context/cart-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </AppProvider>
   </React.StrictMode>,
   document.getElementById("root")

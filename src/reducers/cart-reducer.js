@@ -14,6 +14,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: filterRemove(),
+        //totalAmount: state.totalAmount - tempAmount.length,
       };
 
     case "ADD_TO_CART":

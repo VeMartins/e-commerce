@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 import { formatPrice } from "../utils/helpers";
 import { CartItem } from "../components";
-import { useGlobalContext } from "../context/context";
+import { useCartContext } from "../context/cart-context";
 import PageHeader from "../components/shared/PageHeader";
 
 import "./CartContainer.css";
 
 const CartContainer = () => {
-  const { cart, total, clearCart, totalAmount } = useGlobalContext();
+  const { cart, total, clearCart, totalAmount } = useCartContext();
   if (cart.length === 0) {
     return (
       <main>
