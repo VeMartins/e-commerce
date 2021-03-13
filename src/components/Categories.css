@@ -1,6 +1,7 @@
 .categories {
   display: flex;
-  margin: 1rem;
+  margin: 1rem auto;
+  width: 80%;
 }
 .dropdown {
   margin-right: 10px;
@@ -27,10 +28,14 @@
     max-width: 30ch;
     font-size: 1.25rem;
   }
+  .categories {
+    margin: 1rem;
+  }
 }
 @media screen and (min-width: 750px) {
   .categories {
     padding: 0 1rem;
+    margin: 2rem 1rem;
   }
 }
 @media screen and (min-width: 1200px) {

@@ -1,13 +1,15 @@
 import React from "react";
 
 import { useGlobalContext } from "../context/products-context";
+import { useFilterContext } from "../context/filter-context";
 
 import { Loading, Product, ErrorModal, Categories } from "./";
 
 import "./ProductsList.css";
 
 const ProductsList = () => {
-  const { clearError, products, loading, error } = useGlobalContext();
+  const { clearError, loading, error } = useGlobalContext();
+  const { filteredData: products } = useFilterContext();
 
   return (
     <React.Fragment>

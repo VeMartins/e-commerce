@@ -12,12 +12,6 @@ const initialState = {
   single_product_loading: false,
   single_product_error: false,
   single_product: {},
-  allCategories: [],
-  categories: [],
-  filteredData: [],
-  data: [],
-  filterValue: "alph-az",
-  sortValue: "all",
 };
 
 const AppProvider = ({ children }) => {
@@ -41,20 +35,6 @@ const AppProvider = ({ children }) => {
   const clearError = () => {
     dispatch({ type: "CLEAR_ERROR" });
   };
-  // other state actions
-  const sortTitles = useCallback((sortType) => {
-    dispatch({ type: "SORT_ITEMS", payload: sortType });
-  }, []);
-
-  const filterItems = useCallback(
-    (category) => {
-      dispatch({ type: "FILTER_ITEMS", payload: category });
-      sortTitles(state.filterValue);
-    },
-    [sortTitles, state.filterValue]
-  );
-
-  // fetching products
 
   const fetchProducts = useCallback(async (url, source) => {
     dispatch({ type: "LOADING" });
@@ -105,11 +85,6 @@ const AppProvider = ({ children }) => {
     };
   }, [fetchProducts]);
 
-  useEffect(() => {
-    dispatch({ type: "INITIAL_CATEGORIES" });
-    //dispatch({ type: "LOAD_PRODUCTS", payload: state.products });
-  }, [state.products]);
-
   return (
     <AppContext.Provider
       value={{
@@ -120,8 +95,6 @@ const AppProvider = ({ children }) => {
         toggleTopbar,
         clearError,
         hasError,
-        filterItems,
-        sortTitles,
       }}
     >
       {children}

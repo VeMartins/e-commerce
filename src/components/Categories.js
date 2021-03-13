@@ -1,18 +1,16 @@
-import React, { useEffect } from "react";
-import { useGlobalContext } from "../context/products-context";
+import React from "react";
+
+import { useFilterContext } from "../context/filter-context";
 import "./Categories.css";
 
 const Categories = () => {
   const {
-    filterItems,
+    sortValue,
+    updateSort,
     categories,
-    sortTitles,
+    filterItems,
     filterValue,
-  } = useGlobalContext();
-
-  useEffect(() => {
-    sortTitles(filterValue);
-  }, [sortTitles, filterValue]);
+  } = useFilterContext();
 
   return (
     <div className="categories">
@@ -25,17 +23,16 @@ const Categories = () => {
             className="select"
             name="filterTags"
             id="filterTags"
-            defaultValue="placeholder"
-            onChange={(e) => {
-              filterItems(e.target.value);
-            }}
+            value={filterValue}
+            onChange={filterItems}
           >
-            <option value="placeholder" disabled>
-              Choose here
-            </option>
             {categories.map((item, index) => {
               return (
-                <option value={item} key={index} className="filterOption">
+                <option
+                  value={item.category}
+                  key={index}
+                  className="filterOption"
+                >
                   {item}
                 </option>
               );
@@ -43,31 +40,25 @@ const Categories = () => {
           </select>
         </div>
       </div>
-      <div className="sort-container">
-        <label htmlFor="sortTags" className="sortLabel">
+      <form className="sort-container">
+        <label htmlFor="sort" className="sortLabel">
           Sort by
         </label>
         <div className="dropdown">
           <select
             className="select"
-            name="sortTags"
-            id="sortTags"
-            defaultValue="placeholder"
-            onChange={(e) => {
-              e.preventDefault();
-              sortTitles(e.target.value);
-            }}
+            name="sort"
+            id="sort"
+            value={sortValue}
+            onChange={updateSort}
           >
-            <option value="placeholder" disabled>
-              Choose here
-            </option>
-            <option value="alph-az">Name: A-Z</option>
-            <option value="alph-za">Name: Z-A</option>
+            <option value="name-az">Name: A-Z</option>
+            <option value="name-za">Name: Z-A</option>
             <option value="price-low">Price: low to high</option>
             <option value="price-high">Price: high to low</option>
           </select>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

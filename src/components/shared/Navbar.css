@@ -94,6 +94,7 @@ Navbar
     display: grid;
     align-items: center;
     grid-template-columns: auto auto;
+    height: 5rem;
   }
   .nav-header {
     padding: 0;
