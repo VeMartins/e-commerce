@@ -9,7 +9,6 @@ const initialState = {
   sortValue: "name-az",
   filters: {
     category: "all products",
-    sub_category: "",
     min_price: 0,
     max_price: 0,
     price: 0,
@@ -25,10 +24,11 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: "LOAD_PRODUCTS", payload: products });
   }, [products]);
+
   useEffect(() => {
     dispatch({ type: "SET_FILTERS" });
     dispatch({ type: "SORT_PRODUCTS" });
-  }, [products, state.sortValue, state.filters, state.filters.category]);
+  }, [products, state.sortValue, state.filters]);
 
   const updateSort = (e) => {
     //const name = e.target.name; --> name of the select element in this case sort
@@ -42,7 +42,7 @@ export const FilterProvider = ({ children }) => {
     let name = e.target.name;
     let value = e.target.value;
 
-    if (name === "filterButton") {
+    if (name === "category") {
       value = e.target.textContent;
     }
     if (name === "price") {
@@ -55,8 +55,11 @@ export const FilterProvider = ({ children }) => {
   const clearFilters = () => {
     dispatch({ type: "CLEAR_FILTERS" });
   };
-  const updateFilter = (category) => {
-    dispatch({ type: "UPDATE_FILTER", payload: category });
+  const updateFilter = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    dispatch({ type: "FILTERSELECT", payload: { value, name } });
   };
   const closeMenu = () => {
     dispatch({ type: "MENU_CLOSE" });

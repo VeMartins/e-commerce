@@ -58,8 +58,8 @@ For Home page
 }
 .categories-link {
   height: 50px;
-  padding: 1rem 1rem;
-  width: fit-content;
+  margin: 0 10px;
+
   display: block;
 }
 
@@ -78,16 +78,23 @@ For Home page
   border: none;
   text-transform: capitalize;
   width: fit-content;
-  margin-top: 0.9rem;
-  margin-right: 0.9rem;
+  cursor: pointer;
 }
-
+.btn-categories-products:focus,
+.btn-categories:focus {
+  outline: none;
+}
+.categories-link-products {
+  margin-right: 1rem;
+}
 @media screen and (min-width: 750px) {
   .products-categories {
     flex-direction: column;
   }
   .categories-link-products {
     display: block;
+    width: fit-content;
+    margin-top: 0.8rem;
   }
   .btn-categories-products {
     margin-right: 0;

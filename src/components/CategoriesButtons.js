@@ -9,10 +9,10 @@ import "../components/CategoriesButtons.css";
 const CategoriesButtons = ({ categories, styleProductsPage: styles }) => {
   const [size, setSize] = useState(window.innerWidth);
   const {
-    updateFilter,
     showMenu,
     closeMenu,
     toggleMenu,
+    filterItems,
     filters: { category },
   } = useFilterContext();
 
@@ -51,28 +51,26 @@ const CategoriesButtons = ({ categories, styleProductsPage: styles }) => {
           <div className={`${styles ? "products-categories" : "menu-links"} `}>
             {categories.map((catg, index) => {
               return (
-                <button
+                <Link
+                  to="/products"
                   key={index}
-                  name="filterButton"
-                  type="button"
-                  onClick={() => {
-                    updateFilter(catg);
-                  }}
+                  onClick={closeMenu}
                   className={`${
-                    styles ? "btn-categories-products" : "btn-categories"
-                  } ${category === catg.toLowerCase() ? "active" : null}`}
+                    styles ? "categories-link-products" : "categories-link"
+                  } `}
                 >
-                  <Link
-                    to="/products"
+                  <button
                     key={index}
-                    onClick={closeMenu}
+                    onClick={filterItems}
+                    name="category"
+                    type="button"
                     className={`${
-                      styles ? "categories-link-products" : "categories-link"
-                    } `}
+                      styles ? "btn-categories-products" : "btn-categories"
+                    } ${category === catg.toLowerCase() ? "active" : null}`}
                   >
                     {catg}
-                  </Link>
-                </button>
+                  </button>
+                </Link>
               );
             })}
           </div>

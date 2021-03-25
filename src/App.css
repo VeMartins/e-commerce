@@ -201,7 +201,6 @@ Buttons
 }
 
 .btn-categories {
-  height: 50px;
   background: transparent;
   font-weight: bold;
   border: none;
@@ -209,6 +208,10 @@ Buttons
   font-size: 0.9rem;
   text-transform: capitalize;
   color: var(--clr-green-dark);
+  height: 50px;
+  align-items: center;
+  padding: 0 10px;
+  cursor: pointer;
 }
 .btn-categories:hover {
   background: var(--clr-green-dark);

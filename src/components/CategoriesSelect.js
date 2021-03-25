@@ -6,7 +6,7 @@ import "./Categories.css";
 const CategoriesSelect = ({ categories }) => {
   const {
     filters: { category },
-    filterItems,
+    updateFilter,
   } = useFilterContext();
   return (
     <div>
@@ -17,7 +17,7 @@ const CategoriesSelect = ({ categories }) => {
           name="category"
           id="category"
           value={category}
-          onChange={filterItems}
+          onChange={updateFilter}
         >
           {categories.map((item, index) => {
             return (

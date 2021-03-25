@@ -1,6 +1,4 @@
 const filter_reducer = (state, action) => {
-  //const { data } = state;
-
   if (action.type === "LOAD_PRODUCTS") {
     let maxPrice = action.payload.map((p) => p.price);
     maxPrice = Math.max(...maxPrice);
@@ -8,7 +6,11 @@ const filter_reducer = (state, action) => {
       ...state,
       filteredData: [...action.payload],
       data: [...action.payload],
-      filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
+      filters: {
+        ...state.filters,
+        max_price: maxPrice,
+        price: maxPrice,
+      },
     };
   }
   if (action.type === "UPDATE_SORT") {
@@ -76,18 +78,26 @@ const filter_reducer = (state, action) => {
   }
 
   if (action.type === "SET_FILTERS") {
-    const { filters, data } = state;
-    const tempProducts = [...data];
-    if (filters.category === "all products") {
-      return { ...state, filteredData: tempProducts };
+    const { data } = state;
+    const { category, price } = state.filters;
+    let tempProducts = [...data];
+    if (category !== "all products") {
+      tempProducts = tempProducts.filter((item) => item.category === category);
     }
-    const filterByCategories = () => {
-      return tempProducts.filter((item) => {
-        return item.category === filters.category;
-      });
-    };
+    //price
+    tempProducts = tempProducts.filter((product) => {
+      let p;
 
-    return { ...state, filteredData: filterByCategories() };
+      if (product.sale > 0) {
+        p = product.sale;
+      } else {
+        p = product.price;
+      }
+
+      return p <= price;
+    });
+
+    return { ...state, filteredData: tempProducts };
   }
   if (action.type === "CLEAR_FILTERS") {
     return {
@@ -99,9 +109,15 @@ const filter_reducer = (state, action) => {
       },
     };
   }
-  if (action.type === "UPDATE_FILTER") {
-    return { ...state, filters: { category: action.payload } };
+  if (action.type === "FILTERSELECT") {
+    const { name, value } = action.payload;
+
+    return {
+      ...state,
+      filters: { ...state.filters, [name]: value },
+    };
   }
+
   if (action.type === "MENU_CLOSE") {
     return { ...state, showMenu: false };
   }

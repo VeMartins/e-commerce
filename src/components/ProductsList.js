@@ -34,6 +34,11 @@ const ProductsList = () => {
           <div className="page-width">
             <SortBy />
             <section>
+              {products.length < 1 && (
+                <h4 style={{ textTransform: "none" }}>
+                  Sorry, no products matched your search...
+                </h4>
+              )}
               <ul className="content-container ">
                 {products.map((item) => {
                   return <Product key={item.id} {...item} product={item} />;
