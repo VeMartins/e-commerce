@@ -35,17 +35,15 @@ Navbar
   width: 12rem;
 }
 
-.links-container a {
+.nav-link {
   color: var(--clr-green-dark);
   font-size: 1.3rem;
-  font-weight: bold;
   text-transform: capitalize;
   letter-spacing: var(--spacing);
   display: block;
   padding: 0.5rem 1rem;
-  transition: var(--transition);
 }
-.links-container a:hover {
+.nav-link:hover {
   color: var(--mainBackground);
   background: var(--clr-green-dark);
   padding-left: 1.5rem;
@@ -114,19 +112,24 @@ Navbar
     align-items: center;
   }
 
-  .links-container a {
+  .nav-link {
     padding: 0;
     margin: 0 0.5rem;
   }
-  .links-container a:hover {
+  .nav-link:hover {
     padding: 0;
     background: transparent;
     color: var(--clr-green-light);
   }
+  .nav-link-border:hover {
+    border-bottom: 2px solid var(--clr-green-dark);
+    color: var(--clr-green-dark);
+  }
   .right-nav-link-1 {
     margin-left: auto;
   }
-  .right-nav-link-2 {
+  .right-nav-link-2,
+  .right-nav-link-2:hover {
     padding-right: 5%;
   }
   .right-nav-link-2 a {

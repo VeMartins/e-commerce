@@ -5,10 +5,15 @@ import { useGlobalContext } from "../context/products-context";
 const initialState = {
   filteredData: [],
   data: [],
-  sortValue: "alph-az",
-  filterValue: "all",
-  allCategories: [],
-  categories: [],
+  showMenu: false,
+  sortValue: "name-az",
+  filters: {
+    category: "all products",
+    sub_category: "",
+    min_price: 0,
+    max_price: 0,
+    price: 0,
+  },
 };
 
 const FilterContext = React.createContext();
@@ -21,28 +26,57 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: "LOAD_PRODUCTS", payload: products });
   }, [products]);
   useEffect(() => {
+    dispatch({ type: "SET_FILTERS" });
     dispatch({ type: "SORT_PRODUCTS" });
-  }, [products, state.sortValue, state.filterValue]);
+  }, [products, state.sortValue, state.filters, state.filters.category]);
 
   const updateSort = (e) => {
     //const name = e.target.name; --> name of the select element in this case sort
 
     const value = e.target.value;
-    console.log(value);
+
     dispatch({ type: "UPDATE_SORT", payload: value });
   };
 
   const filterItems = (e) => {
-    const value = e.target.value;
-    dispatch({ type: "FILTER_ITEMS", payload: value });
+    let name = e.target.name;
+    let value = e.target.value;
+
+    if (name === "filterButton") {
+      value = e.target.textContent;
+    }
+    if (name === "price") {
+      value = Number(value);
+    }
+
+    dispatch({ type: "FILTER_ITEMS", payload: { value, name } });
   };
 
-  useEffect(() => {
-    dispatch({ type: "INITIAL_CATEGORIES" });
-  }, [products]);
+  const clearFilters = () => {
+    dispatch({ type: "CLEAR_FILTERS" });
+  };
+  const updateFilter = (category) => {
+    dispatch({ type: "UPDATE_FILTER", payload: category });
+  };
+  const closeMenu = () => {
+    dispatch({ type: "MENU_CLOSE" });
+  };
+  const toggleMenu = () => {
+    dispatch({ type: "MENU_TOGGLE" });
+  };
 
   return (
-    <FilterContext.Provider value={{ ...state, updateSort, filterItems }}>
+    <FilterContext.Provider
+      value={{
+        ...state,
+        updateSort,
+        filterItems,
+        clearFilters,
+        updateFilter,
+        closeMenu,
+        toggleMenu,
+      }}
+    >
       {children}
     </FilterContext.Provider>
   );

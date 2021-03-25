@@ -1,10 +1,14 @@
 const productsReducer = (state, action) => {
   if (action.type === "DISPLAY_ITEMS") {
+    const featured = action.payload.filter(
+      (product) => product.featured === true
+    );
     return {
       ...state,
       products: action.payload,
       loading: false,
       error: false,
+      featured_products: featured,
     };
   }
 

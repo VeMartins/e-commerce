@@ -1,21 +1,28 @@
-.pageHeader-section {
-  background: var(--clr-beige-light);
-  width: 100%;
-  min-height: 11vh;
-  display: flex;
-  align-items: center;
-
-  color: var(--clr-green-dark);
-}
 .section-center-pageHeader {
-  width: 90%;
-  margin: auto;
+  margin-left: 3rem;
+  /* background: var(--mainBackground);
+  background: RGBA(240, 227, 192, 0.6);*/
+  border-radius: var(--radius);
+  font-size: 2rem;
+  padding: 5px;
 }
-.pageHeader-section a {
-  color: var(--clr-green-light);
+.section-center-pageHeader h3 {
+  color: black;
+}
+
+.section-center-pageHeader a {
+  color: var(--clr-black);
   padding: 0.5rem;
   transition: var(--transition);
 }
-.pageHeader-section a:hover {
+
+.section-center-pageHeader a:hover {
   color: var(--clr-green-dark);
+}
+
+@media (max-width: 450px) {
+  .section-center-pageHeader {
+    margin: auto;
+    font-size: 1.5rem;
+  }
 }

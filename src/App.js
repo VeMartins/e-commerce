@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //pages
 import {
-  Home,
+  Products,
   About,
   SingleItem,
   Error,
@@ -31,16 +31,17 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/about">
           <About />
+        </Route>
+        <Route exact path="/products">
+          <Products />
         </Route>
         <Route exact path="/help">
           <ContactUs />
         </Route>
-        <Route exact path="/:title/:id" children={<SingleItem />} />
-
+        <Route exact path="/products/:id">
+          <SingleItem />
+        </Route>{" "}
         <Route exact path="/signIn">
           <SignIn />
         </Route>

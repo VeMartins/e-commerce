@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 
 import "./PageHeader.css";
 
-const PageHeader = ({ title }) => {
+const PageHeader = (props) => {
+  const { title } = props;
   return (
-    <section className="pageHeader-section">
-      <div className="section-center-pageHeader">
-        <h3>
-          <Link to="/">Home</Link>/ {title}
-        </h3>
-      </div>
-    </section>
+    <div className="section-center-pageHeader">
+      <h3>
+        <Link to="/">Home</Link>/ {title}
+      </h3>
+    </div>
   );
 };
 export default PageHeader;

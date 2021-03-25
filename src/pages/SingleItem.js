@@ -70,7 +70,7 @@ const SingleItem = () => {
         />
       )}
       <div className="back-results">
-        <Link to="/">
+        <Link to="/products">
           {" "}
           <MdKeyboardArrowLeft /> Back to results
         </Link>
@@ -98,7 +98,7 @@ const SingleItem = () => {
                 </div>
                 <div className="add-cart">
                   <button
-                    className="btn-details add-cart-btn"
+                    className="btn-green-dark add-cart-btn"
                     type="submit"
                     disabled={stock <= 0 ? "disabled" : ""}
                   >

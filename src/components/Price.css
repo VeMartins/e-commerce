@@ -14,6 +14,7 @@
 
 .sale {
   color: var(--clr-red-dark);
+  margin-right: 5px;
 }
 .hidden {
   position: absolute;
@@ -28,8 +29,14 @@
   font-size: small;
   color: var(--clr-grey-dark);
 }
+.shipping-flex {
+  font-size: small;
+  color: var(--clr-grey-dark);
+  display: flex;
+}
 .stock {
   font-size: smaller;
+  padding-top: 5px;
 }
 .in-stock {
   color: var(--clr-green-dark);

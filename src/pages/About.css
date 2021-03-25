@@ -1,115 +1,35 @@
 /* 
-========================================= 
-About Page ---> Connect.js + AboutInfo.js
-=========================================
+============
+About Page
+============
 */
 .main-about {
   max-height: 100%;
   padding-bottom: 2.5rem;
 }
-.contact-link {
-  font-weight: bold;
-  cursor: pointer;
-  color: var(--clr-green-dark);
-}
-.connect-container {
-  line-height: 0.8cm;
-  padding: 2rem 0;
-  display: grid;
-  align-items: center;
-  text-align: center;
+
+@media screen and (min-width: 750px) {
+  .main-about-section {
+    display: grid;
+    grid-template-rows: auto auto;
+  }
 }
 
-.connect-image {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.connect-grid {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  margin: 2rem auto 0 auto;
-  width: 90vw;
-  padding: 0 1rem;
-  max-width: 1170px;
-}
-
-.header {
-  text-align: center;
-  margin: 2rem auto 0 auto;
-  font-size: 1.5rem;
-  color: var(--clr-green-dark);
-  box-shadow: 0 2px 20px rgb(0 0 0 / 20%);
-  max-width: 1170px;
-  width: 85vw;
+/* 
+=====================
+Our Process + AboutUs
+=====================
+*/
+.about-grid {
+  max-width: var(--max-width);
   padding: 1rem;
 }
-
-.section-center {
-  width: 90vw;
-  margin: 0 auto;
-  max-width: 1170px;
+.about-btm-margin {
+  margin-bottom: 1rem;
 }
-.services-center {
-  margin-top: 2rem;
-  display: grid;
-}
-.service-grid {
-  display: grid;
-  grid-template-rows: 150px 2fr;
-}
-.service {
-  text-align: center;
-  padding: 1rem 1rem;
-  border-radius: var(--radius);
-}
-.about-info-style {
-  padding: 1.5rem;
-  text-align: justify;
-  text-transform: initial !important;
-}
-
-.info-images {
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-transform: capitalize;
-  display: flex;
-}
-.info-images h2 {
-  background-color: #f5f0e4;
-  text-align: center;
-  width: fit-content;
-  height: fit-content;
-  margin: auto;
-  padding: 0.3rem;
-  border-radius: var(--radius);
-}
-
-.section-about-title {
-  padding: 5rem 0;
-}
-.about-title h2 {
-  margin-bottom: 2rem;
-}
-@media (min-width: 576px) {
-  .services-center {
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  }
-}
-@media (min-width: 800px) {
-  .service {
-    padding: 0.5rem 2rem;
-  }
-  .connect-grid {
-    padding: 0 2rem;
-  }
-  .header {
-    font-size: 2rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .section-about-title {
-    padding: 0;
+@media screen and (min-width: 750px) {
+  .about-grid {
+    padding: 2rem 1rem;
+    margin: 0 auto;
   }
 }

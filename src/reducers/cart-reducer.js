@@ -74,8 +74,14 @@ const cartReducer = (state, action) => {
     case "GET_TOTAL":
       let { total, amount } = state.cart.reduce(
         (cartTotal, cartItem) => {
-          const { price, amount } = cartItem;
-          const itemTotal = price * amount;
+          const { price, amount, sale } = cartItem;
+          let itemTotal;
+
+          if (sale > 0) {
+            itemTotal = sale * amount;
+          } else {
+            itemTotal = price * amount;
+          }
 
           cartTotal.total += itemTotal;
           cartTotal.amount += amount;

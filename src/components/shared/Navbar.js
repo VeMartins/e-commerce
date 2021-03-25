@@ -3,6 +3,7 @@ import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import { useGlobalContext } from "../../context/products-context";
+import { useFilterContext } from "../../context/filter-context";
 import { useCartContext } from "../../context/cart-context";
 import logo from "../../srcImages/logo.png";
 
@@ -10,6 +11,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const { showLinks, closeTopbar, toggleTopbar } = useGlobalContext();
+  const { clearFilters } = useFilterContext();
   const { amount } = useCartContext();
 
   const refLinksContainer = useRef(null);
@@ -40,26 +42,41 @@ const Navbar = () => {
         <div className="links-container" ref={refLinksContainer}>
           <ul className="nav-links" ref={linksRef}>
             <li>
-              <Link to="/" onClick={closeTopbar}>
+              <Link
+                to="/"
+                onClick={closeTopbar}
+                className="nav-link nav-link-border"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" onClick={closeTopbar}>
-                About
+              <Link
+                to="/products"
+                onClick={() => {
+                  closeTopbar();
+                  clearFilters();
+                }}
+                className="nav-link nav-link-border"
+              >
+                Products
               </Link>
             </li>
             <li>
-              <Link to="/help" onClick={closeTopbar}>
+              <Link
+                to="/help"
+                onClick={closeTopbar}
+                className="nav-link nav-link-border"
+              >
                 Contact
               </Link>
             </li>
-            <li className="right-nav-link-1">
+            <li className="right-nav-link-1 nav-link">
               <Link to="/signIn" onClick={closeTopbar}>
                 Login
               </Link>
             </li>
-            <li className="right-nav-link-2">
+            <li className="right-nav-link-2 nav-link">
               <Link to="/cart" onClick={closeTopbar}>
                 Cart
                 <span className="basket">

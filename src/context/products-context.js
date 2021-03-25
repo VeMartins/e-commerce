@@ -8,6 +8,7 @@ const initialState = {
   showLinks: false,
   loading: false,
   products: [],
+  featured_products: [],
   error: false,
   single_product_loading: false,
   single_product_error: false,

@@ -6,7 +6,9 @@ Contact page
 .section-contact {
   padding-bottom: 2.5rem;
 }
-
+.contact-btm-margin {
+  margin-bottom: 1.5rem;
+}
 .contact-container {
   margin: 2rem auto 0 auto;
   display: flex;
@@ -35,6 +37,7 @@ Contact page
   padding: 2px;
   border: var(--mainBackground) solid 3px;
   width: 100%;
+  margin-top: 1rem;
 }
 .contact-inputs:focus {
   outline: var(--mainBackground) solid 3px;
@@ -51,13 +54,11 @@ Contact page
 }
 .contact-details {
   padding: 5%;
-  display: grid;
-  grid-auto-rows: auto;
 }
-.contact__details-first-child {
-  margin-top: 2rem;
+.contact-email {
+  text-decoration: underline;
+  color: var(--clr-green-dark);
 }
-
 @media screen and (max-width: 499px) {
   .contact-container img {
     height: 70vw;
@@ -79,4 +80,15 @@ Contact page
   .contact-container {
     margin-top: 4rem;
   }
+}
+.contact-icons {
+  padding-left: 1rem;
+  display: flex;
+  font-style: italic;
+  color: var(--clr-green-dark);
+  position: absolute;
+  bottom: 10px;
+}
+.contact-img-container {
+  position: relative;
 }

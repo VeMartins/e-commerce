@@ -1,11 +1,12 @@
 const products = [
   {
     id: 1,
-    title: "pillow a",
-    category: "pillows",
+
+    category: "home",
+    sub_category: "pillows",
     price: 1599,
     img: "./images/almofada1.jpg",
-    desc: `single leaf pillow `,
+    title: `single leaf pillow `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -13,14 +14,16 @@ const products = [
     stock: 2,
     sale: 1099,
     amount: 1,
+    featured: true,
   },
   {
     id: 2,
-    title: "pillow c",
-    category: "pillows",
+
+    category: "home",
+    sub_category: "pillows",
     price: 1799,
     img: "./images/almofada2.jpg",
-    desc: `autumn leaves pillow `,
+    title: `autumn leaves pillow `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -31,11 +34,12 @@ const products = [
   },
   {
     id: 3,
-    title: "pillow b",
-    category: "pillows",
+
+    category: "home",
+    sub_category: "pillows",
     price: 1699,
     img: "./images/almofada3.jpg",
-    desc: `mirror-effect leaves pillow `,
+    title: `mirror-effect leaves pillow `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -46,11 +50,12 @@ const products = [
   },
   {
     id: 4,
-    title: "earrings",
+
     category: "accessories",
+    sub_category: "earrings",
     price: 599,
     img: "./images/earrings.jpg",
-    desc: `black sand bottle earrings `,
+    title: `black sand bottle earrings `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -58,14 +63,16 @@ const products = [
     stock: 6,
     sale: 0,
     amount: 1,
+    featured: true,
   },
   {
     id: 5,
-    title: "pendant",
+
     category: "accessories",
+    sub_category: "necklace",
     price: 599,
     img: "./images/pendant1.jpg",
-    desc: `flower preserved in resin  `,
+    title: `flower necklace  `,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -76,26 +83,29 @@ const products = [
   },
   {
     id: 6,
-    title: "face mask",
-    category: "masks",
+
+    category: "health & personal care",
+    sub_category: "face mask",
     price: 800,
     img: "./images/mascaras_tecidos.jpg",
-    desc: `cotton mask with pocket for filter`,
+    title: `cotton mask `,
     detail:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
+      "This cotton face mask has a pocket for a filter,  3 filters are included.",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 700,
     amount: 1,
+    featured: true,
   },
   {
     id: 7,
-    title: "sanitary pads",
-    category: "sanitary",
+
+    category: "health & personal care",
+    sub_category: "feminine hygiene",
     price: 3500,
     img: "./images/pensos_flores.jpg",
-    desc: `pack of 5 sanitary pads`,
+    title: `pack of 5 sanitary pads`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -103,14 +113,16 @@ const products = [
     stock: 2,
     sale: 0,
     amount: 1,
+    featured: true,
   },
   {
     id: 8,
-    title: "sanitary pads",
-    category: "sanitary",
+
+    category: "health & personal care",
+    sub_category: "feminine hygiene",
     price: 600,
     img: "./images/pensos_mundo.jpg",
-    desc: `single sanitary pad`,
+    title: `single sanitary pad`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -121,26 +133,28 @@ const products = [
   },
   {
     id: 9,
-    title: "produce bags",
-    category: "produce",
+
+    category: "bags",
+    sub_category: "produce bags",
     price: 1600,
     img: "./images/produceBags.png",
-    desc: `pack of 3 fishing net produce bags `,
-    detail:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
+    title: `pack of 3  produce bags `,
+    detail: "made from fishing nets",
     thumbnail1: "./images/thumb/thumbnail1.png",
     thumbnail2: "./images/thumb/thumbnail2.png",
     stock: 2,
     sale: 0,
     amount: 1,
+    featured: true,
   },
   {
     id: 10,
-    title: "tote bag",
+
     category: "bags",
+    sub_category: "tote bags",
     price: 1300,
     img: "./images/toteBag1.jpg",
-    desc: `Nature lover tote bag`,
+    title: `Nature lover tote bag`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -148,14 +162,16 @@ const products = [
     stock: 2,
     sale: 1200,
     amount: 1,
+    featured: true,
   },
   {
     id: 11,
-    title: "tote bag",
+
     category: "bags",
+    sub_category: "tote bags",
     price: 1300,
     img: "./images/toteBag2.jpg",
-    desc: `leaves in the pocket tote bag`,
+    title: `pocket leaves tote bag`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",
@@ -166,11 +182,12 @@ const products = [
   },
   {
     id: 12,
-    title: "tote bag",
+
     category: "bags",
+    sub_category: "tote bags",
     price: 1800,
     img: "./images/reversibleBag.jpg",
-    desc: `reversible tote bag`,
+    title: `reversible tote bag`,
     detail:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, iure aliquam. Pariatur ipsa cumque qui sit sequi praesentium architecto nemo inventore fuga ut, quam nobis earum iste quaerat velit ad?",
     thumbnail1: "./images/thumb/thumbnail1.png",

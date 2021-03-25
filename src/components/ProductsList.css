@@ -3,29 +3,50 @@
 ProductList
 ======
 */
+.products-grid {
+  display: grid;
+  gap: 1.5rem;
+  width: 90vw;
+}
 .page-width {
-  margin: 0 auto;
   max-width: var(--fullWidth);
 }
 .content-container {
-  overflow: auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 2rem 1.5rem;
 }
-.grid {
-  margin: 0;
-  padding: 0;
+.filters-hr {
+  margin: 20px 0;
 }
-.grid::after {
-  clear: both;
-  display: table;
+@media screen and (min-width: 450px) and (max-width: 650px) {
+  .content-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 650px) {
+  .content-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 750px) {
+  .products-grid {
+    width: 95vw;
+  }
+  .filters-hr {
+    display: none;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1050px) {
+  .products-grid {
+    grid-template-columns: 170px 1fr;
+  }
 }
 
-@media screen and (min-width: 749px) {
-  .page-width {
-    padding: 0 1rem;
+@media screen and (min-width: 1050px) {
+  .products-grid {
+    grid-template-columns: 200px 1fr;
   }
   .content-container {
-    margin-bottom: -2rem;
+    grid-template-columns: repeat(4, 1fr);
   }
 }

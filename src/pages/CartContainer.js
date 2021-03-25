@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { formatPrice } from "../utils/helpers";
 import { CartItem } from "../components";
 import { useCartContext } from "../context/cart-context";
-import PageHeader from "../components/shared/PageHeader";
+import { PageHeaderImage } from "../components";
+import background from "../srcImages/cesta.jpg";
 
 import "./CartContainer.css";
 
@@ -13,13 +14,13 @@ const CartContainer = () => {
   if (cart.length === 0) {
     return (
       <main>
-        <PageHeader title="Cart" />
+        <PageHeaderImage title="Cart" src={background} />
         <section className="cart">
           <header>
-            <h4 className="empty-cart box-style-look radius">
+            <h4 className="empty-cart box-style-look ">
               Your cart is currently empty
-              <Link to="/">
-                <span className="btn-details btn"> Buy now </span>
+              <Link to="/products">
+                <span className="btn-green-dark btn"> Buy now </span>
               </Link>
             </h4>
           </header>
@@ -30,7 +31,7 @@ const CartContainer = () => {
 
   return (
     <main>
-      <PageHeader title="Cart" />
+      <PageHeaderImage title="Cart" src={background} />
       <section className="cart">
         <header className="cart-header">
           <h2>your bag</h2>
@@ -42,7 +43,10 @@ const CartContainer = () => {
           })}
         </div>
         <div>
-          <button className=" clear-btn btn-position" onClick={clearCart}>
+          <button
+            className=" clear-btn btn-position btn-transparent-red"
+            onClick={clearCart}
+          >
             clear cart
           </button>
         </div>
@@ -61,7 +65,7 @@ const CartContainer = () => {
                   <small>({totalAmount} items)</small>{" "}
                 </span>
               </p>
-              <button className="btn btn-details">Go to checkout</button>
+              <button className="btn btn-green-dark">Go to checkout</button>
             </div>
           </div>
         </footer>

@@ -21,10 +21,10 @@ const ImageThumbnail = ({ thumbnail2, img, title }) => {
           >
             {({ zoomIn, zoomOut, ...rest }) => (
               <>
-                <button className="btn-details zoom-btn" onClick={zoomIn}>
+                <button className="btn-green-dark zoom-btn" onClick={zoomIn}>
                   +
                 </button>
-                <button className="btn-details zoom-btn" onClick={zoomOut}>
+                <button className="btn-green-dark zoom-btn" onClick={zoomOut}>
                   -
                 </button>
 

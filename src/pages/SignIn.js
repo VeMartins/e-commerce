@@ -42,7 +42,7 @@ const SignIn = () => {
               required
             />
           </div>
-          <button type="submit" className="btn-details btn-center btn m-top-2">
+          <button type="submit" className="btn-green-dark btn-center btn ">
             {status}
           </button>
         </form>

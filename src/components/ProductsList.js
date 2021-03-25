@@ -4,6 +4,7 @@ import { useGlobalContext } from "../context/products-context";
 import { useFilterContext } from "../context/filter-context";
 
 import { Loading, Product, ErrorModal, Categories } from "./";
+import SortBy from "./SortBy";
 
 import "./ProductsList.css";
 
@@ -24,18 +25,21 @@ const ProductsList = () => {
       )}
 
       {!error && !loading && (
-        <article className="section">
-          <header>
-            <div>
-              <Categories />
-            </div>
-          </header>
+        <article className="section products-grid">
+          <section className="filters-header">
+            <hr className="filters-hr" />
+            <Categories />
+            <hr className="filters-hr" />
+          </section>
           <div className="page-width">
-            <ul className="content-container grid">
-              {products.map((item) => {
-                return <Product key={item.id} {...item} product={item} />;
-              })}
-            </ul>
+            <SortBy />
+            <section>
+              <ul className="content-container ">
+                {products.map((item) => {
+                  return <Product key={item.id} {...item} product={item} />;
+                })}
+              </ul>
+            </section>
           </div>
         </article>
       )}

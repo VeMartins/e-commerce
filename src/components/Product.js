@@ -7,10 +7,10 @@ import ImgNotAvailable from "../srcImages/product_image_not_available.png";
 import "./Product.css";
 
 const Product = (props) => {
-  const { id, title, price, img, desc, sale, product } = props;
+  const { id, title, price, img, sale, product } = props;
   return (
-    <li className="content-item item-width ">
-      <Link to={`/${title}/${id}`}>
+    <li>
+      <Link to={`/products/${id}`}>
         <div className="item-inner-container item-style">
           <div className="img-container">
             <div className="img-inner-container">
@@ -19,7 +19,7 @@ const Product = (props) => {
           </div>
           <div className="info-container">
             <div className="item-title">{title}</div>
-            <p>{desc}</p>
+
             <Price price={price} id={id} product={product} sale={sale} />
           </div>
         </div>
@@ -33,7 +33,6 @@ Product.propTypes = {
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
   detail: PropTypes.string.isRequired,
   thumbnail2: PropTypes.string.isRequired,
   thumbnail1: PropTypes.string.isRequired,
@@ -47,7 +46,6 @@ Product.defaultProps = {
   category: "all",
   price: 35,
   img: ImgNotAvailable,
-  desc: "no description available",
   detail: "no product detail available",
   thumbnail2: ImgNotAvailable,
   thumbnail1: ImgNotAvailable,

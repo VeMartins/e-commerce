@@ -9,11 +9,10 @@ Footer
   bottom: 0;
   width: 100%;
   text-align: center;
-  height: 2.5rem;
-  padding-top: 0.6rem;
+  background-color: var(--mainBackground);
 }
 .footer-ul {
-  padding-top: 0.5rem;
+  padding: 0.5rem;
   border-top: solid 1px var(--clr-footer-border);
   display: grid;
   grid-auto-flow: column;

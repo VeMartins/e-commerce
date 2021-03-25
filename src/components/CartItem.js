@@ -6,7 +6,7 @@ import { useCartContext } from "../context/cart-context";
 
 import "./CartItem.css";
 
-const CartItem = ({ id, img, title, price, amount }) => {
+const CartItem = ({ id, img, title, price, amount, sale }) => {
   const { removeItem, increaseItem, decreaseItem } = useCartContext();
   return (
     <article className="cart-item">
@@ -15,9 +15,14 @@ const CartItem = ({ id, img, title, price, amount }) => {
       </Link>
       <div>
         <h4>{title}</h4>
-        <h4 className="item-price">{formatPrice(price)}</h4>
+        <h4 className="item-price">{`${
+          sale > 0 ? formatPrice(sale) : formatPrice(price)
+        }`}</h4>
         {/* remove button */}
-        <button className="remove-btn clear-btn" onClick={() => removeItem(id)}>
+        <button
+          className="remove-btn clear-btn btn-transparent-red"
+          onClick={() => removeItem(id)}
+        >
           remove
         </button>
       </div>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
 
 import envelope from "../srcImages/envelope.jpg";
-import { PageHeader } from "../components";
+import background from "../srcImages/post.jpg";
+import { PageHeaderImage } from "../components";
 import "./ContactUs.css";
 
 const ContactUs = () => {
@@ -11,22 +13,48 @@ const ContactUs = () => {
   };
   return (
     <>
-      <PageHeader title="Contact Us" />
+      <PageHeaderImage title="Contact Us" src={background} />
       <main>
         <section className="section-contact">
           <div className="contact-container">
-            <div>
+            <div className="contact-img-container">
               <img src={envelope} alt="envelope" className="box-style-look" />
+              <span className="social-icons contact-icons">
+                <span className="">
+                  <p>Follow Us :</p>
+                </span>
+                <a
+                  href="http://facebook.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaFacebook />
+                </a>
+
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagramSquare />
+                </a>
+              </span>
             </div>
             <div className="box-style-look contact-details">
-              <div className="contact__details-first-child">
-                <p className="">
-                  If you have any questions you can send an email to:
-                </p>
-                <p className="">
-                  <b>fake_email@gmail.com </b>{" "}
+              <div>
+                <h2 className="about-btm-margin">Contact Us</h2>
+                <p className="contact-btm-margin">
+                  {" "}
+                  <b>We are happy to answer any questions</b>
                 </p>
               </div>
+
+              <div className="about-btm-margin">
+                send us an email to: <br />
+                <p className="contact-email">fake_email@gmail.com </p>
+                <p>For any questions or information about partnerships</p>
+              </div>
+
               <p className="top-border-parag"> Or for a Short Message: </p>
               <form onSubmit={handleSubmit} className="contact-form ">
                 <div>
@@ -46,7 +74,7 @@ const ContactUs = () => {
                     type="email"
                     id="email"
                     placeholder="Email"
-                    className="contact-inputs m-top-1"
+                    className="contact-inputs "
                     required
                   />
                 </div>
@@ -57,13 +85,13 @@ const ContactUs = () => {
                     maxLength="200"
                     rows="5"
                     placeholder="Short Message"
-                    className="contact-inputs m-top-1 "
+                    className="contact-inputs  "
                     required
                   />
                 </div>
                 <button
                   type="submit"
-                  className="btn-details btn m-top-2 btn-center"
+                  className="btn-green-dark btn  btn-center"
                 >
                   {status}
                 </button>

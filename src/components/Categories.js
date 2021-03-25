@@ -1,64 +1,49 @@
 import React from "react";
 
+import CategoriesButtons from "../components/CategoriesButtons";
+import { getUniqueValues, formatPrice } from "../utils/helpers";
 import { useFilterContext } from "../context/filter-context";
 import "./Categories.css";
 
-const Categories = () => {
+const Categories = ({ display }) => {
   const {
-    sortValue,
-    updateSort,
-    categories,
+    data,
+    clearFilters,
     filterItems,
-    filterValue,
+    filters: { price, max_price, min_price },
   } = useFilterContext();
 
+  const categories = getUniqueValues(data, "category");
+
+  if (display === "buttons") {
+    return <CategoriesButtons categories={categories} />;
+  }
+
   return (
-    <div className="categories">
-      <div className="filter-container">
-        <label htmlFor="filterTags" className="filterLabel">
-          Filter by
-        </label>
-        <div className="dropdown">
-          <select
-            className="select"
-            name="filterTags"
-            id="filterTags"
-            value={filterValue}
-            onChange={filterItems}
-          >
-            {categories.map((item, index) => {
-              return (
-                <option
-                  value={item.category}
-                  key={index}
-                  className="filterOption"
-                >
-                  {item}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-      </div>
-      <form className="sort-container">
-        <label htmlFor="sort" className="sortLabel">
-          Sort by
-        </label>
-        <div className="dropdown">
-          <select
-            className="select"
-            name="sort"
-            id="sort"
-            value={sortValue}
-            onChange={updateSort}
-          >
-            <option value="name-az">Name: A-Z</option>
-            <option value="name-za">Name: Z-A</option>
-            <option value="price-low">Price: low to high</option>
-            <option value="price-high">Price: high to low</option>
-          </select>
-        </div>
+    <div className="filters-page-width">
+      <form>
+        <h5 className="filter-titles">Category</h5>
+        <CategoriesButtons categories={categories} styleProductsPage />
       </form>
+      <form className="filter-price-form">
+        <h5 className="filter-titles">price</h5>
+        <p className="price-filter">{formatPrice(price)}</p>
+        <input
+          type="range"
+          name="price"
+          onChange={filterItems}
+          min={min_price}
+          max={max_price}
+          value={price}
+        />
+      </form>
+      <button
+        type="button"
+        onClick={clearFilters}
+        className=" btn-green-light btn-clear-filters "
+      >
+        Clear Filters
+      </button>
     </div>
   );
 };

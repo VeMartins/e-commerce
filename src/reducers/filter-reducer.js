@@ -1,12 +1,14 @@
 const filter_reducer = (state, action) => {
-  const { data } = state;
-  const allCategories = ["all", ...new Set(data.map((item) => item.category))];
+  //const { data } = state;
 
   if (action.type === "LOAD_PRODUCTS") {
+    let maxPrice = action.payload.map((p) => p.price);
+    maxPrice = Math.max(...maxPrice);
     return {
       ...state,
       filteredData: [...action.payload],
       data: [...action.payload],
+      filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
     };
   }
   if (action.type === "UPDATE_SORT") {
@@ -16,10 +18,38 @@ const filter_reducer = (state, action) => {
     const { sortValue, filteredData } = state;
     let tempProducts = [...filteredData];
     if (sortValue === "price-low") {
-      tempProducts = tempProducts.sort((a, b) => a.price - b.price);
+      tempProducts = tempProducts.sort((a, b) => {
+        let amin;
+        let bmin;
+        if (a.sale > 0) {
+          amin = Math.min(a.price, a.sale);
+        } else {
+          amin = a.price;
+        }
+        if (b.sale > 0) {
+          bmin = Math.min(b.price, b.sale);
+        } else {
+          bmin = b.price;
+        }
+        return amin - bmin;
+      });
     }
     if (sortValue === "price-high") {
-      tempProducts = tempProducts.sort((a, b) => b.price - a.price);
+      tempProducts = tempProducts.sort((a, b) => {
+        let amax;
+        let bmax;
+        if (a.sale > 0) {
+          amax = Math.min(a.price, a.sale);
+        } else {
+          amax = a.price;
+        }
+        if (b.sale > 0) {
+          bmax = Math.min(b.price, b.sale);
+        } else {
+          bmax = b.price;
+        }
+        return bmax - amax;
+      });
     }
     if (sortValue === "name-az") {
       tempProducts = tempProducts.sort((a, b) => {
@@ -35,31 +65,49 @@ const filter_reducer = (state, action) => {
     return { ...state, filteredData: tempProducts };
   }
   /* ********************************************************* */
-  if (action.type === "INITIAL_CATEGORIES") {
+
+  if (action.type === "FILTER_ITEMS") {
+    const { name, value } = action.payload;
+
     return {
       ...state,
-      allCategories: allCategories,
-      categories: allCategories,
+      filters: { ...state.filters, [name]: value },
     };
   }
-  if (action.type === "FILTER_ITEMS") {
-    const allItems = [...data];
 
-    if (action.payload === "all") {
-      return { ...state, filteredData: allItems, filterValue: "all" };
+  if (action.type === "SET_FILTERS") {
+    const { filters, data } = state;
+    const tempProducts = [...data];
+    if (filters.category === "all products") {
+      return { ...state, filteredData: tempProducts };
     }
     const filterByCategories = () => {
-      return data.filter((item) => {
-        return item.category === action.payload;
+      return tempProducts.filter((item) => {
+        return item.category === filters.category;
       });
     };
+
+    return { ...state, filteredData: filterByCategories() };
+  }
+  if (action.type === "CLEAR_FILTERS") {
     return {
       ...state,
-      filteredData: filterByCategories(),
-      filterValue: action.payload,
+      filters: {
+        ...state.filters,
+        category: "all products",
+        price: state.filters.max_price,
+      },
     };
   }
-
+  if (action.type === "UPDATE_FILTER") {
+    return { ...state, filters: { category: action.payload } };
+  }
+  if (action.type === "MENU_CLOSE") {
+    return { ...state, showMenu: false };
+  }
+  if (action.type === "MENU_TOGGLE") {
+    return { ...state, showMenu: !state.showMenu };
+  }
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
