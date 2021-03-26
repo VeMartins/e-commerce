@@ -60,4 +60,5 @@
 }
 .featured-footer p {
   color: var(--clr-green-dark);
+  margin-left: 10px;
 }

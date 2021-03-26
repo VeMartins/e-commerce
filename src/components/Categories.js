@@ -10,9 +10,11 @@ const Categories = ({ display }) => {
     data,
     clearFilters,
     filterItems,
-    filters: { price, max_price, min_price },
+    filters: { price, max_price, min_price, text },
   } = useFilterContext();
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   const categories = getUniqueValues(data, "category");
 
   if (display === "buttons") {
@@ -21,11 +23,21 @@ const Categories = ({ display }) => {
 
   return (
     <div className="filters-page-width">
-      <form>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="text"
+          placeholder="search"
+          className="search-input"
+          value={text}
+          onChange={filterItems}
+        />
+      </form>
+      <form onSubmit={handleSubmit} className="filter-form">
         <h5 className="filter-titles">Category</h5>
         <CategoriesButtons categories={categories} styleProductsPage />
       </form>
-      <form className="filter-price-form">
+      <form className="filter-form" onSubmit={handleSubmit}>
         <h5 className="filter-titles">price</h5>
         <p className="price-filter">{formatPrice(price)}</p>
         <input

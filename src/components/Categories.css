@@ -15,10 +15,23 @@
 .filters-flex {
   display: flex;
 }
+
+.search-input {
+  padding: 0.5rem 0;
+  background: var(--clr-beige-light);
+  border-radius: var(--radius);
+  border-color: transparent;
+  letter-spacing: var(--spacing);
+  padding-left: 5px;
+}
+.search-input::placeholder {
+  text-transform: capitalize;
+}
+
 .price-filter {
   margin-top: 0.9rem;
 }
-.filter-price-form {
+.filter-form {
   margin-top: 1rem;
 }
 .dropdown {
@@ -65,7 +78,7 @@
   .categories {
     margin: 1rem;
   }
-  .filter-price-form {
+  .filter-form {
     margin-top: 2rem;
   }
 }

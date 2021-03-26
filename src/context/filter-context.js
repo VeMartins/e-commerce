@@ -9,6 +9,7 @@ const initialState = {
   sortValue: "name-az",
   filters: {
     category: "all products",
+    text: "",
     min_price: 0,
     max_price: 0,
     price: 0,
