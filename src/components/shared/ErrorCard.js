@@ -1,10 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import "./ErrorCard.css";
 
 const CardOverlay = (props) => {
-  const content = (
+  return (
     <div
       className={`error-card item-style ${props.className}`}
       style={props.style}
@@ -16,7 +15,8 @@ const CardOverlay = (props) => {
       <footer>{props.footer}</footer>
     </div>
   );
-  return ReactDOM.createPortal(content, document.getElementById("modal-hook"));
+
+  //return ReactDOM.createPortal(content, document.getElementById("modal-hook"));
 };
 
 const ErrorCard = (props) => {

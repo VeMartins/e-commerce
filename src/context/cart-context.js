@@ -14,9 +14,8 @@ import cartReducer from "../reducers/cart-reducer";
 
 const initialState = {
   cart: [],
-  total: 0,
-  amount: 0,
-  totalAmount: 0,
+  total: 0, //total price
+  amount: 0, //total items
 };
 
 const CartContext = React.createContext();
@@ -24,12 +23,10 @@ const CartContext = React.createContext();
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
   //cart actions
-  const addToCart = (product, quantity) => {
-    dispatch({ type: "ADD_TO_CART", payload: { product, quantity } });
+  const addToCart = (product, quantity, id) => {
+    dispatch({ type: "ADD_TO_CART", payload: { product, quantity, id } });
   };
-  const updateAmount = (id, quantity) => {
-    dispatch({ type: "UPDATE_AMOUNT", payload: { id, quantity } });
-  };
+
   const getTotal = useCallback(() => {
     dispatch({ type: "GET_TOTAL" });
   }, []);
@@ -61,7 +58,6 @@ const CartProvider = ({ children }) => {
         increaseItem,
         decreaseItem,
         addToCart,
-        updateAmount,
         getTotal,
       }}
     >

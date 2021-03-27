@@ -32,3 +32,7 @@
     width: 40rem;
   }
 }
+.featured-error {
+  position: initial;
+  z-index: unset;
+}

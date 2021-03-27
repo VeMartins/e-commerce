@@ -10,7 +10,7 @@ import background from "../srcImages/cesta.jpg";
 import "./CartContainer.css";
 
 const CartContainer = () => {
-  const { cart, total, clearCart, totalAmount } = useCartContext();
+  const { cart, total, clearCart, amount } = useCartContext();
   if (cart.length === 0) {
     return (
       <main>
@@ -62,7 +62,7 @@ const CartContainer = () => {
               <p>
                 Total: <span>{formatPrice(total)}</span>{" "}
                 <span>
-                  <small>({totalAmount} items)</small>{" "}
+                  <small>({amount} items)</small>{" "}
                 </span>
               </p>
               <button className="btn btn-green-dark">Go to checkout</button>

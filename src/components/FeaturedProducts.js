@@ -16,16 +16,17 @@ const FeaturedProducts = () => {
   if (loading) {
     return <Loading />;
   }
-  if (error) {
+  /*if (error) {
     return (
       <ErrorModal
         error={error}
         onClear={clearError}
         header="Failed to load featured products."
         linkText={"Okay"}
+        
       />
     );
-  }
+  }*/
   return (
     <section className="featured-section">
       <div className="featured-title">
@@ -33,6 +34,15 @@ const FeaturedProducts = () => {
         <div className="underline"></div>
       </div>
       <div className=" section-width featured">
+        {error && (
+          <ErrorModal
+            error={error}
+            onClear={clearError}
+            header="Failed to load featured products."
+            linkText={"Okay"}
+            className="featured-error"
+          />
+        )}
         {products.map((product) => {
           return <ProductFeatured key={product.id} {...product} />;
         })}

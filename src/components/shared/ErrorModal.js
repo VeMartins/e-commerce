@@ -5,6 +5,7 @@ import { ErrorCard } from "../";
 const ErrorModal = (props) => {
   return (
     <ErrorCard
+      className={props.className}
       header={props.header}
       footer={
         <button className="btn-green-dark" onClick={props.onClear}>

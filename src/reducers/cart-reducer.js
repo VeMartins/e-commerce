@@ -2,7 +2,7 @@ const cartReducer = (state, action) => {
   let tempCart;
   switch (action.type) {
     case "CLEAR_CART":
-      return { ...state, cart: [], totalAmount: 0 };
+      return { ...state, cart: [] };
 
     case "REMOVE":
       const filterRemove = () => {
@@ -14,39 +14,37 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: filterRemove(),
-        //totalAmount: state.totalAmount - tempAmount.length,
       };
 
     case "ADD_TO_CART":
-      let cartCopy = [...state.cart];
-
-      let existingItem = cartCopy.find(
-        (cartItem) => cartItem.id === action.payload.product.id
-      );
-      if (action.payload.product.stock === 0) {
-        return;
-      }
-      if (existingItem) {
-        // individual item number of items
-        existingItem.amount += action.payload.quantity;
-
-        //total items number
-        state.totalAmount += action.payload.quantity;
+      const { id, quantity, product } = action.payload;
+      const tempItem = state.cart.find((i) => i.id === id);
+      if (tempItem) {
+        const cartCopy = state.cart.map((cartItem) => {
+          if (cartItem.id === id) {
+            let newAmount = cartItem.amount + quantity;
+            if (newAmount > cartItem.max) {
+              newAmount = cartItem.max;
+            }
+            return { ...cartItem, amount: newAmount };
+          } else {
+            return cartItem;
+          }
+        });
+        return { ...state, cart: cartCopy };
       } else {
-        // individual item number of items
-        state.amount = action.payload.product.amount;
-        action.payload.product.amount = action.payload.quantity;
+        const newItem = {
+          id: id,
+          name: product.title,
+          amount: quantity,
+          image: product.img,
+          price: product.price,
+          max: product.stock,
+          sale: product.sale,
+        };
 
-        //total items number
-        state.totalAmount = state.totalAmount + action.payload.quantity;
-        //adding product to cart
-        cartCopy.push(action.payload.product);
+        return { ...state, cart: [...state.cart, newItem] };
       }
-
-      return {
-        ...state,
-        cart: cartCopy,
-      };
 
     case "INCREASE":
       tempCart = state.cart.map((cartItem) => {
@@ -58,7 +56,7 @@ const cartReducer = (state, action) => {
         }
         return cartItem;
       });
-      return { ...state, cart: tempCart, totalAmount: state.totalAmount + 1 };
+      return { ...state, cart: tempCart };
 
     case "DECREASE":
       tempCart = state.cart
@@ -69,7 +67,7 @@ const cartReducer = (state, action) => {
           return cartItem;
         })
         .filter((cartItem) => cartItem.amount !== 0); // only return the item if the amount does not = to 0
-      return { ...state, cart: tempCart, totalAmount: state.totalAmount - 1 };
+      return { ...state, cart: tempCart };
 
     case "GET_TOTAL":
       let { total, amount } = state.cart.reduce(
@@ -101,21 +99,3 @@ const cartReducer = (state, action) => {
 };
 
 export default cartReducer;
-
-/*if (action.type === "UPDATE_AMOUNT") {
-  let cartCopy = [...state.cart];
-  let existingItem = cartCopy.find(
-    (cartItem) => cartItem.id === action.payload.id
-  );
-  if (!existingItem) return;
-
-  existingItem.amount += action.payload.quantity;
-
-  return { ...state, cart: cartCopy };
-}*/
-/*const updateInventory = useCallback((id, product) => {
-    setInventory(product.stock);
-    setProduct(
-      product.id === id ? { ...product, stock: product.stock - 1 } : product
-    );
-  }, []);*/

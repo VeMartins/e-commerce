@@ -1,20 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { FaFacebook, FaPinterest } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams, Link } from "react-router-dom";
 
 import { ErrorModal, ImageThumbnail, Loading, Price } from "../components";
 import { useGlobalContext } from "../context/products-context";
-import { useCartContext } from "../context/cart-context";
+import AddToCart from "../components/AddToCart";
 
 import "./SingleItem.css";
 
 const SingleItem = () => {
-  const quantityRef = useRef(null);
-
   const {
     fetchSingleProduct,
-    hasError,
     clearSingleError,
     single_product_loading: loading,
     single_product: product,
@@ -22,7 +19,6 @@ const SingleItem = () => {
     closeTopbar,
   } = useGlobalContext();
 
-  const { addToCart, getTotal } = useCartContext();
   const { id } = useParams(); // will come as string so will need to use parseInt to use the id because id is an integer in data.js
 
   useEffect(() => {
@@ -48,23 +44,11 @@ const SingleItem = () => {
 
   const { title, desc, detail, stock } = product;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const quantity = parseInt(quantityRef.current.value);
-    if (quantity > stock) {
-      quantityRef.current.value = stock;
-      return hasError(true);
-    } else {
-      addToCart(product, quantity);
-      getTotal();
-    }
-  };
-
   return (
     <main className="main-singleItem-page" onMouseOver={closeTopbar}>
       {error && (
         <ErrorModal
-          header={`Sorry, only ${stock} item(s) in stock `}
+          header={`Sorry, not enough items or item is sold out `}
           onClear={clearSingleError}
           linkText={"Okay"}
         />
@@ -84,29 +68,7 @@ const SingleItem = () => {
             <div className="price">
               <Price {...product} product={product} />
             </div>
-            {stock > 0 && (
-              <form className="details-form" onSubmit={handleSubmit}>
-                <div className="quantity">
-                  <label htmlFor="quantity">Quantity</label>
-                  <input
-                    ref={quantityRef}
-                    type="number"
-                    id="quantity"
-                    min="1"
-                    defaultValue="1"
-                  ></input>
-                </div>
-                <div className="add-cart">
-                  <button
-                    className="btn-green-dark add-cart-btn"
-                    type="submit"
-                    disabled={stock <= 0 ? "disabled" : ""}
-                  >
-                    <span>Add to cart</span>
-                  </button>
-                </div>
-              </form>
-            )}
+            {stock > 0 && <AddToCart {...product} id={id} product={product} />}
           </div>
           <div className="box-style-look description">
             <h4 className="description__title">Product Description</h4>
