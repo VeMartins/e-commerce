@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 import "./ProductFeatured.css";
 
 const ProductFeatured = ({ img, title, price, id }) => {
+  console.log(id, "featured");
   return (
     <article>
       <div className="container">
         <div className="featured-img-container">
           <img src={img} alt={title} />
-          <Link to={`/products/${id}`} className="link-product">
+          <Link to={`/product/${id}`} className="link-product">
             <FaSearch />
           </Link>
         </div>

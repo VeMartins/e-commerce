@@ -24,9 +24,12 @@ const cartReducer = (state, action) => {
           if (cartItem.id === id) {
             let newAmount = cartItem.amount + quantity;
             if (newAmount > cartItem.max) {
-              newAmount = cartItem.max;
+              newAmount = cartItem.amount;
             }
-            return { ...cartItem, amount: newAmount };
+            return {
+              ...cartItem,
+              amount: newAmount,
+            };
           } else {
             return cartItem;
           }
@@ -49,9 +52,13 @@ const cartReducer = (state, action) => {
     case "INCREASE":
       tempCart = state.cart.map((cartItem) => {
         if (cartItem.id === action.payload) {
+          let tempAmount = cartItem.amount + 1;
+          if (tempAmount > cartItem.max) {
+            tempAmount = cartItem.max;
+          }
           return {
             ...cartItem,
-            amount: cartItem.amount + 1,
+            amount: tempAmount,
           };
         }
         return cartItem;

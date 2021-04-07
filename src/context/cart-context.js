@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useReducer, useCallback } from "react";
+import React, { useEffect, useContext, useReducer } from "react";
 
 import cartReducer from "../reducers/cart-reducer";
 
@@ -27,10 +27,6 @@ const CartProvider = ({ children }) => {
     dispatch({ type: "ADD_TO_CART", payload: { product, quantity, id } });
   };
 
-  const getTotal = useCallback(() => {
-    dispatch({ type: "GET_TOTAL" });
-  }, []);
-
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
   };
@@ -46,8 +42,8 @@ const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getTotal();
-  }, [state.cart, getTotal]);
+    dispatch({ type: "GET_TOTAL" });
+  }, [state.cart]);
 
   return (
     <CartContext.Provider
@@ -58,7 +54,6 @@ const CartProvider = ({ children }) => {
         increaseItem,
         decreaseItem,
         addToCart,
-        getTotal,
       }}
     >
       {children}

@@ -1,20 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaTrash } from "react-icons/fa";
 
 import { formatPrice } from "../utils/helpers";
 import { useCartContext } from "../context/cart-context";
 
 import "./CartItem.css";
 
-const CartItem = ({ id, img, title, price, amount, sale }) => {
+const CartItem = ({ id, image, name, price, amount, sale }) => {
   const { removeItem, increaseItem, decreaseItem } = useCartContext();
   return (
     <article className="cart-item">
       <Link to="/">
-        <img src={img} alt={title} />
+        <img src={image} alt={name} />
       </Link>
       <div>
-        <h4>{title}</h4>
+        <h4>{name}</h4>
         <h4 className="item-price">{`${
           sale > 0 ? formatPrice(sale) : formatPrice(price)
         }`}</h4>
@@ -23,7 +24,7 @@ const CartItem = ({ id, img, title, price, amount, sale }) => {
           className="remove-btn clear-btn btn-transparent-red"
           onClick={() => removeItem(id)}
         >
-          remove
+          <FaTrash />
         </button>
       </div>
       <div>

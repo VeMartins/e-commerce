@@ -6,19 +6,6 @@ import "./Price.css";
 const Price = ({ price, id, stock, sale, product }) => {
   return (
     <dl className="price-container">
-      {/*sale > 0 && (
-        <div className="price sale">
-          <dt>
-            <span className="hidden">Sale Price</span>
-          </dt>
-          <dd>
-            <span>
-              {formatPrice(sale)}
-              <span className="shipping"> + shipping</span>
-            </span>
-          </dd>
-        </div>
-      )*/}
       <div className="price">
         <dt>
           <span className="hidden">Regular price</span>

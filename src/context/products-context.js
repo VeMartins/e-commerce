@@ -12,6 +12,7 @@ const initialState = {
   error: false,
   single_product_loading: false,
   single_product_error: false,
+  single_product_stock_error: false,
   single_product: {},
 };
 
@@ -26,7 +27,7 @@ const AppProvider = ({ children }) => {
   };
   const hasError = (error) => {
     dispatch({
-      type: "SINGLE_PRODUCT_ERROR",
+      type: "SINGLE_PRODUCT_STOCK_ERROR",
       payload: error,
     });
   };
@@ -58,16 +59,13 @@ const AppProvider = ({ children }) => {
     }
   }, []);
 
-  const fetchSingleProduct = useCallback(async (url, id) => {
+  const fetchSingleProduct = useCallback(async (url) => {
     dispatch({ type: "SINGLE_PRODUCT_LOADING" });
     try {
       const response = await axios.get(url);
-      const products = response.data;
+      const product = response.data;
 
-      const singleProduct = await products.find(
-        (item) => item.id === parseInt(id)
-      );
-      dispatch({ type: "DISPLAY_SINGLE_PRODUCT", payload: singleProduct });
+      dispatch({ type: "DISPLAY_SINGLE_PRODUCT", payload: product });
     } catch (err) {
       dispatch({
         type: "SINGLE_PRODUCT_ERROR",

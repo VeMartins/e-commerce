@@ -5,7 +5,7 @@ import { useGlobalContext } from "../context/products-context";
 
 const AddToCart = ({ id, stock, product }) => {
   const quantityRef = useRef(null);
-  const { addToCart, getTotal, cart } = useCartContext();
+  const { addToCart, cart } = useCartContext();
   const { hasError } = useGlobalContext();
 
   const handleSubmit = (e) => {
@@ -23,7 +23,6 @@ const AddToCart = ({ id, stock, product }) => {
       quantityRef.current.value = stock;
     } else {
       addToCart(product, quantity, parseInt(id));
-      getTotal();
     }
   };
 

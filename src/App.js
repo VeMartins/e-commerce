@@ -39,9 +39,9 @@ function App() {
         <Route exact path="/help">
           <ContactUs />
         </Route>
-        <Route exact path="/products/:id">
+        <Route path={"/product/:id"}>
           <SingleItem />
-        </Route>{" "}
+        </Route>
         <Route exact path="/signIn">
           <SignIn />
         </Route>

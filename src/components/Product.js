@@ -8,9 +8,10 @@ import "./Product.css";
 
 const Product = (props) => {
   const { id, title, price, img, sale, product } = props;
+  console.log(id, "product");
   return (
     <li>
-      <Link to={`/products/${id}`}>
+      <Link to={`/product/${id}`}>
         <div className="item-inner-container item-style">
           <div className="img-container">
             <div className="img-inner-container">

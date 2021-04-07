@@ -33,10 +33,17 @@ const productsReducer = (state, action) => {
       single_product_error: action.payload,
     };
   }
+  if (action.type === "SINGLE_PRODUCT_STOCK_ERROR") {
+    return {
+      ...state,
+      single_product_stock_error: action.payload,
+    };
+  }
   if (action.type === "CLEAR_SINGLE_PRODUCT_ERROR") {
     return {
       ...state,
       single_product_error: false,
+      single_product_stock_error: false,
     };
   }
   if (action.type === "ERROR") {
