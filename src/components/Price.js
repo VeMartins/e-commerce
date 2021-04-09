@@ -3,7 +3,7 @@ import { formatPrice } from "../utils/helpers";
 
 import "./Price.css";
 
-const Price = ({ price, id, stock, sale, product }) => {
+const Price = ({ price, _id, stock, sale, product }) => {
   return (
     <dl className="price-container">
       <div className="price">

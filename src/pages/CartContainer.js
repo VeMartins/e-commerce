@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { formatPrice } from "../utils/helpers";
 import { CartItem } from "../components";
@@ -11,6 +11,10 @@ import "./CartContainer.css";
 
 const CartContainer = () => {
   const { cart, total, clearCart, amount } = useCartContext();
+  const history = useHistory();
+  const checkoutHandler = () => {
+    history.push("/signIn");
+  };
   if (cart.length === 0) {
     return (
       <main>
@@ -65,7 +69,13 @@ const CartContainer = () => {
                   <small>({amount} items)</small>{" "}
                 </span>
               </p>
-              <button className="btn btn-green-dark">Go to checkout</button>
+              <button
+                type="button"
+                className="btn btn-green-dark"
+                onClick={checkoutHandler}
+              >
+                Go to checkout
+              </button>
             </div>
           </div>
         </footer>

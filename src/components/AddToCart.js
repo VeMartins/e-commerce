@@ -11,7 +11,7 @@ const AddToCart = ({ id, stock, product }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const quantity = parseInt(quantityRef.current.value);
-    let cartItem = cart.find((cartItem) => cartItem.id === parseInt(id));
+    let cartItem = cart.find((cartItem) => cartItem.id === id);
 
     if (cartItem) {
       let itemStock = cartItem.max - cartItem.amount;
@@ -22,7 +22,7 @@ const AddToCart = ({ id, stock, product }) => {
     if (quantity > stock) {
       quantityRef.current.value = stock;
     } else {
-      addToCart(product, quantity, parseInt(id));
+      addToCart(product, quantity, id);
     }
   };
 
@@ -35,6 +35,7 @@ const AddToCart = ({ id, stock, product }) => {
           type="number"
           id="quantity"
           min="1"
+          max={stock}
           defaultValue="1"
         ></input>
       </div>

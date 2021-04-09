@@ -41,7 +41,7 @@ const ProductsList = () => {
               )}
               <ul className="content-container ">
                 {products.map((item) => {
-                  return <Product key={item.id} {...item} product={item} />;
+                  return <Product key={item._id} {...item} product={item} />;
                 })}
               </ul>
             </section>

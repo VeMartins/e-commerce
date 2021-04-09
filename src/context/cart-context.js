@@ -12,8 +12,17 @@ import cartReducer from "../reducers/cart-reducer";
   DECREASE,
 } from "../actions";*/
 
+const getLocalStorage = () => {
+  let cart = localStorage.getItem("cartBotanica");
+  if (cart) {
+    return JSON.parse(localStorage.getItem("cartBotanica"));
+  } else {
+    return [];
+  }
+};
+
 const initialState = {
-  cart: [],
+  cart: getLocalStorage(),
   total: 0, //total price
   amount: 0, //total items
 };
@@ -43,6 +52,7 @@ const CartProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" });
+    localStorage.setItem("cartBotanica", JSON.stringify(state.cart));
   }, [state.cart]);
 
   return (

@@ -44,7 +44,7 @@ const FeaturedProducts = () => {
           />
         )}
         {products.map((product) => {
-          return <ProductFeatured key={product.id} {...product} />;
+          return <ProductFeatured key={product._id} {...product} />;
         })}
       </div>
     </section>
