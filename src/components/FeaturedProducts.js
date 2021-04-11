@@ -16,17 +16,7 @@ const FeaturedProducts = () => {
   if (loading) {
     return <Loading />;
   }
-  /*if (error) {
-    return (
-      <ErrorModal
-        error={error}
-        onClear={clearError}
-        header="Failed to load featured products."
-        linkText={"Okay"}
-        
-      />
-    );
-  }*/
+
   return (
     <section className="featured-section">
       <div className="featured-title">

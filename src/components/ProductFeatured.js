@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import "./ProductFeatured.css";
 
 const ProductFeatured = ({ img, title, price, _id }) => {
-  console.log(_id, "featured");
   return (
     <article>
       <div className="container">

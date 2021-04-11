@@ -20,7 +20,10 @@ const CategoriesButtons = ({ categories, styleProductsPage: styles }) => {
     setSize(window.innerWidth);
   };
   useEffect(() => {
-    window.onresize = updateSize;
+    window.addEventListener("resize", updateSize);
+    return () => {
+      window.removeEventListener("resize", updateSize);
+    };
   }, []);
 
   if (styles && size <= 450) {

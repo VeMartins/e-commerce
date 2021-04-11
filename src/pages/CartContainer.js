@@ -13,7 +13,8 @@ const CartContainer = () => {
   const { cart, total, clearCart, amount } = useCartContext();
   const history = useHistory();
   const checkoutHandler = () => {
-    history.push("/signIn");
+    //history.push("/signin");
+    history.push("/signin?redirect=checkout");
   };
   if (cart.length === 0) {
     return (

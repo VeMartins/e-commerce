@@ -64,7 +64,7 @@ const ContactUs = () => {
                     id="name"
                     maxLength="20"
                     placeholder="Name"
-                    className="contact-inputs"
+                    className="contact-inputs form-inputs"
                     required
                   />
                 </div>
@@ -74,7 +74,7 @@ const ContactUs = () => {
                     type="email"
                     id="email"
                     placeholder="Email"
-                    className="contact-inputs "
+                    className="contact-inputs form-inputs"
                     required
                   />
                 </div>
@@ -85,7 +85,7 @@ const ContactUs = () => {
                     maxLength="200"
                     rows="5"
                     placeholder="Short Message"
-                    className="contact-inputs  "
+                    className="contact-inputs  form-inputs"
                     required
                   />
                 </div>

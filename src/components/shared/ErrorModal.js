@@ -7,6 +7,7 @@ const ErrorModal = (props) => {
     <ErrorCard
       className={props.className}
       header={props.header}
+      style={props.style}
       footer={
         <button className="btn-green-dark" onClick={props.onClear}>
           {props.linkText}

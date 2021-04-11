@@ -17,3 +17,21 @@
   flex-wrap: wrap;
   margin-top: 1%;
 }
+.new-customer {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: smaller;
+}
+.new-customer a {
+  color: var(--clr-green-dark);
+}
+.new-customer a:hover {
+  color: var(--clr-green-light);
+}
+.signin-error {
+  margin-bottom: 2rem;
+  color: var(--clr-red-dark);
+}
+.signin-error button {
+  display: none;
+}

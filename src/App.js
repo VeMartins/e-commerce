@@ -10,6 +10,8 @@ import {
   CartContainer,
   ContactUs,
   SignIn,
+  Register,
+  Checkout,
 } from "./pages";
 
 //components
@@ -42,11 +44,17 @@ function App() {
         <Route path={"/product/:id"}>
           <SingleItem />
         </Route>
-        <Route exact path="/signIn">
+        <Route exact path="/signin">
           <SignIn />
+        </Route>
+        <Route exact path="/register">
+          <Register />
         </Route>
         <Route exact path="/cart">
           <CartContainer />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
         </Route>
         <Route path="*">
           <Error />

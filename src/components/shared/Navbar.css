@@ -35,7 +35,8 @@ Navbar
   width: 12rem;
 }
 
-.nav-link {
+.nav-link,
+.right-nav-link-2 {
   color: var(--clr-green-dark);
   font-size: 1.3rem;
   text-transform: capitalize;
@@ -51,10 +52,13 @@ Navbar
 
 .links-container {
   height: 0;
-  overflow: hidden;
   transition: var(--transition);
 }
-.right-nav-link-2 a {
+.overflow {
+  overflow: hidden;
+}
+.right-nav-link-2 a,
+.right-nav-link-1 a {
   display: flex;
   align-items: center;
 }
@@ -84,6 +88,26 @@ Navbar
   height: 1.6rem;
   margin-left: 5px;
 }
+.dropdown-content {
+  position: absolute;
+  display: block;
+  left: 0;
+  min-width: 10rem;
+  padding: 1rem 0;
+  z-index: 1;
+  margin: 0;
+  margin-top: 0.4rem;
+  border: 1px solid;
+  background-color: var(--mainBackground);
+}
+.dropdown-content .nav-link {
+  font-size: smaller;
+}
+
+.dropdown-logout {
+  display: inline-block;
+  position: relative;
+}
 
 @media screen and (min-width: 800px) {
   .nav-center {
@@ -102,6 +126,7 @@ Navbar
   }
   .links-container {
     height: auto !important;
+    overflow: initial;
   }
   .nav-links {
     display: flex;
@@ -137,5 +162,9 @@ Navbar
   }
   .logo {
     margin-left: 30%;
+  }
+  .dropdown-content {
+    right: 0;
+    left: initial;
   }
 }

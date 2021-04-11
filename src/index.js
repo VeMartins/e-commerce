@@ -4,15 +4,18 @@ import App from "./App";
 import { AppProvider } from "./context/products-context";
 import { CartProvider } from "./context/cart-context";
 import { FilterProvider } from "./context/filter-context";
+import { SigninProvider } from "./context/signin-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-      <FilterProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </FilterProvider>
+      <SigninProvider>
+        <FilterProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </FilterProvider>
+      </SigninProvider>
     </AppProvider>
   </React.StrictMode>,
   document.getElementById("root")

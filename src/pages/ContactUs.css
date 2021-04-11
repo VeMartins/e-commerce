@@ -34,12 +34,14 @@ Contact page
 }
 
 .contact-inputs {
-  padding: 2px;
-  border: var(--mainBackground) solid 3px;
-  width: 100%;
   margin-top: 1rem;
 }
-.contact-inputs:focus {
+.form-inputs {
+  border: var(--mainBackground) solid 3px;
+  width: 100%;
+  padding: 2px;
+}
+.form-inputs:focus {
   outline: var(--mainBackground) solid 3px;
   border: var(--clr-green-dark) solid 2px;
 }
