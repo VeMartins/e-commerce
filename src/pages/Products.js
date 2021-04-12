@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ProductsList } from "../components";
 import { PageHeaderImage } from "../components";
 import { Loading, ErrorModal } from "../components";
@@ -12,7 +13,11 @@ const Products = () => {
   }
   return (
     <main>
-      <PageHeaderImage title="Products" src={background} />
+      <PageHeaderImage
+        title="Products"
+        src={background}
+        link={<Link to="/">Home / </Link>}
+      />
       <section>
         {error && (
           <ErrorModal

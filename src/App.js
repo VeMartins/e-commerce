@@ -12,6 +12,7 @@ import {
   SignIn,
   Register,
   Checkout,
+  PrivateRoute,
 } from "./pages";
 
 //components
@@ -53,9 +54,9 @@ function App() {
         <Route exact path="/cart">
           <CartContainer />
         </Route>
-        <Route path="/checkout">
+        <PrivateRoute path="/checkout">
           <Checkout />
-        </Route>
+        </PrivateRoute>
         <Route path="*">
           <Error />
         </Route>

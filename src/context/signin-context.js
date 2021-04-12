@@ -48,6 +48,33 @@ const SigninProvider = ({ children }) => {
     dispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
   };
+  const register = async (name, email, password) => {
+    dispatch({
+      type: "USER_REGISTER_REQUEST",
+      payload: { name, email, password },
+    });
+    try {
+      const response = await axios.post("/api/users/register", {
+        name,
+        email,
+        password,
+      });
+      const user = response.data;
+
+      dispatch({ type: "USER_REGISTER_SUCCESS", payload: user });
+      dispatch({ type: "USER_SIGNIN_SUCCESS", payload: user });
+      localStorage.setItem("userInfo", JSON.stringify(user));
+    } catch (error) {
+      dispatch({
+        type: "USER_REGISTER_FAIL",
+        payload:
+          error.response && error.response.data.message
+            ? "This Email address already exists " ||
+              error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
   return (
     <SigninContext.Provider
@@ -55,6 +82,7 @@ const SigninProvider = ({ children }) => {
         ...state,
         signIn,
         signOut,
+        register,
       }}
     >
       {children}

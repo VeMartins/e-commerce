@@ -4,15 +4,14 @@ import { PageHeader } from "../";
 
 import "./PageHeaderImage.css";
 
-const PageHeaderImage = ({ title, src, style }) => {
+const PageHeaderImage = ({ title, src, link }) => {
   return (
     <header className="header-image-container">
       <div className="header-image_inner">
         <span className="header-image_span">
-          <img className="header-image2" src={src} alt="header" style={style} />
-
+          <img className="header-image2" src={src} alt="header" />
           <div className="page-header-outer">
-            <PageHeader title={title} />
+            <PageHeader title={title} link={link} />
           </div>
         </span>
       </div>

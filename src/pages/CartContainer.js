@@ -19,7 +19,11 @@ const CartContainer = () => {
   if (cart.length === 0) {
     return (
       <main>
-        <PageHeaderImage title="Cart" src={background} />
+        <PageHeaderImage
+          title="Cart"
+          src={background}
+          link={<Link to="/products">Products / </Link>}
+        />
         <section className="cart">
           <header>
             <h4 className="empty-cart box-style-look ">
@@ -36,7 +40,11 @@ const CartContainer = () => {
 
   return (
     <main>
-      <PageHeaderImage title="Cart" src={background} />
+      <PageHeaderImage
+        title="Cart"
+        src={background}
+        link={<Link to="/products">Products / </Link>}
+      />
       <section className="cart">
         <header className="cart-header">
           <h2>your bag</h2>

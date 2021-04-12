@@ -1,0 +1,11 @@
+.register {
+  width: 90%;
+  margin: 2rem auto;
+}
+.register-form {
+  padding: 5%;
+}
+.register-title {
+  margin-bottom: 1rem;
+  color: var(--clr-green-dark);
+}

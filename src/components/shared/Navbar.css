@@ -91,17 +91,20 @@ Navbar
 .dropdown-content {
   position: absolute;
   display: block;
-  left: 0;
+  left: -15px;
   min-width: 10rem;
-  padding: 1rem 0;
   z-index: 1;
   margin: 0;
   margin-top: 0.4rem;
-  border: 1px solid;
+  border: none;
   background-color: var(--mainBackground);
 }
 .dropdown-content .nav-link {
   font-size: smaller;
+}
+.dropdown-content .nav-link:hover {
+  color: var(--mainBackground);
+  background: var(--clr-green-dark);
 }
 
 .dropdown-logout {
@@ -153,10 +156,11 @@ Navbar
   .right-nav-link-1 {
     margin-left: auto;
   }
-  .right-nav-link-2,
-  .right-nav-link-2:hover {
-    padding-right: 5%;
+  .right-nav-link-2 {
+    padding: 0;
+    padding-left: 1rem;
   }
+
   .right-nav-link-2 a {
     margin-left: 10px;
   }
@@ -166,5 +170,10 @@ Navbar
   .dropdown-content {
     right: 0;
     left: initial;
+    margin-top: 1rem;
+  }
+  .dropdown-content .nav-link {
+    margin: 0;
+    padding-bottom: 0.5rem;
   }
 }

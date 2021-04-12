@@ -7,6 +7,7 @@ import SignIn from "./SignIn";
 import SingleItem from "./SingleItem";
 import Register from "./Register";
 import Checkout from "./Checkout";
+import PrivateRoute from "./PrivateRoute";
 
 export {
   About,
@@ -18,4 +19,5 @@ export {
   SingleItem,
   Register,
   Checkout,
+  PrivateRoute,
 };

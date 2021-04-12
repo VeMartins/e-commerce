@@ -45,6 +45,13 @@ Contact page
   outline: var(--mainBackground) solid 3px;
   border: var(--clr-green-dark) solid 2px;
 }
+.form-inputs-error {
+  border: var(--clr-red-dark) solid 3px;
+}
+.form-inputs-error:focus {
+  border: var(--clr-red-dark) solid 2px;
+  outline: var(--clr-red-light) solid 3px;
+}
 .top-border-parag {
   text-align: center;
   font-style: italic;

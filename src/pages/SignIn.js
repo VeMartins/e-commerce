@@ -8,7 +8,6 @@ import "./ContactUs.css";
 import "./SignIn.css";
 
 const SignIn = () => {
-  const [status] = useState("Login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,11 +32,7 @@ const SignIn = () => {
 
   return (
     <>
-      <PageHeaderImage
-        title="Login"
-        src={background}
-        style={{ opacity: "0.8" }}
-      />
+      <PageHeaderImage src={background} title="Sign in" />
       <section className="section-contact">
         {loading && <Loading />}
         {error && (
@@ -49,6 +44,7 @@ const SignIn = () => {
         )}
         <div className="box-style-look signin">
           <form className="signin-form " onSubmit={handleSubmit}>
+            <h2 className="register-title">Sign in</h2>
             <div className="login-input-card">
               <label htmlFor="email">Email: </label>
               <input
@@ -72,12 +68,14 @@ const SignIn = () => {
               />
             </div>
             <button type="submit" className="btn-green-dark btn-center btn ">
-              {status}
+              Login
             </button>
             <div>
               <div className="new-customer">
                 New Customer? {""}
-                <Link to="/register">Create an account</Link>
+                <Link to={`/register?redirect=${redirect}`}>
+                  Create an account
+                </Link>
               </div>
             </div>
           </form>
