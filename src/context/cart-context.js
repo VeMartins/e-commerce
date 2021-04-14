@@ -49,6 +49,10 @@ const CartProvider = ({ children }) => {
   const decreaseItem = (id) => {
     dispatch({ type: "DECREASE", payload: id });
   };
+  const emptyCart = () => {
+    dispatch({ type: "CART_EMPTY" });
+    localStorage.removeItem("cartBotanica");
+  };
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" });
@@ -64,6 +68,7 @@ const CartProvider = ({ children }) => {
         increaseItem,
         decreaseItem,
         addToCart,
+        emptyCart,
       }}
     >
       {children}

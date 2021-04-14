@@ -114,7 +114,10 @@ const Register = () => {
                   onChange={(e) => setConfirmedPassword(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn-green-dark btn-center btn ">
+              <button
+                type="submit"
+                className="btn-green-dark btn-center btn btn-order"
+              >
                 Register
               </button>
               <div>

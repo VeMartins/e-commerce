@@ -6,6 +6,7 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { useGlobalContext } from "../../context/products-context";
 import { useFilterContext } from "../../context/filter-context";
 import { useCartContext } from "../../context/cart-context";
+import { useOrderContext } from "../../context/order-context";
 import { useSigninContext } from "../../context/signin-context";
 import logo from "../../srcImages/logo.png";
 
@@ -14,8 +15,9 @@ import "./Navbar.css";
 const Navbar = () => {
   const { showLinks, closeTopbar, toggleTopbar } = useGlobalContext();
   const { clearFilters } = useFilterContext();
-  const { amount } = useCartContext();
+  const { amount, cart } = useCartContext();
   const { userInfo, signOut } = useSigninContext();
+  const { shippingAddress, clearShippingData } = useOrderContext();
 
   //for user account dropdown
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -83,6 +85,27 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
+            {userInfo && shippingAddress.address ? (
+              <li>
+                <Link
+                  to="/payment"
+                  onClick={closeTopbar}
+                  className="nav-link nav-link-border"
+                >
+                  Payment
+                </Link>
+              </li>
+            ) : userInfo && !shippingAddress.address && cart.length > 0 ? (
+              <li>
+                <Link
+                  to="/checkout"
+                  onClick={closeTopbar}
+                  className="nav-link nav-link-border"
+                >
+                  Checkout
+                </Link>
+              </li>
+            ) : null}
             <li className="right-nav-link-1 nav-link">
               <Link to="/cart" onClick={closeTopbar}>
                 Cart
@@ -121,7 +144,7 @@ const Navbar = () => {
                             signOut();
                             setOpenDropdown(false);
                             closeTopbar();
-                            console.log("clicked");
+                            clearShippingData();
                           }}
                         >
                           {" "}

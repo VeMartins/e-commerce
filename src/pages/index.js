@@ -8,6 +8,8 @@ import SingleItem from "./SingleItem";
 import Register from "./Register";
 import Checkout from "./Checkout";
 import PrivateRoute from "./PrivateRoute";
+import PaymentMethod from "./PaymentMethod";
+import PlaceOrder from "./PlaceOrder";
 
 export {
   About,
@@ -20,4 +22,6 @@ export {
   Register,
   Checkout,
   PrivateRoute,
+  PaymentMethod,
+  PlaceOrder,
 };

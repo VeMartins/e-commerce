@@ -5,6 +5,7 @@ import { AppProvider } from "./context/products-context";
 import { CartProvider } from "./context/cart-context";
 import { FilterProvider } from "./context/filter-context";
 import { SigninProvider } from "./context/signin-context";
+import { OrderProvider } from "./context/order-context";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,7 +13,9 @@ ReactDOM.render(
       <SigninProvider>
         <FilterProvider>
           <CartProvider>
-            <App />
+            <OrderProvider>
+              <App />
+            </OrderProvider>
           </CartProvider>
         </FilterProvider>
       </SigninProvider>

@@ -4,6 +4,7 @@ import ImageThumbnail from "./ImageThumbnail";
 import Price from "./Price";
 import Product from "./Product";
 import ProductsList from "./ProductsList";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 import ErrorCard from "./shared/ErrorCard";
 import ErrorModal from "./shared/ErrorModal";
@@ -27,4 +28,5 @@ export {
   Navbar,
   PageHeader,
   PageHeaderImage,
+  CheckoutSteps,
 };

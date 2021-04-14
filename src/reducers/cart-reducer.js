@@ -99,7 +99,8 @@ const cartReducer = (state, action) => {
       );
       total = parseFloat(total.toFixed(2));
       return { ...state, total, amount };
-
+    case "CART_EMPTY":
+      return { ...state, cart: [] };
     default:
       throw new Error(`no matching action type ${action.type}`);
   }

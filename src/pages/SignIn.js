@@ -42,8 +42,8 @@ const SignIn = () => {
             style={{ position: "initial" }}
           />
         )}
-        <div className="box-style-look signin">
-          <form className="signin-form " onSubmit={handleSubmit}>
+        <div className=" signin">
+          <form className="signin-form box-style-look" onSubmit={handleSubmit}>
             <h2 className="register-title">Sign in</h2>
             <div className="login-input-card">
               <label htmlFor="email">Email: </label>
@@ -67,7 +67,10 @@ const SignIn = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button type="submit" className="btn-green-dark btn-center btn ">
+            <button
+              type="submit"
+              className="btn-green-dark btn-center btn btn-order"
+            >
               Login
             </button>
             <div>

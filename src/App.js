@@ -13,17 +13,23 @@ import {
   Register,
   Checkout,
   PrivateRoute,
+  PaymentMethod,
+  PlaceOrder,
 } from "./pages";
 
 //components
 import { Navbar, Footer, Loading } from "./components";
 
 import { useGlobalContext } from "./context/products-context";
+import { useSigninContext } from "./context/signin-context";
+import { useOrderContext } from "./context/order-context";
 
 import "./App.css";
 
 function App() {
   const { loading } = useGlobalContext();
+  const { userInfo } = useSigninContext();
+  const { shippingAddress } = useOrderContext();
 
   if (loading) {
     return <Loading />;
@@ -54,8 +60,22 @@ function App() {
         <Route exact path="/cart">
           <CartContainer />
         </Route>
-        <PrivateRoute path="/checkout">
+        <PrivateRoute path="/checkout" hasInfo={userInfo} redirect="/signin">
           <Checkout />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/payment"
+          hasInfo={shippingAddress.address}
+          redirect="/checkout"
+        >
+          <PaymentMethod />
+        </PrivateRoute>
+        <PrivateRoute
+          path="/placeorder"
+          hasInfo={shippingAddress.address}
+          redirect="/checkout"
+        >
+          <PlaceOrder />
         </PrivateRoute>
         <Route path="*">
           <Error />

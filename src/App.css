@@ -120,6 +120,47 @@ img {
   background: var(--clr-beige-light);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
+.order-card-style {
+  background: var(--clr-beige-light);
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+.order-card-body {
+  padding: 1rem;
+}
+.order-margin {
+  margin-bottom: 2rem;
+}
+.radio-label {
+  margin-right: 0.5rem;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.row.center {
+  justify-content: center;
+}
+.row.top {
+  align-items: flex-start;
+}
+.row.start {
+  justify-content: flex-start;
+}
+.col-1 {
+  flex: 1 1 25rem;
+}
+/*.col-2 {
+  flex: 2 1 50rem;
+}*/
+.col-2 {
+  flex: 2 1 25rem;
+}
+.col-3 {
+  flex: 32 1 75rem;
+}
 
 /*
 =============== 
@@ -216,6 +257,9 @@ Buttons
 .btn-categories:hover {
   background: var(--clr-green-dark);
   color: var(--mainBackground);
+}
+.btn-order {
+  width: 100%;
 }
 
 /****Card Style*/

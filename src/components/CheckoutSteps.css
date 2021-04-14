@@ -1,0 +1,12 @@
+.checkout-steps > div {
+  border-top: 0.3rem rgb(90, 89, 89) solid;
+  color: rgb(90, 89, 89);
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.checkout-steps > div.active-step {
+  border-top-color: var(--clr-green-light);
+  color: var(--clr-green-light);
+}

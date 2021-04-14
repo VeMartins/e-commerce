@@ -47,6 +47,8 @@ const SigninProvider = ({ children }) => {
   const signOut = () => {
     dispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("cartBotanica");
+    localStorage.removeItem("shipping");
   };
   const register = async (name, email, password) => {
     dispatch({
