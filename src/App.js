@@ -15,6 +15,7 @@ import {
   PrivateRoute,
   PaymentMethod,
   PlaceOrder,
+  OrderDetails,
 } from "./pages";
 
 //components
@@ -60,10 +61,16 @@ function App() {
         <Route exact path="/cart">
           <CartContainer />
         </Route>
-        <PrivateRoute path="/checkout" hasInfo={userInfo} redirect="/signin">
+        <PrivateRoute
+          exact
+          path="/checkout"
+          hasInfo={userInfo}
+          redirect="/signin"
+        >
           <Checkout />
         </PrivateRoute>
         <PrivateRoute
+          exact
           path="/payment"
           hasInfo={shippingAddress.address}
           redirect="/checkout"
@@ -71,11 +78,20 @@ function App() {
           <PaymentMethod />
         </PrivateRoute>
         <PrivateRoute
-          path="/placeorder"
+          exact
+          path="/orders"
           hasInfo={shippingAddress.address}
           redirect="/checkout"
         >
           <PlaceOrder />
+        </PrivateRoute>
+        <PrivateRoute
+          exact
+          path="/order/:orderId"
+          hasInfo={userInfo}
+          redirect="/"
+        >
+          <OrderDetails />
         </PrivateRoute>
         <Route path="*">
           <Error />

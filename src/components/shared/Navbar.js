@@ -17,7 +17,11 @@ const Navbar = () => {
   const { clearFilters } = useFilterContext();
   const { amount, cart } = useCartContext();
   const { userInfo, signOut } = useSigninContext();
-  const { shippingAddress, clearShippingData } = useOrderContext();
+  const {
+    shippingAddress,
+    clearShippingData,
+    orderPayReset,
+  } = useOrderContext();
 
   //for user account dropdown
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -145,6 +149,7 @@ const Navbar = () => {
                             setOpenDropdown(false);
                             closeTopbar();
                             clearShippingData();
+                            orderPayReset();
                           }}
                         >
                           {" "}

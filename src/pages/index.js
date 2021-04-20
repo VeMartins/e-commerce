@@ -10,6 +10,7 @@ import Checkout from "./Checkout";
 import PrivateRoute from "./PrivateRoute";
 import PaymentMethod from "./PaymentMethod";
 import PlaceOrder from "./PlaceOrder";
+import OrderDetails from "./OrderDetails";
 
 export {
   About,
@@ -24,4 +25,5 @@ export {
   PrivateRoute,
   PaymentMethod,
   PlaceOrder,
+  OrderDetails,
 };

@@ -13,7 +13,7 @@ const PaymentMethod = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     savePaymentMethod(paymentMethod);
-    history.push("/placeorder");
+    history.push("/orders");
   };
   return (
     <section className=" section-checkout">

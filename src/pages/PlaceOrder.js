@@ -31,7 +31,6 @@ const PlaceOrder = () => {
 
   const placeOrderHandler = () => {
     createOrder({
-      ...order,
       shippingAddress,
       orderItems,
       paymentMethod,
@@ -40,10 +39,14 @@ const PlaceOrder = () => {
       tax,
       totalPrice,
     });
+    console.log("create", order.order._id);
   };
   useEffect(() => {
     if (success) {
-      history.push(`/order/${order._id}`);
+      console.log("success", order.order._id);
+
+      history.push(`/order/${order.order._id}`);
+
       orderReset();
     }
   }, [success, history, order, orderReset]);

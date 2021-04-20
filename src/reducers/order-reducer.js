@@ -24,14 +24,56 @@ const orderReducer = (state, action) => {
         loading: false,
         error: false,
         success: true,
-
         order: action.payload,
       };
     case "CREATE_ORDER_FAIL":
       return { ...state, loading: false, error: action.payload };
     case "CREATE_ORDER_RESET":
-      return { ...state, shippingAddress: {}, order: {}, success: false };
-
+      return {
+        ...state,
+        shippingAddress: {},
+        success: false,
+        loading: false,
+        loadingDetails: false,
+        successPay: false,
+      };
+    case "ORDER_DETAILS_REQUEST":
+      return { ...state, loadingDetails: true, errorDetails: false };
+    case "ORDER_DETAILS_SUCCESS":
+      return {
+        ...state,
+        loadingDetails: false,
+        errorDetails: false,
+        orderDetails: action.payload,
+      };
+    case "ORDER_DETAILS_FAIL":
+      return { ...state, loadingDetails: false, errorDetails: action.payload };
+    case "ORDER_PAY_REQUEST":
+      return { ...state, loadingPay: true };
+    case "ORDER_PAY_SUCCESS":
+      return {
+        ...state,
+        loadingPay: false,
+        loadingDetails: false,
+        successPay: true,
+        orderDetails: action.payload,
+      };
+    case "ORDER_PAY_FAIL":
+      return { ...state, loadingPay: false, errorPay: action.payload };
+    case "ORDER_PAY_RESET":
+      const initialOrderDetails = {
+        message: "",
+        order: {
+          shippingAddress: {},
+          orderItems: [],
+        },
+      };
+      return {
+        ...state,
+        loadingPay: false,
+        orderDetails: initialOrderDetails,
+        successPay: false,
+      };
     default:
       throw new Error(`no matching action type ${action.type}`);
   }

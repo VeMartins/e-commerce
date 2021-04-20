@@ -161,7 +161,9 @@ img {
 .col-3 {
   flex: 32 1 75rem;
 }
-
+.success {
+  color: hsl(90, 44%, 51%);
+}
 /*
 =============== 
 Buttons

@@ -29,7 +29,20 @@ const initialState = {
   error: false,
   loading: false,
   success: false,
-  order: {},
+  order: { message: "", order: "" },
+  orderDetails: {
+    message: "",
+    order: {
+      shippingAddress: {},
+      orderItems: [],
+    },
+  },
+
+  loadingDetails: false,
+  errorDetails: false,
+  successPay: false,
+  errorPay: false,
+  loadingPay: false,
 };
 
 const OrderContext = React.createContext();
@@ -65,8 +78,8 @@ const OrderProvider = ({ children }) => {
         },
       });
       const orderData = response.data;
+
       dispatch({ type: "CREATE_ORDER_SUCCESS", payload: orderData });
-      emptyCart();
     } catch (error) {
       dispatch({
         type: "CREATE_ORDER_FAIL",
@@ -79,6 +92,56 @@ const OrderProvider = ({ children }) => {
   };
   const orderReset = () => {
     dispatch({ type: "CREATE_ORDER_RESET" });
+    emptyCart();
+  };
+
+  const detailsOrder = async (orderId) => {
+    dispatch({ type: "ORDER_DETAILS_REQUEST", payload: orderId });
+
+    try {
+      const response = await axios.get(`/api/order/${orderId}`, {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+
+      const orderData = response.data;
+
+      dispatch({ type: "ORDER_DETAILS_SUCCESS", payload: orderData });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: "ORDER_DETAILS_FAIL", payload: message });
+    }
+  };
+  const payOrder = async (order, paymentResult) => {
+    dispatch({ type: "ORDER_PAY_REQUEST", payload: { order, paymentResult } });
+
+    try {
+      const response = await axios.put(
+        `/api/order/${order._id}/pay`,
+        paymentResult,
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
+      const payData = response.data;
+      console.log(payData);
+      dispatch({ type: "ORDER_PAY_SUCCESS", payload: payData });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: "ORDER_PAY_FAIL", payload: message });
+    }
+  };
+  const orderPayReset = () => {
+    dispatch({ type: "ORDER_PAY_RESET" });
   };
   return (
     <OrderContext.Provider
@@ -89,6 +152,9 @@ const OrderProvider = ({ children }) => {
         createOrder,
         clearShippingData,
         orderReset,
+        detailsOrder,
+        payOrder,
+        orderPayReset,
       }}
     >
       {children}
