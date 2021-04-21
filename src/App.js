@@ -16,6 +16,7 @@ import {
   PaymentMethod,
   PlaceOrder,
   OrderDetails,
+  OrderHistory,
 } from "./pages";
 
 //components
@@ -92,6 +93,14 @@ function App() {
           redirect="/"
         >
           <OrderDetails />
+        </PrivateRoute>
+        <PrivateRoute
+          exact
+          path="/orderhistory"
+          hasInfo={userInfo}
+          redirect="/"
+        >
+          <OrderHistory />
         </PrivateRoute>
         <Route path="*">
           <Error />

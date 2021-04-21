@@ -13,6 +13,9 @@
   height: 20vh;
   clear: both;
 }
+.colorStyle {
+  background-color: var(--clr-beige-light);
+}
 .header-image_span {
   box-sizing: content-box;
 }
@@ -31,11 +34,4 @@
   max-width: fit-content;
   text-align: left;
   height: auto;
-}
-
-@media (max-width: 450px) {
-  .page-header-outer {
-    left: 40px;
-    right: 40px;
-  }
 }

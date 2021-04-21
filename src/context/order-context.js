@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useReducer, useEffect } from "react";
+import React, { useContext, useReducer, useEffect, useCallback } from "react";
 
 import orderReducer from "../reducers/order-reducer";
 import { useCartContext } from "./cart-context";
@@ -43,6 +43,7 @@ const initialState = {
   successPay: false,
   errorPay: false,
   loadingPay: false,
+  orderList: [],
 };
 
 const OrderContext = React.createContext();
@@ -143,6 +144,26 @@ const OrderProvider = ({ children }) => {
   const orderPayReset = () => {
     dispatch({ type: "ORDER_PAY_RESET" });
   };
+  const getUserOrderList = useCallback(async () => {
+    dispatch({ type: "USER_ORDER_LIST_REQUEST" });
+
+    try {
+      const response = await axios.get(`/api/orders/myorders`, {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      const ordersList = response.data;
+      console.log(ordersList);
+      dispatch({ type: "USER_ORDER_LIST_SUCCESS", payload: ordersList });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: "USER_ORDER_LIST_FAIL", payload: message });
+    }
+  }, [userInfo]);
   return (
     <OrderContext.Provider
       value={{
@@ -155,6 +176,7 @@ const OrderProvider = ({ children }) => {
         detailsOrder,
         payOrder,
         orderPayReset,
+        getUserOrderList,
       }}
     >
       {children}

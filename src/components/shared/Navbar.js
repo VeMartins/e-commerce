@@ -3,11 +3,13 @@ import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RiArrowDownSFill } from "react-icons/ri";
 
-import { useGlobalContext } from "../../context/products-context";
-import { useFilterContext } from "../../context/filter-context";
-import { useCartContext } from "../../context/cart-context";
-import { useOrderContext } from "../../context/order-context";
-import { useSigninContext } from "../../context/signin-context";
+import {
+  useGlobalContext,
+  useFilterContext,
+  useCartContext,
+  useOrderContext,
+  useSigninContext,
+} from "../../context";
 import logo from "../../srcImages/logo.png";
 
 import "./Navbar.css";
@@ -28,17 +30,26 @@ const Navbar = () => {
 
   const refLinksContainer = useRef(null);
   const linksRef = useRef(null);
+  const userLinksRef = useRef(null);
 
   // to assign height of nav-links
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
+
     if (showLinks) {
-      refLinksContainer.current.style.height = `${linksHeight}px`;
+      if (openDropdown && userInfo) {
+        const userLinksHeight = userLinksRef.current.getBoundingClientRect()
+          .height;
+        const totalHeight = linksHeight + userLinksHeight;
+        refLinksContainer.current.style.height = `${totalHeight}px`;
+      } else {
+        refLinksContainer.current.style.height = `${linksHeight}px`;
+      }
     }
     if (!showLinks) {
       refLinksContainer.current.style.height = `0px`;
     }
-  }, [showLinks]);
+  }, [showLinks, openDropdown, userInfo]);
 
   return (
     <nav className="nav-container">
@@ -128,20 +139,20 @@ const Navbar = () => {
                     {userInfo.name} <RiArrowDownSFill />
                   </Link>
                   {openDropdown && (
-                    <ul className="dropdown-content">
-                      <li className="nav-link">
+                    <ul className="dropdown-content" ref={userLinksRef}>
+                      <li className="user-link">
                         <Link
-                          to="/"
+                          to="/orderhistory"
                           onClick={() => {
                             closeTopbar();
                             setOpenDropdown(false);
                           }}
                         >
                           {" "}
-                          Your account
+                          Order History
                         </Link>
                       </li>
-                      <li className="nav-link">
+                      <li className="user-link">
                         <Link
                           to="#signout"
                           onClick={() => {

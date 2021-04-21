@@ -36,7 +36,8 @@ Navbar
 }
 
 .nav-link,
-.right-nav-link-2 {
+.right-nav-link-2,
+.user-link {
   color: var(--clr-green-dark);
   font-size: 1.3rem;
   text-transform: capitalize;
@@ -44,10 +45,14 @@ Navbar
   display: block;
   padding: 0.5rem 1rem;
 }
-.nav-link:hover {
+.nav-link:hover,
+.user-link:hover {
   color: var(--mainBackground);
   background: var(--clr-green-dark);
-  padding-left: 1.5rem;
+}
+.user-link {
+  font-size: smaller;
+  padding: 1rem 2rem;
 }
 
 .links-container {
@@ -92,19 +97,12 @@ Navbar
   position: absolute;
   display: block;
   left: -15px;
-  min-width: 10rem;
+  min-width: 12rem;
   z-index: 1;
   margin: 0;
   margin-top: 0.4rem;
   border: none;
   background-color: var(--mainBackground);
-}
-.dropdown-content .nav-link {
-  font-size: smaller;
-}
-.dropdown-content .nav-link:hover {
-  color: var(--mainBackground);
-  background: var(--clr-green-dark);
 }
 
 .dropdown-logout {
@@ -131,7 +129,8 @@ Navbar
     height: auto !important;
     overflow: initial;
   }
-  .nav-links {
+  .nav-links,
+  .user-link {
     display: flex;
     width: var(--fullHeight-width);
     flex-direction: row;
@@ -172,7 +171,7 @@ Navbar
     left: initial;
     margin-top: 1rem;
   }
-  .dropdown-content .nav-link {
+  .user-link {
     margin: 0;
     padding-bottom: 0.5rem;
   }

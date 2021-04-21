@@ -74,6 +74,17 @@ const orderReducer = (state, action) => {
         orderDetails: initialOrderDetails,
         successPay: false,
       };
+    case "USER_ORDER_LIST_REQUEST":
+      return { ...state, loading: true };
+    case "USER_ORDER_LIST_SUCCESS":
+      return {
+        ...state,
+        orderList: action.payload,
+        loading: false,
+        error: false,
+      };
+    case "USER_ORDER_LIST_FAIL":
+      return { ...state, error: action.payload, loading: false };
     default:
       throw new Error(`no matching action type ${action.type}`);
   }
