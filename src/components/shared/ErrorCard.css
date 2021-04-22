@@ -8,6 +8,18 @@
   text-align: center;
   display: block;
 }
+.success-message {
+  color: var(--clr-green-light);
+}
+.signin-error {
+  margin-bottom: 2rem;
+  color: var(--clr-red-dark);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.signin-error > div {
+  background-color: rgb(247, 159, 159);
+}
 
 .error-card h3,
 .error-card p,

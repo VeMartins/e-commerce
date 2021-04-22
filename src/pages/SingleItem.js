@@ -36,6 +36,7 @@ const SingleItem = () => {
         <ErrorModal
           header="Ooops! No item to display."
           onClear={clearSingleError}
+          footer
           error={error}
           link={<Link to="/">Back to Home Page</Link>}
         />
@@ -51,6 +52,7 @@ const SingleItem = () => {
         <ErrorModal
           header={`Sorry, not enough items or item is sold out `}
           onClear={clearSingleError}
+          footer
           linkText={"Okay"}
         />
       )}

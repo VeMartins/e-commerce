@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useReducer, useCallback } from "react";
 
 import signinReducer from "../reducers/signin-reducer";
 
@@ -16,6 +16,8 @@ const initialState = {
   loading: false,
   userInfo: getLocalStorage(),
   error: false,
+  userDetails: null,
+  success: false,
 };
 
 const SigninContext = React.createContext();
@@ -44,12 +46,14 @@ const SigninProvider = ({ children }) => {
       });
     }
   };
+
   const signOut = () => {
     dispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
     localStorage.removeItem("cartBotanica");
     localStorage.removeItem("shipping");
   };
+
   const register = async (name, email, password) => {
     dispatch({
       type: "USER_REGISTER_REQUEST",
@@ -78,6 +82,58 @@ const SigninProvider = ({ children }) => {
     }
   };
 
+  const getUserDetails = useCallback(
+    async (id) => {
+      dispatch({ type: "USER_DETAILS_REQUEST", payload: id });
+      try {
+        const response = await axios.get(`api/users/${id}`, {
+          headers: {
+            Authorization: `Bearer ${state.userInfo.token}`,
+          },
+        });
+        const userDetails = response.data;
+        dispatch({ type: "USER_DETAILS_SUCCESS", payload: userDetails });
+      } catch (error) {
+        const message =
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: "USER_DETAILS_FAIL", payload: message });
+      }
+    },
+    [state.userInfo]
+  );
+
+  const updateUserProfile = async (user) => {
+    dispatch({
+      type: "UPDATE_PROFILE_REQUEST",
+      payload: user,
+    });
+    try {
+      const response = await axios.put("/api/users/userprofile", user, {
+        headers: {
+          Authorization: `Bearer ${state.userInfo.token}`,
+        },
+      });
+      const updatedUser = response.data;
+
+      dispatch({ type: "UPDATE_PROFILE_SUCCESS", payload: updatedUser });
+      dispatch({ type: "USER_SIGNIN_SUCCESS", payload: updatedUser });
+      localStorage.setItem("userInfo", JSON.stringify(updatedUser));
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({
+        type: "UPDATE_PROFILE_FAIL",
+        payload: message,
+      });
+    }
+  };
+  const resetUserProfile = useCallback(() => {
+    dispatch({ type: "RESET_USER_PROFILE" });
+  }, []);
   return (
     <SigninContext.Provider
       value={{
@@ -85,6 +141,9 @@ const SigninProvider = ({ children }) => {
         signIn,
         signOut,
         register,
+        getUserDetails,
+        updateUserProfile,
+        resetUserProfile,
       }}
     >
       {children}

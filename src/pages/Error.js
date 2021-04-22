@@ -12,6 +12,7 @@ const Error = () => {
       <ErrorModal
         header="Ooops! Nothing to see here."
         onClear={clearError}
+        footer
         error={error}
         link={<Link to="/">Back to Home Page</Link>}
       />

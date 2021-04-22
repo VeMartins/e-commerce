@@ -28,6 +28,7 @@ const FeaturedProducts = () => {
           <ErrorModal
             error={error}
             onClear={clearError}
+            footer
             header="Failed to load featured products."
             linkText={"Okay"}
             className="featured-error"

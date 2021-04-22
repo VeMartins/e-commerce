@@ -18,7 +18,7 @@ const Navbar = () => {
   const { showLinks, closeTopbar, toggleTopbar } = useGlobalContext();
   const { clearFilters } = useFilterContext();
   const { amount, cart } = useCartContext();
-  const { userInfo, signOut } = useSigninContext();
+  const { userInfo, signOut, resetUserProfile } = useSigninContext();
   const {
     shippingAddress,
     clearShippingData,
@@ -50,6 +50,15 @@ const Navbar = () => {
       refLinksContainer.current.style.height = `0px`;
     }
   }, [showLinks, openDropdown, userInfo]);
+
+  const signOutHandler = () => {
+    signOut();
+    setOpenDropdown(false);
+    closeTopbar();
+    clearShippingData();
+    orderPayReset();
+    resetUserProfile();
+  };
 
   return (
     <nav className="nav-container">
@@ -142,6 +151,18 @@ const Navbar = () => {
                     <ul className="dropdown-content" ref={userLinksRef}>
                       <li className="user-link">
                         <Link
+                          to="/userprofile"
+                          onClick={() => {
+                            closeTopbar();
+                            setOpenDropdown(false);
+                          }}
+                        >
+                          {" "}
+                          My Account
+                        </Link>
+                      </li>
+                      <li className="user-link">
+                        <Link
                           to="/orderhistory"
                           onClick={() => {
                             closeTopbar();
@@ -153,16 +174,7 @@ const Navbar = () => {
                         </Link>
                       </li>
                       <li className="user-link">
-                        <Link
-                          to="#signout"
-                          onClick={() => {
-                            signOut();
-                            setOpenDropdown(false);
-                            closeTopbar();
-                            clearShippingData();
-                            orderPayReset();
-                          }}
-                        >
+                        <Link to="#signout" onClick={signOutHandler}>
                           {" "}
                           Sign out
                         </Link>

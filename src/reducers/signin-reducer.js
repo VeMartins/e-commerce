@@ -24,6 +24,31 @@ const signinReducer = (state, action) => {
       };
     case "USER_REGISTER_FAIL":
       return { ...state, loading: false, error: action.payload };
+    case "USER_DETAILS_REQUEST":
+      return { ...state, loading: true };
+    case "USER_DETAILS_SUCCESS":
+      return { ...state, loading: false, userDetails: action.payload };
+    case "USER_DETAILS_FAIL":
+      return { ...state, error: action.payload, loading: false };
+    case "UPDATE_PROFILE_REQUEST":
+      return { ...state, loading: true };
+    case "UPDATE_PROFILE_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        success: true,
+        userDetails: action.payload,
+      };
+    case "UPDATE_PROFILE_FAIL":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
+    case "RESET_USER_PROFILE":
+      return { ...state, loading: false, error: false, success: false };
     default:
       throw new Error(`no matching action type ${action.type}`);
   }

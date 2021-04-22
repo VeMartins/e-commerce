@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import envelope from "../srcImages/envelope.jpg";
 import background from "../srcImages/post.jpg";
@@ -13,7 +14,11 @@ const ContactUs = () => {
   };
   return (
     <>
-      <PageHeaderImage title="Contact Us" src={background} />
+      <PageHeaderImage
+        title="Contact Us"
+        src={background}
+        link={<Link to="/">Home / </Link>}
+      />
       <main>
         <section className="section-contact">
           <div className="contact-container">

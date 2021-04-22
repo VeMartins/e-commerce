@@ -12,6 +12,7 @@ import PaymentMethod from "./PaymentMethod";
 import PlaceOrder from "./PlaceOrder";
 import OrderDetails from "./OrderDetails";
 import OrderHistory from "./OrderHistory";
+import UserProfile from "./UserProfile";
 
 export {
   About,
@@ -28,4 +29,5 @@ export {
   PlaceOrder,
   OrderDetails,
   OrderHistory,
+  UserProfile,
 };

@@ -19,6 +19,7 @@ const ProductsList = () => {
         <ErrorModal
           error={error}
           onClear={clearError}
+          footer
           header="Failed to load products, please try again later."
           linkText={"Okay"}
         />

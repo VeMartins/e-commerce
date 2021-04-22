@@ -8,12 +8,10 @@ const ErrorModal = (props) => {
       className={props.className}
       header={props.header}
       style={props.style}
-      footer={
-        <button className="btn-green-dark" onClick={props.onClear}>
-          {props.linkText}
-          {props.link}
-        </button>
-      }
+      footer={props.footer}
+      onClear={props.onClear}
+      linkText={props.linkText}
+      link={props.link}
     >
       <p>{props.error}</p>
     </ErrorCard>

@@ -12,7 +12,14 @@ const CardOverlay = (props) => {
         <h2>{props.header}</h2>
       </header>
       <div>{props.children}</div>
-      <footer>{props.footer}</footer>
+      {props.footer && (
+        <footer>
+          <button className="btn-green-dark" onClick={props.onClear}>
+            {props.linkText}
+            {props.link}
+          </button>
+        </footer>
+      )}
     </div>
   );
 

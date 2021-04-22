@@ -33,10 +33,3 @@
 .new-customer a:hover {
   color: var(--clr-green-light);
 }
-.signin-error {
-  margin-bottom: 2rem;
-  color: var(--clr-red-dark);
-}
-.signin-error button {
-  display: none;
-}
