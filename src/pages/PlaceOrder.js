@@ -39,12 +39,9 @@ const PlaceOrder = () => {
       tax,
       totalPrice,
     });
-    console.log("create", order.order._id);
   };
   useEffect(() => {
     if (success) {
-      console.log("success", order.order._id);
-
       history.push(`/order/${order.order._id}`);
 
       orderReset();

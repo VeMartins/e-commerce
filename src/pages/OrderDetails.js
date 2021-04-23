@@ -68,6 +68,7 @@ const OrderDetails = () => {
   }, [orderId, orderDetails, sdkReady]);
 
   const successPaymentHandler = (paymentResult) => {
+    console.log(paymentResult);
     payOrder(order, paymentResult);
   };
 
