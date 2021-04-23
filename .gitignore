@@ -12,6 +12,7 @@
 # production
 /build
 /public/images
+/src/srcImages
 # misc
 .DS_Store
 .env
