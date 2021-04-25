@@ -1,5 +1,5 @@
-import About from "./About";
-import CartContainer from "./CartContainer";
+import Home from "./Home";
+import Cart from "./Cart";
 import ContactUs from "./ContactUs";
 import Error from "./Error";
 import Products from "./Products";
@@ -13,10 +13,11 @@ import PlaceOrder from "./PlaceOrder";
 import OrderDetails from "./OrderDetails";
 import OrderHistory from "./OrderHistory";
 import UserProfile from "./UserProfile";
+import ProductListAdmin from "./AdminPages/ProductListAdmin";
 
 export {
-  About,
-  CartContainer,
+  Home,
+  Cart,
   ContactUs,
   Error,
   Products,
@@ -30,4 +31,5 @@ export {
   OrderDetails,
   OrderHistory,
   UserProfile,
+  ProductListAdmin,
 };

@@ -4,7 +4,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams, Link } from "react-router-dom";
 
 import { ErrorModal, ImageThumbnail, Loading, Price } from "../components";
-import { useGlobalContext } from "../context/products-context";
+import { useProductContext } from "../context/products-context";
 import AddToCart from "../components/AddToCart";
 
 import "./SingleItem.css";
@@ -18,7 +18,7 @@ const SingleItem = () => {
     single_product_error: error,
     single_product_stock_error,
     closeTopbar,
-  } = useGlobalContext();
+  } = useProductContext();
 
   const { id } = useParams(); // will come as string so will need to use parseInt in backend to use the id because id is an integer in data.js
 

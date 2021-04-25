@@ -3,7 +3,7 @@ import axios from "axios";
 
 import reducer from "../reducers/products-reducer";
 
-const AppContext = React.createContext();
+const ProductContext = React.createContext();
 const initialState = {
   showLinks: false,
   loading: false,
@@ -16,7 +16,7 @@ const initialState = {
   single_product: {},
 };
 
-const AppProvider = ({ children }) => {
+const ProductProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const closeTopbar = () => {
@@ -76,6 +76,8 @@ const AppProvider = ({ children }) => {
     }
   }, []);
 
+  const deleteProduct = (product) => {};
+
   useEffect(() => {
     const source = axios.CancelToken.source(); //cleanup
     fetchProducts("/api/products", source);
@@ -85,24 +87,26 @@ const AppProvider = ({ children }) => {
   }, [fetchProducts]);
 
   return (
-    <AppContext.Provider
+    <ProductContext.Provider
       value={{
         ...state,
         fetchSingleProduct,
+        fetchProducts,
         clearSingleError,
         closeTopbar,
         toggleTopbar,
         clearError,
         hasError,
+        deleteProduct,
       }}
     >
       {children}
-    </AppContext.Provider>
+    </ProductContext.Provider>
   );
 };
 
-export const useGlobalContext = () => {
-  return useContext(AppContext);
+export const useProductContext = () => {
+  return useContext(ProductContext);
 };
 
-export { AppContext, AppProvider };
+export { ProductContext, ProductProvider };

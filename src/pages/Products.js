@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { ProductsList } from "../components";
 import { PageHeaderImage } from "../components";
 import { Loading, ErrorModal } from "../components";
-import { useGlobalContext } from "../context/products-context";
+import { useProductContext } from "../context/products-context";
 import background from "../srcImages/almofada-folhas.jpg";
 
 const Products = () => {
-  const { loading, error, clearError } = useGlobalContext();
+  const { loading, error, clearError } = useProductContext();
   if (loading) {
     return <Loading />;
   }

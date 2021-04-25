@@ -34,6 +34,10 @@ Navbar
   height: 50px;
   width: 12rem;
 }
+.nav-link,
+.right-nav-link-2 {
+  padding: 0.5rem 1rem;
+}
 
 .nav-link,
 .right-nav-link-2,
@@ -43,7 +47,6 @@ Navbar
   text-transform: capitalize;
   letter-spacing: var(--spacing);
   display: block;
-  padding: 0.5rem 1rem;
 }
 .nav-link:hover,
 .user-link:hover {
@@ -52,7 +55,10 @@ Navbar
 }
 .user-link {
   font-size: smaller;
-  padding: 1rem 2rem;
+}
+.user-link > a {
+  padding: 1rem;
+  width: 100%;
 }
 
 .links-container {
@@ -97,7 +103,7 @@ Navbar
   position: absolute;
   display: block;
   left: -15px;
-  min-width: 12rem;
+  min-width: 10rem;
   z-index: 1;
   margin: 0;
   margin-top: 0.4rem;
@@ -108,6 +114,18 @@ Navbar
 .dropdown-logout {
   display: inline-block;
   position: relative;
+}
+.admin {
+  color: var(--clr-red-light);
+}
+.admin:hover {
+  background-color: var(--clr-red-light);
+  color: var(--mainBackground);
+}
+.admin-span {
+  margin-left: 5px;
+  font-size: 14px;
+  align-self: end;
 }
 
 @media screen and (min-width: 800px) {
@@ -160,7 +178,7 @@ Navbar
     padding-left: 1rem;
   }
 
-  .right-nav-link-2 a {
+  .dropdown-logout > a {
     margin-left: 10px;
   }
   .logo {
@@ -173,6 +191,5 @@ Navbar
   }
   .user-link {
     margin: 0;
-    padding-bottom: 0.5rem;
   }
 }

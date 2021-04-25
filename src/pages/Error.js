@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { ErrorModal } from "../components";
-import { useGlobalContext } from "../context/products-context";
+import { useProductContext } from "../context/products-context";
 import "./Error.css";
 
 const Error = () => {
-  const { error, clearError } = useGlobalContext();
+  const { error, clearError } = useProductContext();
   return (
     <section>
       <ErrorModal

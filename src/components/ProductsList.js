@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useGlobalContext } from "../context/products-context";
+import { useProductContext } from "../context/products-context";
 import { useFilterContext } from "../context/filter-context";
 
 import { Loading, Product, ErrorModal, Categories } from "./";
@@ -9,7 +9,7 @@ import SortBy from "./SortBy";
 import "./ProductsList.css";
 
 const ProductsList = () => {
-  const { clearError, loading, error } = useGlobalContext();
+  const { clearError, loading, error } = useProductContext();
   const { filteredData: products } = useFilterContext();
 
   return (

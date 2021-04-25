@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useReducer } from "react";
 import reducer from "../reducers/filter-reducer";
-import { useGlobalContext } from "../context/products-context";
+import { useProductContext } from "../context/products-context";
 
 const initialState = {
   filteredData: [],
@@ -19,7 +19,7 @@ const initialState = {
 const FilterContext = React.createContext();
 
 export const FilterProvider = ({ children }) => {
-  const { products } = useGlobalContext();
+  const { products } = useProductContext();
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {

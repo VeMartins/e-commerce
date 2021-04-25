@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //pages
 import {
   Products,
-  About,
+  Home,
   SingleItem,
   Error,
-  CartContainer,
+  Cart,
   ContactUs,
   SignIn,
   Register,
@@ -18,19 +18,22 @@ import {
   OrderDetails,
   OrderHistory,
   UserProfile,
+  ProductListAdmin,
 } from "./pages";
 
 //components
 import { Navbar, Footer, Loading } from "./components";
 
-import { useGlobalContext } from "./context/products-context";
-import { useSigninContext } from "./context/signin-context";
-import { useOrderContext } from "./context/order-context";
+import {
+  useProductContext,
+  useSigninContext,
+  useOrderContext,
+} from "./context";
 
 import "./App.css";
 
 function App() {
-  const { loading } = useGlobalContext();
+  const { loading } = useProductContext();
   const { userInfo } = useSigninContext();
   const { shippingAddress } = useOrderContext();
 
@@ -43,7 +46,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <About />
+          <Home />
         </Route>
         <Route exact path="/products">
           <Products />
@@ -61,7 +64,7 @@ function App() {
           <Register />
         </Route>
         <Route exact path="/cart">
-          <CartContainer />
+          <Cart />
         </Route>
         <PrivateRoute
           exact
@@ -105,6 +108,15 @@ function App() {
         </PrivateRoute>
         <PrivateRoute exact path="/userprofile" hasInfo={userInfo} redirect="/">
           <UserProfile />
+        </PrivateRoute>
+        {/* ************* Admin Routes ***********  */}
+        <PrivateRoute
+          exact
+          path="/productlist"
+          hasInfo={userInfo && userInfo.isAdmin}
+          redirect="/"
+        >
+          <ProductListAdmin />
         </PrivateRoute>
         <Route path="*">
           <Error />

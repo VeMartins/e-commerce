@@ -2,7 +2,7 @@ import React from "react";
 
 import ProductFeatured from "./ProductFeatured";
 import { Loading, ErrorModal } from "../components";
-import { useGlobalContext } from "../context/products-context";
+import { useProductContext } from "../context/products-context";
 
 import "./FeaturedProducts.css";
 
@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
     loading,
     error,
     clearError,
-  } = useGlobalContext();
+  } = useProductContext();
   if (loading) {
     return <Loading />;
   }

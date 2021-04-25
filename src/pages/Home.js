@@ -6,9 +6,9 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import { Categories } from "../components";
 import background from "../srcImages/toteBag12.jpg";
 
-import "./About.css";
+import "./Home.css";
 
-const About = () => {
+const Home = () => {
   return (
     <main className="main-about">
       <PageHeaderImage title="Home" src={background} />
@@ -19,4 +19,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Home;

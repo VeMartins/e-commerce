@@ -7,9 +7,9 @@ import { useCartContext } from "../context/cart-context";
 import { PageHeaderImage } from "../components";
 import background from "../srcImages/cesta.jpg";
 
-import "./CartContainer.css";
+import "./Cart.css";
 
-const CartContainer = () => {
+const Cart = () => {
   const { cart, total, clearCart, amount } = useCartContext();
   const history = useHistory();
   const checkoutHandler = () => {
@@ -93,4 +93,4 @@ const CartContainer = () => {
   );
 };
 
-export default CartContainer;
+export default Cart;

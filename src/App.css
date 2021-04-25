@@ -169,6 +169,11 @@ img {
 }
 .success {
   color: hsl(90, 44%, 51%);
+  font-weight: bold;
+}
+.not-success {
+  color: var(--clr-red-dark);
+  font-weight: bold;
 }
 .table {
   width: 100%;
@@ -181,13 +186,16 @@ img {
   padding: 0.5rem;
 }
 .table button {
-  margin: 0 0.2rem;
+  margin: 0.2rem;
 }
 .table tbody tr:nth-of-type(odd) {
   background-color: var(--clr-beige-light);
 }
 .table-wrapper {
   overflow-x: auto;
+}
+.capitalize {
+  text-transform: capitalize;
 }
 
 /*

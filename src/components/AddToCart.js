@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 
 import { useCartContext } from "../context/cart-context";
-import { useGlobalContext } from "../context/products-context";
+import { useProductContext } from "../context/products-context";
 
 const AddToCart = ({ id, stock, product }) => {
   const quantityRef = useRef(null);
   const { addToCart, cart } = useCartContext();
-  const { hasError } = useGlobalContext();
+  const { hasError } = useProductContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { RiArrowDownSFill } from "react-icons/ri";
 
 import {
-  useGlobalContext,
+  useProductContext,
   useFilterContext,
   useCartContext,
   useOrderContext,
@@ -15,7 +15,7 @@ import logo from "../../srcImages/logo.png";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { showLinks, closeTopbar, toggleTopbar } = useGlobalContext();
+  const { showLinks, closeTopbar, toggleTopbar } = useProductContext();
   const { clearFilters } = useFilterContext();
   const { amount, cart } = useCartContext();
   const { userInfo, signOut, resetUserProfile } = useSigninContext();
@@ -140,12 +140,24 @@ const Navbar = () => {
                 </span>
               </Link>
             </li>
+            {!userInfo && (
+              <li className="nav-link right-nav-link-2">
+                <Link to="/signin" onClick={closeTopbar}>
+                  {" "}
+                  Sign In{" "}
+                </Link>
+              </li>
+            )}
             {userInfo && (
               <li className="right-nav-link-2 ">
                 <div className="dropdown-logout">
                   <Link to="#" onClick={() => setOpenDropdown(!openDropdown)}>
                     {" "}
-                    {userInfo.name} <RiArrowDownSFill />
+                    {userInfo.name}
+                    {userInfo.isAdmin && (
+                      <span className="admin admin-span">Admin</span>
+                    )}{" "}
+                    <RiArrowDownSFill />
                   </Link>
                   {openDropdown && (
                     <ul className="dropdown-content" ref={userLinksRef}>
@@ -173,6 +185,70 @@ const Navbar = () => {
                           Order History
                         </Link>
                       </li>
+                      {userInfo.isAdmin && (
+                        <>
+                          <li className="user-link admin">
+                            <Link
+                              to="/dashboard"
+                              onClick={() => {
+                                closeTopbar();
+                                setOpenDropdown(false);
+                              }}
+                            >
+                              {" "}
+                              Dashboard
+                            </Link>
+                          </li>
+                          <li className="user-link admin">
+                            <Link
+                              to="/productlist"
+                              onClick={() => {
+                                closeTopbar();
+                                setOpenDropdown(false);
+                              }}
+                            >
+                              {" "}
+                              Products
+                            </Link>
+                          </li>
+                          <li className="user-link admin">
+                            <Link
+                              to="/orderlist"
+                              onClick={() => {
+                                closeTopbar();
+                                setOpenDropdown(false);
+                              }}
+                            >
+                              {" "}
+                              Orders
+                            </Link>
+                          </li>
+                          <li className="user-link admin">
+                            <Link
+                              to="/userlist"
+                              onClick={() => {
+                                closeTopbar();
+                                setOpenDropdown(false);
+                              }}
+                            >
+                              {" "}
+                              Users
+                            </Link>
+                          </li>
+                          <li className="user-link admin">
+                            <Link
+                              to="/support"
+                              onClick={() => {
+                                closeTopbar();
+                                setOpenDropdown(false);
+                              }}
+                            >
+                              {" "}
+                              Support
+                            </Link>
+                          </li>
+                        </>
+                      )}
                       <li className="user-link">
                         <Link to="#signout" onClick={signOutHandler}>
                           {" "}
@@ -182,14 +258,6 @@ const Navbar = () => {
                     </ul>
                   )}
                 </div>
-              </li>
-            )}
-            {!userInfo && (
-              <li className="nav-link right-nav-link-2">
-                <Link to="/signin" onClick={closeTopbar}>
-                  {" "}
-                  Sign In{" "}
-                </Link>
               </li>
             )}
           </ul>

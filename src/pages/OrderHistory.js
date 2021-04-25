@@ -23,7 +23,6 @@ const OrderHistory = () => {
 
       <section className="section-order-history">
         <div>
-          <h2 className="order-history">Orders</h2>
           {loading && <Loading />}
           {error && (
             <ErrorModal
@@ -52,12 +51,20 @@ const OrderHistory = () => {
                         <td>{order._id}</td>
                         <td>{order.createdAt.substring(0, 10)}</td>
                         <td>{formatPrice(order.totalPrice)}</td>
-                        <td>
+                        <td
+                          className={`${
+                            order.isPaid ? "success" : "not-success"
+                          }`}
+                        >
                           {order.isPaid
                             ? order.paidAt.substring(0, 10)
                             : "Not Paid"}
                         </td>
-                        <td>
+                        <td
+                          className={`${
+                            order.isDelivered ? "success" : "not-success"
+                          }`}
+                        >
                           {order.isDelivered
                             ? order.deliveredAt.substring(0, 10)
                             : "Not Delivered"}
