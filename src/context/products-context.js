@@ -10,10 +10,23 @@ const initialState = {
   products: [],
   featured_products: [],
   error: false,
+  // existing single product
   single_product_loading: false,
   single_product_error: false,
   single_product_stock_error: false,
   single_product: {},
+  // creating new product
+  new_product: {},
+  new_product_error: false,
+  success_create_product: false,
+  //updating single product
+  success_product_update: false,
+  updated_product: {},
+  error_product_update: false,
+  loading_product_update: false,
+  //deleting single product
+  delete_error: false,
+  success_delete_product: false,
 };
 
 const ProductProvider = ({ children }) => {
@@ -76,7 +89,72 @@ const ProductProvider = ({ children }) => {
     }
   }, []);
 
-  const deleteProduct = (product) => {};
+  //******* Admin *******
+
+  const createProduct = async (userToken) => {
+    dispatch({ type: "CREATE_PRODUCT_LOADING" });
+    try {
+      const { data } = await axios.post(
+        "/api/products/create",
+        {},
+        {
+          headers: { Authorization: `Bearer ${userToken}` },
+        }
+      );
+
+      dispatch({
+        type: "CREATE_PRODUCT_SUCCESS",
+        payload: data.product,
+      });
+    } catch (err) {
+      const message = err.message || "Could not create the product, try again";
+      dispatch({ type: "CREATE_PRODUCT_FAIL", payload: message });
+    }
+  };
+  const resetNewProduct = () => {
+    dispatch({ type: "CREATE_PRODUCT_RESET" });
+  };
+
+  const updateProduct = async (updProduct, userToken) => {
+    dispatch({ type: "UPDATE_PRODUCT_REQUEST", payload: updProduct });
+    try {
+      const { data } = await axios.put(
+        `/api/products/${updProduct._id}`, // /api/product/id
+        updProduct,
+        {
+          headers: { Authorization: `Bearer ${userToken}` },
+        }
+      );
+      dispatch({ type: "UPDATE_PRODUCT_SUCCESS", payload: data });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: "UPDATE_PRODUCT_FAIL", payload: message });
+    }
+  };
+  const resetUpdatedProduct = () => {
+    dispatch({ type: "UPDATED_PRODUCT_RESET" });
+  };
+  const deleteProduct = async (productId, userToken) => {
+    dispatch({ type: "DELETE_PRODUCT_REQUEST", payload: productId });
+    try {
+      const { data } = await axios.delete(`/api/products/${productId}`, {
+        headers: { Authorization: `Bearer ${userToken}` },
+      });
+      dispatch({ type: "DELETE_PRODUCT_SUCCESS", payload: data });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : "failed to delete product";
+      dispatch({ type: "DELETE_PRODUCT_FAIL", payload: message });
+    }
+  };
+  const resetDeleteProduct = () => {
+    dispatch({ type: "RESET_DELETE_PRODUCT" });
+  };
 
   useEffect(() => {
     const source = axios.CancelToken.source(); //cleanup
@@ -84,20 +162,29 @@ const ProductProvider = ({ children }) => {
     return () => {
       source.cancel();
     };
-  }, [fetchProducts]);
+  }, [
+    fetchProducts,
+    state.success_delete_product,
+    state.success_create_product,
+    state.success_product_update,
+  ]);
 
   return (
     <ProductContext.Provider
       value={{
         ...state,
         fetchSingleProduct,
-        fetchProducts,
         clearSingleError,
         closeTopbar,
         toggleTopbar,
         clearError,
         hasError,
         deleteProduct,
+        createProduct,
+        resetNewProduct,
+        updateProduct,
+        resetUpdatedProduct,
+        resetDeleteProduct,
       }}
     >
       {children}

@@ -6,6 +6,7 @@ const PrivateRoute = ({ children, hasInfo, redirect, ...rest }) => {
 
   return (
     <Route
+      exact
       {...rest}
       render={() => {
         return hasInfo ? children : <Redirect to={redirect}></Redirect>;

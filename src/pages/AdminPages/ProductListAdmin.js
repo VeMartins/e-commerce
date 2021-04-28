@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import { useProductContext } from "../../context";
+import { useProductContext, useSigninContext } from "../../context";
+
 import { Loading, ErrorModal, PageHeaderImage } from "../../components";
 import { formatPrice } from "../../utils/helpers";
 
@@ -13,9 +14,36 @@ const ProductListAdmin = () => {
     error,
     clearError,
     deleteProduct,
+    createProduct,
+    new_product,
+    success_create_product,
+    resetNewProduct,
+    new_product_error,
+    delete_error,
+    success_delete_product,
+    resetDeleteProduct,
   } = useProductContext();
+  const { userInfo } = useSigninContext();
 
   const history = useHistory();
+
+  useEffect(() => {
+    if (success_create_product) {
+      resetNewProduct();
+
+      history.push(`/product/${new_product._id}/edit`);
+    }
+    if (success_delete_product) {
+      resetDeleteProduct();
+    }
+  }, [
+    new_product,
+    history,
+    success_create_product,
+    resetNewProduct,
+    success_delete_product,
+    resetDeleteProduct,
+  ]);
 
   return (
     <main>
@@ -32,7 +60,43 @@ const ProductListAdmin = () => {
             linkText={"Okay"}
           />
         )}
+        {new_product_error && (
+          <ErrorModal
+            error={new_product_error}
+            onClear={clearError}
+            footer
+            header="Failed to create a new product."
+            linkText={"Okay"}
+          />
+        )}
+        {delete_error && (
+          <ErrorModal
+            error={delete_error}
+            onClear={clearError}
+            footer
+            className="signin-error"
+            header="Failed to delete product."
+            linkText={"Okay"}
+          />
+        )}
+        {/*success_delete_product && (
+          <ErrorModal
+            error="Product Deleted"
+            className="signin-error"
+            style={{ position: "initial" }}
+          />
+        )*/}
+
         <div className="table-wrapper">
+          <div className="create-product-btn">
+            <button
+              type="button"
+              className="btn btn-green-dark "
+              onClick={() => createProduct(userInfo.token)}
+            >
+              Create Product
+            </button>
+          </div>
           <table className="table">
             <thead>
               <tr>
@@ -68,17 +132,19 @@ const ProductListAdmin = () => {
                     <td>
                       <button
                         type="button"
-                        className="btn btn-green-dark "
+                        className="btn btn-transparent-green "
                         onClick={() =>
-                          history.pushState(`/product/${product._id}/edit`)
+                          history.push(`/product/${product._id}/edit`)
                         }
                       >
                         Edit
                       </button>
                       <button
                         type="button"
-                        className="btn btn-green-dark"
-                        onClick={() => deleteProduct(product)}
+                        className="btn btn-transparent-red"
+                        onClick={() =>
+                          deleteProduct(product._id, userInfo.token)
+                        }
                       >
                         Delete
                       </button>

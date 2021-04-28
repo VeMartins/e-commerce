@@ -14,7 +14,12 @@ const CardOverlay = (props) => {
       <div>{props.children}</div>
       {props.footer && (
         <footer>
-          <button className="btn-green-dark" onClick={props.onClear}>
+          <button
+            className={`${
+              props.className ? "btn-red-light" : "btn-dark-green"
+            }`}
+            onClick={props.onClear}
+          >
             {props.linkText}
             {props.link}
           </button>

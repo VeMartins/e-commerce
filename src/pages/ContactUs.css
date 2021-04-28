@@ -45,6 +45,10 @@ Contact page
   outline: var(--mainBackground) solid 3px;
   border: var(--clr-green-dark) solid 2px;
 }
+.image-upload {
+  background-color: white;
+  padding: 0.5rem;
+}
 .form-inputs-error {
   border: var(--clr-red-dark) solid 3px;
 }

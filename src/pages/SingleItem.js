@@ -20,34 +20,18 @@ const SingleItem = () => {
     closeTopbar,
   } = useProductContext();
 
-  const { id } = useParams(); // will come as string so will need to use parseInt in backend to use the id because id is an integer in data.js
+  const { id } = useParams();
 
   useEffect(() => {
     fetchSingleProduct(`/api/product/${id}`);
   }, [fetchSingleProduct, id]);
 
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (error) {
-    return (
-      <section>
-        <ErrorModal
-          header="Ooops! No item to display."
-          onClear={clearSingleError}
-          footer
-          error={error}
-          link={<Link to="/">Back to Home Page</Link>}
-        />
-      </section>
-    );
-  }
-
   const { title, desc, detail, stock } = product;
 
   return (
     <main className="main-singleItem-page" onMouseOver={closeTopbar}>
+      {loading && <Loading />}
+
       {single_product_stock_error && (
         <ErrorModal
           header={`Sorry, not enough items or item is sold out `}
@@ -64,6 +48,15 @@ const SingleItem = () => {
       </div>
 
       <section className=" main-detail-container">
+        {error && (
+          <ErrorModal
+            header="Ooops! No item to display."
+            onClear={clearSingleError}
+            footer
+            error={error}
+            link={<Link to="/">Back to Home Page</Link>}
+          />
+        )}
         <ImageThumbnail {...product} />
         <div className="info-box">
           <div className="details-container">

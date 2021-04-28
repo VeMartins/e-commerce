@@ -1,25 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import { SigninProvider } from "./context/signin-context";
 import { ProductProvider } from "./context/products-context";
+import { OrderProvider } from "./context/order-context";
 import { CartProvider } from "./context/cart-context";
 import { FilterProvider } from "./context/filter-context";
-import { SigninProvider } from "./context/signin-context";
-import { OrderProvider } from "./context/order-context";
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProductProvider>
-      <SigninProvider>
-        <FilterProvider>
-          <CartProvider>
-            <OrderProvider>
+    <SigninProvider>
+      <ProductProvider>
+        <CartProvider>
+          <OrderProvider>
+            <FilterProvider>
               <App />
-            </OrderProvider>
-          </CartProvider>
-        </FilterProvider>
-      </SigninProvider>
-    </ProductProvider>
+            </FilterProvider>
+          </OrderProvider>
+        </CartProvider>
+      </ProductProvider>
+    </SigninProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

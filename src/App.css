@@ -169,20 +169,19 @@ img {
 }
 .success {
   color: hsl(90, 44%, 51%);
-  font-weight: bold;
 }
 .not-success {
   color: var(--clr-red-dark);
-  font-weight: bold;
 }
 .table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 1rem;
 }
 .table td,
 .table th {
   text-align: left;
-  border: 0.1rem solid #e4e4e4;
+  border: 0.1rem solid var(--clr-footer-border);
   padding: 0.5rem;
 }
 .table button {
@@ -193,9 +192,14 @@ img {
 }
 .table-wrapper {
   overflow-x: auto;
+  width: 95vw;
+  margin: 1rem auto;
 }
 .capitalize {
   text-transform: capitalize;
+}
+.radio-input {
+  align-self: center;
 }
 
 /*
@@ -260,17 +264,40 @@ Buttons
   margin-top: 0.5rem;
   padding: 0.2rem;
 }
-.btn-transparent-red {
-  color: var(--clr-red-dark);
+.btn-red-light,
+.btn-transparent-red,
+.btn-transparent-green {
   background: transparent;
   transition: var(--transition);
-  border: solid 1px var(--clr-red-dark);
   border-radius: var(--radius);
   text-transform: capitalize;
+  cursor: pointer;
 }
+
+.btn-transparent-red {
+  color: var(--clr-red-dark);
+  border: solid 1px var(--clr-red-dark);
+}
+
 .btn-transparent-red:hover {
   background: var(--clr-red-dark);
   color: var(--clr-white);
+}
+.btn-red-light {
+  background: rgb(247, 159, 159);
+  color: var(--clr-red-dark);
+  border: solid 1px var(--clr-red-light);
+}
+.btn-red-light:hover {
+  background: none;
+}
+.btn-transparent-green:hover {
+  background: var(--clr-green-dark);
+  color: var(--clr-white);
+}
+.btn-transparent-green {
+  color: var(--clr-green-dark);
+  border: solid 1px var(--clr-green-dark);
 }
 .remove-btn {
   border: none;
@@ -296,6 +323,9 @@ Buttons
 }
 .btn-order {
   width: 100%;
+}
+.create-product-btn {
+  text-align: right;
 }
 
 /****Card Style*/

@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //pages
 import {
-  Products,
   Home,
+  Products,
   SingleItem,
   Error,
   Cart,
@@ -19,6 +19,7 @@ import {
   OrderHistory,
   UserProfile,
   ProductListAdmin,
+  EditProduct,
 } from "./pages";
 
 //components
@@ -54,7 +55,7 @@ function App() {
         <Route exact path="/help">
           <ContactUs />
         </Route>
-        <Route path={"/product/:id"}>
+        <Route exact path="/product/:id">
           <SingleItem />
         </Route>
         <Route exact path="/signin">
@@ -117,6 +118,14 @@ function App() {
           redirect="/"
         >
           <ProductListAdmin />
+        </PrivateRoute>
+        <PrivateRoute
+          exact
+          path="/product/:id/edit"
+          hasInfo={userInfo && userInfo.isAdmin}
+          redirect="/"
+        >
+          <EditProduct />
         </PrivateRoute>
         <Route path="*">
           <Error />

@@ -14,6 +14,7 @@ import OrderDetails from "./OrderDetails";
 import OrderHistory from "./OrderHistory";
 import UserProfile from "./UserProfile";
 import ProductListAdmin from "./AdminPages/ProductListAdmin";
+import EditProduct from "./AdminPages/EditProduct";
 
 export {
   Home,
@@ -32,4 +33,5 @@ export {
   OrderHistory,
   UserProfile,
   ProductListAdmin,
+  EditProduct,
 };
