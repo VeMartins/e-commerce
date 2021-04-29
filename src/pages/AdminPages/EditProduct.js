@@ -42,7 +42,6 @@ const EditProduct = () => {
 
   useEffect(() => {
     const product = products.find((product) => product._id === id);
-    console.log(product);
 
     if (success_product_update) {
       setUpdatedMessage("Product Updated");

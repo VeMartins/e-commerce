@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import "./ProductFeatured.css";
 
-const ProductFeatured = ({ img, title, price, _id }) => {
+const ProductFeatured = ({ img, title, price, _id, sale }) => {
   return (
     <article>
       <div className="container">
@@ -18,7 +18,7 @@ const ProductFeatured = ({ img, title, price, _id }) => {
       </div>
       <footer className="featured-footer">
         <h5>{title}</h5>
-        <p>{formatPrice(price)}</p>
+        <p>{sale > 0 ? formatPrice(sale) : formatPrice(price)}</p>
       </footer>
     </article>
   );

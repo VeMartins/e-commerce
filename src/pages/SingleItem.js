@@ -18,13 +18,14 @@ const SingleItem = () => {
     single_product_error: error,
     single_product_stock_error,
     closeTopbar,
+    success_product_update,
   } = useProductContext();
 
   const { id } = useParams();
 
   useEffect(() => {
     fetchSingleProduct(`/api/product/${id}`);
-  }, [fetchSingleProduct, id]);
+  }, [fetchSingleProduct, id, success_product_update]);
 
   const { title, desc, detail, stock } = product;
 
@@ -57,7 +58,7 @@ const SingleItem = () => {
             link={<Link to="/">Back to Home Page</Link>}
           />
         )}
-        <ImageThumbnail {...product} />
+        <ImageThumbnail {...product} id={id} />
         <div className="info-box">
           <div className="details-container">
             <h1>{title}</h1>

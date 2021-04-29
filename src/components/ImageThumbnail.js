@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 import "./ImageThumbnail.css";
 
-const ImageThumbnail = ({ thumbnail2, img, title }) => {
-  const [srcImg, setSrcImg] = useState(`${img}`);
+const ImageThumbnail = ({ thumbnail2, img, title, id }) => {
+  const [srcImg, setSrcImg] = useState("");
 
   const preview = (imgSrc) => {
     setSrcImg(imgSrc);
   };
 
+  useEffect(() => {
+    setSrcImg(`.${img}`);
+  }, [id, img]);
   return (
     <div className="pic-container">
       <div className="pic-middle-container">
