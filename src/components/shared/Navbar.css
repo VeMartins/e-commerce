@@ -51,6 +51,9 @@ Navbar
   color: var(--mainBackground);
   background: var(--clr-green-dark);
 }
+.nav-link > a {
+  width: 100%;
+}
 .hidden-div > a {
   line-height: 1.5rem;
   font-size: 16px;
@@ -69,6 +72,8 @@ Navbar
 .nav-link-cart a {
   display: flex;
   align-items: center;
+}
+.nav-link-dropdown a {
   justify-content: space-between;
 }
 

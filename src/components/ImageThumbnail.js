@@ -11,7 +11,7 @@ const ImageThumbnail = ({ thumbnail2, img, title, id }) => {
   };
 
   useEffect(() => {
-    setSrcImg(`.${img}`);
+    setSrcImg(img);
   }, [id, img]);
   return (
     <div className="pic-container">
@@ -43,14 +43,14 @@ const ImageThumbnail = ({ thumbnail2, img, title, id }) => {
         <ul className="thumbnail-list">
           <li className="thumbnail">
             <img
-              src={`.${img}`}
-              alt={` ${title}`}
+              src={img}
+              alt={title}
               onMouseOver={(e) => preview(e.target.src)}
             />
           </li>
           <li className="thumbnail">
             <img
-              src={`.${thumbnail2}`}
+              src={thumbnail2}
               alt={`thumbnail2 ${title}`}
               onMouseOver={(e) => preview(e.target.src)}
             />

@@ -37,7 +37,6 @@ const EditProduct = () => {
   const [uploadError, setUploadError] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
-
   const [updatedMessage, setUpdatedMessage] = useState("");
 
   useEffect(() => {
@@ -119,6 +118,26 @@ const EditProduct = () => {
       setUploadLoading(false);
     }
   };
+  const uploadThumbHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("image", file);
+    setUploadLoading(true);
+    try {
+      const { data } = await axios.post("/api/uploads", bodyFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setThumbnail2(data);
+      setUploadLoading(false);
+    } catch (error) {
+      setUploadError(error.message);
+      setUploadLoading(false);
+    }
+  };
+
   return (
     <main>
       <PageHeaderImage colorStyle title="Edit Product" />
@@ -171,6 +190,17 @@ const EditProduct = () => {
                 />
               </div>
               <div className="login-input-card">
+                <label htmlFor="thumb1">Thumbnail left: </label>
+                <input
+                  type="text"
+                  id="thumb1"
+                  placeholder="Product thumbnail1"
+                  className="form-inputs"
+                  defaultValue={thumbnail1}
+                  onChange={(e) => setThumbnail1(e.target.value)}
+                />
+              </div>
+              <div className="login-input-card">
                 <label htmlFor="imageFile">
                   Choose main image and left thumb:
                 </label>
@@ -193,17 +223,7 @@ const EditProduct = () => {
                   />
                 )}
               </div>
-              <div className="login-input-card">
-                <label htmlFor="thumb1">Thumbnail left: </label>
-                <input
-                  type="text"
-                  id="thumb1"
-                  placeholder="Product thumbnail1"
-                  className="form-inputs"
-                  defaultValue={thumbnail1}
-                  onChange={(e) => setThumbnail1(e.target.value)}
-                />
-              </div>
+
               <div className="login-input-card">
                 <label htmlFor="thumb2">Thumbnail right: </label>
                 <input
@@ -214,6 +234,29 @@ const EditProduct = () => {
                   defaultValue={thumbnail2}
                   onChange={(e) => setThumbnail2(e.target.value)}
                 />
+              </div>
+              <div className="login-input-card">
+                <label htmlFor="thumbnailImageFile">
+                  Choose Right Thumbnail:
+                </label>
+                <input
+                  className="form-inputs image-upload"
+                  type="file"
+                  id="thumbnailImageFile"
+                  label="Choose Thumbnail"
+                  onChange={uploadThumbHandler}
+                />
+                {uploadLoading && <Loading />}
+                {uploadError && (
+                  <ErrorModal
+                    error={uploadError}
+                    className="signin-error"
+                    style={{ position: "initial" }}
+                    onClear={() => setUploadError("")}
+                    linkText={"Okay"}
+                    footer
+                  />
+                )}
               </div>
               <div className="login-input-card">
                 <label htmlFor="detail">Product Description: </label>
@@ -235,7 +278,7 @@ const EditProduct = () => {
                   placeholder="Product category"
                   className="form-inputs"
                   defaultValue={category}
-                  onChange={(e) => setCategory(e.target.value)}
+                  onChange={(e) => setCategory(e.target.value.toLowerCase())}
                 />
               </div>
               <div className="login-input-card">
@@ -246,7 +289,7 @@ const EditProduct = () => {
                   placeholder="Product sub-category"
                   className="form-inputs"
                   defaultValue={subCategory}
-                  onChange={(e) => setSubCategory(e.target.value)}
+                  onChange={(e) => setSubCategory(e.target.value.toLowerCase())}
                 />
               </div>
               <div className="login-input-card">
@@ -290,9 +333,8 @@ const EditProduct = () => {
                   type="radio"
                   id="not-featured"
                   className="radio-input"
-                  value={false}
+                  defaultValue={false}
                   name="IsFeatured"
-                  checked
                   onChange={(e) => setFeatured(e.target.value)}
                 />
               </div>

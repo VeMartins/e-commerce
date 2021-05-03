@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
@@ -6,6 +6,8 @@ import { useProductContext, useSigninContext } from "../../context";
 
 import { Loading, ErrorModal, PageHeaderImage } from "../../components";
 import { formatPrice } from "../../utils/helpers";
+
+import "../../components/ConfirmationBox.css";
 
 const ProductListAdmin = () => {
   const {
@@ -25,6 +27,9 @@ const ProductListAdmin = () => {
   } = useProductContext();
   const { userInfo } = useSigninContext();
 
+  const [productId, setProductId] = useState("");
+  const [showConfirmBox, setConfirmBox] = useState(false);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -35,6 +40,7 @@ const ProductListAdmin = () => {
     }
     if (success_delete_product) {
       resetDeleteProduct();
+      setProductId("");
     }
   }, [
     new_product,
@@ -44,6 +50,11 @@ const ProductListAdmin = () => {
     success_delete_product,
     resetDeleteProduct,
   ]);
+
+  const deleteHandler = (product) => {
+    setConfirmBox(true);
+    setProductId(product._id);
+  };
 
   return (
     <main>
@@ -142,9 +153,9 @@ const ProductListAdmin = () => {
                       <button
                         type="button"
                         className="btn btn-transparent-red"
-                        onClick={() =>
-                          deleteProduct(product._id, userInfo.token)
-                        }
+                        onClick={() => {
+                          deleteHandler(product);
+                        }}
                       >
                         Delete
                       </button>
@@ -154,6 +165,38 @@ const ProductListAdmin = () => {
               })}
             </tbody>
           </table>
+          {showConfirmBox && (
+            <>
+              <div className="confirm-container">
+                <div className="confirmation-text">
+                  Do you really want to delete this product?
+                </div>
+                <div className="button-container">
+                  <button
+                    className="cancel-button"
+                    onClick={() => {
+                      setConfirmBox(false);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="confirmation-button"
+                    onClick={() => {
+                      deleteProduct(productId, userInfo.token);
+                      setConfirmBox(false);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+              <div
+                className="confirm-bg"
+                onClick={() => setConfirmBox(false)}
+              ></div>
+            </>
+          )}
         </div>
       </section>
     </main>

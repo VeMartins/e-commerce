@@ -8,18 +8,20 @@ import "./ProductFeatured.css";
 const ProductFeatured = ({ img, title, price, _id, sale }) => {
   return (
     <article>
-      <div className="container">
-        <div className="featured-img-container">
-          <img src={img} alt={title} />
-          <Link to={`/product/${_id}`} className="link-product">
-            <FaSearch />
-          </Link>
+      <div className="featured-item-wrapper">
+        <div className="container">
+          <div className="featured-img-container">
+            <img src={img} alt={title} />
+            <Link to={`/product/${_id}`} className="link-product">
+              <FaSearch />
+            </Link>
+          </div>
         </div>
+        <footer className="featured-footer">
+          <h5>{title}</h5>
+          <p>{sale > 0 ? formatPrice(sale) : formatPrice(price)}</p>
+        </footer>
       </div>
-      <footer className="featured-footer">
-        <h5>{title}</h5>
-        <p>{sale > 0 ? formatPrice(sale) : formatPrice(price)}</p>
-      </footer>
     </article>
   );
 };
