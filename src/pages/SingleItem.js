@@ -13,12 +13,12 @@ const SingleItem = () => {
   const {
     fetchSingleProduct,
     clearSingleError,
-    single_product_loading: loading,
+    loading,
     single_product: product,
-    single_product_error: error,
+    error,
     single_product_stock_error,
     closeTopbar,
-    success_product_update,
+    success: success_product_update,
   } = useProductContext();
 
   const { id } = useParams();

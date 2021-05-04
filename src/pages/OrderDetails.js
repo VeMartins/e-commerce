@@ -5,7 +5,7 @@ import { PayPalButton } from "react-paypal-button-v2";
 import { Loading, ErrorModal, PageHeaderImage } from "../components";
 
 import { formatPrice } from "../utils/helpers";
-import { useOrderContext } from "../context/order-context";
+import { useOrderContext, useSigninContext } from "../context";
 import axios from "axios";
 
 const OrderDetails = () => {
@@ -13,16 +13,20 @@ const OrderDetails = () => {
 
   const [sdkReady, setSdkReady] = useState(false);
   const {
-    loadingDetails,
-    errorDetails,
+    loading: loadingDetails,
+    error: errorDetails,
     detailsOrder,
     orderDetails,
     payOrder,
-    successPay,
-    errorPay,
-    loadingPay,
+    success: successPay,
+    error: errorPay,
+    loading: loadingPay,
+    success: successDelivery,
     orderReset,
+    deliverOrder,
   } = useOrderContext();
+
+  const { userInfo } = useSigninContext();
 
   const { order } = orderDetails;
   const {
@@ -52,7 +56,7 @@ const OrderDetails = () => {
       };
       document.body.appendChild(script);
     };
-    if (!_id || successPay || (order && _id !== orderId)) {
+    if (!_id || successPay || successDelivery || (order && _id !== orderId)) {
       detailsOrder(orderId);
       orderReset();
     } else {
@@ -68,7 +72,6 @@ const OrderDetails = () => {
   }, [orderId, orderDetails, sdkReady]);
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
     payOrder(order, paymentResult);
   };
 
@@ -136,7 +139,7 @@ const OrderDetails = () => {
                     return (
                       <article key={item._id} className="cart-item">
                         <Link to="/">
-                          <img src={`.${item.image}`} alt={item.name} />
+                          <img src={item.image} alt={item.name} />
                         </Link>
                         <div>
                           <h4>{item.name}</h4>
@@ -218,6 +221,15 @@ const OrderDetails = () => {
                       </>
                     )}
                   </li>
+                )}
+                {userInfo.isAdmin && isPaid && !isDelivered && (
+                  <button
+                    type="button"
+                    className="btn-green-dark btn-center btn btn-order"
+                    onClick={() => deliverOrder(orderId)}
+                  >
+                    Deliver
+                  </button>
                 )}
               </ul>
             </div>

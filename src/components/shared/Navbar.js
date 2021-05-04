@@ -19,7 +19,7 @@ const Navbar = () => {
   const { clearFilters } = useFilterContext();
   const { amount } = useCartContext();
   const { userInfo, signOut, resetUserProfile } = useSigninContext();
-  const { clearShippingData, orderPayReset } = useOrderContext();
+  const { clearShippingData, ordersReset } = useOrderContext();
 
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openAdmin, setOpenAdmin] = useState(false);
@@ -36,7 +36,7 @@ const Navbar = () => {
     closeAllModals();
     signOut();
     clearShippingData();
-    orderPayReset();
+    ordersReset();
     resetUserProfile();
   };
 
@@ -133,7 +133,7 @@ const Navbar = () => {
                         {" "}
                         Products list
                       </Link>
-                      <Link to="/orderlist" onClick={closeAllModals}>
+                      <Link to="/orderslist" onClick={closeAllModals}>
                         {" "}
                         Orders
                       </Link>

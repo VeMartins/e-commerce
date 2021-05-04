@@ -20,6 +20,7 @@ import {
   UserProfile,
   ProductListAdmin,
   EditProduct,
+  OrdersList,
 } from "./pages";
 
 //components
@@ -126,6 +127,14 @@ function App() {
           redirect="/"
         >
           <EditProduct />
+        </PrivateRoute>
+        <PrivateRoute
+          exact
+          path="/orderslist"
+          hasInfo={userInfo && userInfo.isAdmin}
+          redirect="/"
+        >
+          <OrdersList />
         </PrivateRoute>
         <Route path="*">
           <Error />

@@ -34,32 +34,42 @@ const orderReducer = (state, action) => {
         shippingAddress: {},
         success: false,
         loading: false,
-        loadingDetails: false,
-        successPay: false,
       };
     case "ORDER_DETAILS_REQUEST":
-      return { ...state, loadingDetails: true, errorDetails: false };
+      return {
+        ...state,
+        loading: false,
+        error: false,
+      };
     case "ORDER_DETAILS_SUCCESS":
       return {
         ...state,
-        loadingDetails: false,
-        errorDetails: false,
+        loading: false,
+        error: false,
         orderDetails: action.payload,
       };
     case "ORDER_DETAILS_FAIL":
-      return { ...state, loadingDetails: false, errorDetails: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     case "ORDER_PAY_REQUEST":
-      return { ...state, loadingPay: true };
+      return { ...state, loading: true };
     case "ORDER_PAY_SUCCESS":
       return {
         ...state,
-        loadingPay: false,
-        loadingDetails: false,
-        successPay: true,
+        loading: false,
+        success: true,
         orderDetails: action.payload,
       };
     case "ORDER_PAY_FAIL":
-      return { ...state, loadingPay: false, errorPay: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
     case "ORDER_PAY_RESET":
       const initialOrderDetails = {
         message: "",
@@ -70,9 +80,10 @@ const orderReducer = (state, action) => {
       };
       return {
         ...state,
-        loadingPay: false,
+        loading: false,
         orderDetails: initialOrderDetails,
-        successPay: false,
+        success: false,
+        error: false,
       };
     case "USER_ORDER_LIST_REQUEST":
       return { ...state, loading: true };
@@ -85,6 +96,51 @@ const orderReducer = (state, action) => {
       };
     case "USER_ORDER_LIST_FAIL":
       return { ...state, error: action.payload, loading: false };
+    case "ADMIN_ORDER_LIST_REQUEST":
+      return { ...state, loading: true };
+    case "ADMIN_ORDER_LIST_SUCCESS":
+      return {
+        ...state,
+        adminOrderList: action.payload,
+        loading: false,
+        error: false,
+      };
+    case "ADMIN_ORDER_LIST_FAIL":
+      return { ...state, error: action.payload, loading: false };
+    case "ADMIN_DELETE_ORDER_REQUEST":
+      return { ...state, loading: true };
+    case "ADMIN_DELETE_ORDER_SUCCESS":
+      return {
+        ...state,
+        success: true,
+        loading: false,
+        error: false,
+      };
+    case "ADMIN_DELETE_ORDER_FAIL":
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+        success: false,
+      };
+    case "ADMIN_ORDER_RESET":
+      return {
+        ...state,
+        error: false,
+        loading: false,
+        success: false,
+      };
+    case "ORDER_DELIVERY_REQUEST":
+      return { ...state, loading: true };
+    case "ORDER_DELIVERY_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        orderDetails: action.payload,
+      };
+    case "ORDER_DELIVERY_FAIL":
+      return { ...state, loading: false, error: action.payload };
     default:
       throw new Error(`no matching action type ${action.type}`);
   }

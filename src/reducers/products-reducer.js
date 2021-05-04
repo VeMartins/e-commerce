@@ -15,22 +15,22 @@ const productsReducer = (state, action) => {
   if (action.type === "SINGLE_PRODUCT_LOADING") {
     return {
       ...state,
-      single_product_loading: true,
-      single_product_error: false,
+      loading: false,
+      error: false,
     };
   }
   if (action.type === "DISPLAY_SINGLE_PRODUCT") {
     return {
       ...state,
-      single_product_loading: false,
+      loading: false,
       single_product: action.payload,
     };
   }
   if (action.type === "SINGLE_PRODUCT_ERROR") {
     return {
       ...state,
-      single_product_loading: false,
-      single_product_error: action.payload,
+      loading: false,
+      error: action.payload,
     };
   }
   if (action.type === "SINGLE_PRODUCT_STOCK_ERROR") {
@@ -42,9 +42,10 @@ const productsReducer = (state, action) => {
   if (action.type === "CLEAR_SINGLE_PRODUCT_ERROR") {
     return {
       ...state,
-      single_product_error: false,
+      loading: false,
       single_product_stock_error: false,
-      error_product_update: false,
+      error: false,
+      success: false,
     };
   }
   if (action.type === "ERROR") {
@@ -54,8 +55,6 @@ const productsReducer = (state, action) => {
     return {
       ...state,
       error: false,
-      new_product_error: false,
-      delete_error: false,
     };
   }
   if (action.type === "LOADING") {
@@ -76,57 +75,57 @@ const productsReducer = (state, action) => {
       ...state,
       loading: false,
       new_product: action.payload,
-      success_create_product: true,
-      new_product_error: false,
+      success: true,
+      error: false,
     };
   }
   if (action.type === "CREATE_PRODUCT_FAIL") {
     return {
       ...state,
       loading: false,
-      new_product_error: action.payload,
-      success_create_product: false,
+      error: action.payload,
+      success: false,
     };
   }
   if (action.type === "CREATE_PRODUCT_RESET") {
     return {
       ...state,
       loading: false,
-      new_product_error: false,
-      success_create_product: false,
+      error: false,
+      success: false,
       new_product: {},
     };
   }
   if (action.type === "UPDATE_PRODUCT_REQUEST") {
     return {
       ...state,
-      loading_product_update: true,
+      loading: true,
     };
   }
   if (action.type === "UPDATE_PRODUCT_SUCCESS") {
     return {
       ...state,
-      loading_product_update: false,
-      error_product_update: false,
-      success_product_update: true,
+      loading: false,
+      error: false,
+      success: true,
       updated_product: action.payload,
     };
   }
   if (action.type === "UPDATE_PRODUCT_FAIL") {
     return {
       ...state,
-      loading_product_update: false,
-      error_product_update: action.payload,
-      success_product_update: false,
+      error: action.payload,
+      loading: false,
+      success: false,
     };
   }
   if (action.type === "UPDATED_PRODUCT_RESET") {
     return {
       ...state,
-      success_product_update: false,
+      success: false,
       updated_product: {},
-      error_product_update: false,
-      loading_product_update: false,
+      error: false,
+      loading: false,
     };
   }
   if (action.type === "DELETE_PRODUCT_REQUEST") {
@@ -139,23 +138,23 @@ const productsReducer = (state, action) => {
     return {
       ...state,
       loading: false,
-      delete_error: false,
-      success_delete_product: true,
+      error: false,
+      success: true,
     };
   }
   if (action.type === "DELETE_PRODUCT_FAIL") {
     return {
       ...state,
       loading: false,
-      delete_error: action.payload,
-      success_delete_product: false,
+      error: action.payload,
+      success: false,
     };
   }
   if (action.type === "RESET_DELETE_PRODUCT") {
     return {
       ...state,
-      success_delete_product: false,
-      delete_error: false,
+      success: false,
+      error: false,
       loading: false,
     };
   }

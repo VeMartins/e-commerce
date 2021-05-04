@@ -13,6 +13,7 @@ import Loading from "./shared/Loading";
 import Navbar from "./shared/Navbar";
 import PageHeader from "./shared/PageHeader";
 import PageHeaderImage from "./shared/PageHeaderImage";
+import ConfirmationBox from "./shared/ConfirmationBox";
 
 export {
   CartItem,
@@ -29,4 +30,5 @@ export {
   PageHeader,
   PageHeaderImage,
   CheckoutSteps,
+  ConfirmationBox,
 };

@@ -6,27 +6,18 @@ import reducer from "../reducers/products-reducer";
 const ProductContext = React.createContext();
 const initialState = {
   showLinks: false,
+
   loading: false,
+  error: false,
+  success: false,
+
   products: [],
   featured_products: [],
-  error: false,
-  // existing single product
-  single_product_loading: false,
-  single_product_error: false,
-  single_product_stock_error: false,
-  single_product: {},
-  // creating new product
   new_product: {},
-  new_product_error: false,
-  success_create_product: false,
-  //updating single product
-  success_product_update: false,
   updated_product: {},
-  error_product_update: false,
-  loading_product_update: false,
-  //deleting single product
-  delete_error: false,
-  success_delete_product: false,
+  single_product: {},
+
+  single_product_stock_error: false,
 };
 
 const ProductProvider = ({ children }) => {
@@ -128,9 +119,7 @@ const ProductProvider = ({ children }) => {
       dispatch({ type: "UPDATE_PRODUCT_SUCCESS", payload: data });
     } catch (error) {
       const message =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
+        error.response.data.message || "Failed to update product!";
       dispatch({ type: "UPDATE_PRODUCT_FAIL", payload: message });
     }
   };
@@ -146,9 +135,7 @@ const ProductProvider = ({ children }) => {
       dispatch({ type: "DELETE_PRODUCT_SUCCESS", payload: data });
     } catch (error) {
       const message =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : "failed to delete product";
+        error.response.data.message || "failed to delete product!";
       dispatch({ type: "DELETE_PRODUCT_FAIL", payload: message });
     }
   };
@@ -162,12 +149,7 @@ const ProductProvider = ({ children }) => {
     return () => {
       source.cancel();
     };
-  }, [
-    fetchProducts,
-    state.success_delete_product,
-    state.success_create_product,
-    state.success_product_update,
-  ]);
+  }, [fetchProducts, state.success]);
 
   return (
     <ProductContext.Provider

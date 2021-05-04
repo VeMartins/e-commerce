@@ -11,14 +11,14 @@ const EditProduct = () => {
   const history = useHistory();
 
   const {
-    loading_product_update,
-    error_product_update,
+    loading: loading_product_update,
+    error: error_product_update,
     clearSingleError,
     updateProduct,
-    success_product_update,
+    success: success_product_update,
     resetUpdatedProduct,
     products,
-    success_create_product,
+    success: success_create_product,
   } = useProductContext();
 
   const [title, setTitle] = useState("");
@@ -143,20 +143,19 @@ const EditProduct = () => {
       <PageHeaderImage colorStyle title="Edit Product" />
       <section className="section-contact">
         {loading_product_update && <Loading />}
-        {error_product_update ||
-          (errorMessage && (
-            <ErrorModal
-              error={error_product_update || errorMessage}
-              className="signin-error"
-              onClear={() => {
-                clearSingleError();
-                setErrorMessage("");
-              }}
-              footer
-              linkText={"Okay"}
-              style={{ position: "initial" }}
-            />
-          ))}
+        {(error_product_update || errorMessage) && (
+          <ErrorModal
+            error={error_product_update || errorMessage}
+            className="signin-error"
+            onClear={() => {
+              clearSingleError();
+              setErrorMessage("");
+            }}
+            footer
+            linkText={"Okay"}
+            style={{ position: "initial" }}
+          />
+        )}
         {updatedMessage && (
           <ErrorModal
             style={{ position: "initial" }}

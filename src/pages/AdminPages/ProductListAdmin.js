@@ -4,10 +4,13 @@ import { useHistory } from "react-router-dom";
 
 import { useProductContext, useSigninContext } from "../../context";
 
-import { Loading, ErrorModal, PageHeaderImage } from "../../components";
+import {
+  Loading,
+  ErrorModal,
+  PageHeaderImage,
+  ConfirmationBox,
+} from "../../components";
 import { formatPrice } from "../../utils/helpers";
-
-import "../../components/ConfirmationBox.css";
 
 const ProductListAdmin = () => {
   const {
@@ -18,11 +21,11 @@ const ProductListAdmin = () => {
     deleteProduct,
     createProduct,
     new_product,
-    success_create_product,
+    success: success_create_product,
     resetNewProduct,
-    new_product_error,
-    delete_error,
-    success_delete_product,
+    error: new_product_error,
+    error: delete_error,
+    success: success_delete_product,
     resetDeleteProduct,
   } = useProductContext();
   const { userInfo } = useSigninContext();
@@ -54,6 +57,10 @@ const ProductListAdmin = () => {
   const deleteHandler = (product) => {
     setConfirmBox(true);
     setProductId(product._id);
+  };
+  const deleteProductHandler = () => {
+    deleteProduct(productId, userInfo.token);
+    setConfirmBox(false);
   };
 
   return (
@@ -166,36 +173,10 @@ const ProductListAdmin = () => {
             </tbody>
           </table>
           {showConfirmBox && (
-            <>
-              <div className="confirm-container">
-                <div className="confirmation-text">
-                  Do you really want to delete this product?
-                </div>
-                <div className="button-container">
-                  <button
-                    className="cancel-button"
-                    onClick={() => {
-                      setConfirmBox(false);
-                    }}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="confirmation-button"
-                    onClick={() => {
-                      deleteProduct(productId, userInfo.token);
-                      setConfirmBox(false);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-              <div
-                className="confirm-bg"
-                onClick={() => setConfirmBox(false)}
-              ></div>
-            </>
+            <ConfirmationBox
+              handleBox={() => setConfirmBox(false)}
+              handleDelete={() => deleteProductHandler()}
+            />
           )}
         </div>
       </section>

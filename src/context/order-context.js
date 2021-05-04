@@ -37,13 +37,8 @@ const initialState = {
       orderItems: [],
     },
   },
-
-  loadingDetails: false,
-  errorDetails: false,
-  successPay: false,
-  errorPay: false,
-  loadingPay: false,
   orderList: [],
+  adminOrderList: [],
 };
 
 const OrderContext = React.createContext();
@@ -131,7 +126,7 @@ const OrderProvider = ({ children }) => {
         }
       );
       const payData = response.data;
-      console.log(payData);
+
       dispatch({ type: "ORDER_PAY_SUCCESS", payload: payData });
     } catch (error) {
       const message =
@@ -141,9 +136,12 @@ const OrderProvider = ({ children }) => {
       dispatch({ type: "ORDER_PAY_FAIL", payload: message });
     }
   };
-  const orderPayReset = () => {
+
+  const ordersReset = () => {
     dispatch({ type: "ORDER_PAY_RESET" });
+    dispatch({ type: "ADMIN_ORDER_RESET" });
   };
+
   const getUserOrderList = useCallback(async () => {
     dispatch({ type: "USER_ORDER_LIST_REQUEST" });
 
@@ -154,7 +152,7 @@ const OrderProvider = ({ children }) => {
         },
       });
       const ordersList = response.data;
-      console.log(ordersList);
+
       dispatch({ type: "USER_ORDER_LIST_SUCCESS", payload: ordersList });
     } catch (error) {
       const message =
@@ -164,6 +162,74 @@ const OrderProvider = ({ children }) => {
       dispatch({ type: "USER_ORDER_LIST_FAIL", payload: message });
     }
   }, [userInfo]);
+
+  const getAdminOrdersList = useCallback(async () => {
+    dispatch({ type: "ADMIN_ORDER_LIST_REQUEST" });
+
+    try {
+      const response = await axios.get(`/api/orders`, {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      const ordersList = response.data;
+
+      dispatch({ type: "ADMIN_ORDER_LIST_SUCCESS", payload: ordersList });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: "ADMIN_ORDER_LIST_FAIL", payload: message });
+    }
+  }, [userInfo]);
+
+  const deleteOrder = async (orderID) => {
+    dispatch({ type: "ADMIN_DELETE_ORDER_REQUEST" });
+    try {
+      const response = await axios.delete(`/api/order/${orderID}`, {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      const orderDeleted = response.data;
+      dispatch({ type: "ADMIN_DELETE_ORDER_SUCCESS", payload: orderDeleted });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: "ADMIN_DELETE_ORDER_FAIL", payload: message });
+    }
+  };
+  const adminOrderReset = useCallback(() => {
+    dispatch({ type: "ADMIN_ORDER_RESET" });
+  }, []);
+
+  const deliverOrder = async (orderId) => {
+    dispatch({ type: "ORDER_DELIVERY_REQUEST", payload: orderId });
+
+    try {
+      const response = await axios.put(
+        `/api/order/${orderId}/deliver`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
+      const deliveryData = response.data;
+
+      dispatch({ type: "ORDER_DELIVERY_SUCCESS", payload: deliveryData });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: "ORDER_DELIVERY_FAIL", payload: message });
+    }
+  };
   return (
     <OrderContext.Provider
       value={{
@@ -175,8 +241,12 @@ const OrderProvider = ({ children }) => {
         orderReset,
         detailsOrder,
         payOrder,
-        orderPayReset,
+        ordersReset,
         getUserOrderList,
+        getAdminOrdersList,
+        deleteOrder,
+        adminOrderReset,
+        deliverOrder,
       }}
     >
       {children}
