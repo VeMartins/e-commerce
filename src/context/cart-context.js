@@ -2,16 +2,6 @@ import React, { useEffect, useContext, useReducer } from "react";
 
 import cartReducer from "../reducers/cart-reducer";
 
-/*import {
-  ADD_TO_CART,
-  UPDATE_AMOUNT,
-  GET_TOTAL,
-  CLEAR_CART,
-  REMOVE,
-  INCREASE,
-  DECREASE,
-} from "../actions";*/
-
 const getLocalStorage = () => {
   let cart = localStorage.getItem("cartBotanica");
   if (cart) {

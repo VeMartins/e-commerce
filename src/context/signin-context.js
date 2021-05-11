@@ -18,6 +18,7 @@ const initialState = {
   error: false,
   userDetails: null,
   success: false,
+  emailSms: {},
 };
 
 const SigninContext = React.createContext();
@@ -134,6 +135,27 @@ const SigninProvider = ({ children }) => {
   const resetUserProfile = useCallback(() => {
     dispatch({ type: "RESET_USER_PROFILE" });
   }, []);
+
+  const sendEmail = async (subject, email, text) => {
+    dispatch({ type: "SEND_EMAIL_REQUEST" });
+    try {
+      const response = await axios.post(
+        "/api/contact",
+        JSON.stringify({ subject, email, text }),
+        {
+          headers: {
+            Authorization: `Bearer ${state.userInfo.token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const sendEmail = response.data;
+      dispatch({ type: "SEND_EMAIL_SUCCESS", payload: sendEmail });
+    } catch (error) {
+      const message = error.response.data.message || "Could not send email.";
+      dispatch({ type: "SEND_EMAIL_FAIL", payload: message });
+    }
+  };
   return (
     <SigninContext.Provider
       value={{
@@ -144,6 +166,7 @@ const SigninProvider = ({ children }) => {
         getUserDetails,
         updateUserProfile,
         resetUserProfile,
+        sendEmail,
       }}
     >
       {children}

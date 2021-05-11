@@ -25,7 +25,7 @@ const ProductListAdmin = () => {
     resetNewProduct,
     error: new_product_error,
     error: delete_error,
-    success: success_delete_product,
+    success_delete_product,
     resetDeleteProduct,
   } = useProductContext();
   const { userInfo } = useSigninContext();

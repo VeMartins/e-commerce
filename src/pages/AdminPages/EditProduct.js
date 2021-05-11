@@ -138,6 +138,11 @@ const EditProduct = () => {
     }
   };
 
+  const clearError = () => {
+    clearSingleError();
+
+    setErrorMessage("");
+  };
   return (
     <main>
       <PageHeaderImage colorStyle title="Edit Product" />
@@ -147,10 +152,7 @@ const EditProduct = () => {
           <ErrorModal
             error={error_product_update || errorMessage}
             className="signin-error"
-            onClear={() => {
-              clearSingleError();
-              setErrorMessage("");
-            }}
+            onClear={() => clearError()}
             footer
             linkText={"Okay"}
             style={{ position: "initial" }}
@@ -251,7 +253,9 @@ const EditProduct = () => {
                     error={uploadError}
                     className="signin-error"
                     style={{ position: "initial" }}
-                    onClear={() => setUploadError("")}
+                    onClear={() => {
+                      setUploadError("");
+                    }}
                     linkText={"Okay"}
                     footer
                   />

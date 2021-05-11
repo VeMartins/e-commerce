@@ -49,6 +49,24 @@ const signinReducer = (state, action) => {
       };
     case "RESET_USER_PROFILE":
       return { ...state, loading: false, error: false, success: false };
+    case "SEND_EMAIL_REQUEST":
+      return { ...state, loading: true };
+    case "SEND_EMAIL_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        success: true,
+        emailSms: action.payload,
+      };
+    case "SEND_EMAIL_FAIL":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
+
     default:
       throw new Error(`no matching action type ${action.type}`);
   }

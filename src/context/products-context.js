@@ -10,6 +10,7 @@ const initialState = {
   loading: false,
   error: false,
   success: false,
+  success_delete_product: false,
 
   products: [],
   featured_products: [],
@@ -149,7 +150,7 @@ const ProductProvider = ({ children }) => {
     return () => {
       source.cancel();
     };
-  }, [fetchProducts, state.success]);
+  }, [fetchProducts, state.success, state.success_delete_product]);
 
   return (
     <ProductContext.Provider

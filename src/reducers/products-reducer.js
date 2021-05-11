@@ -139,7 +139,7 @@ const productsReducer = (state, action) => {
       ...state,
       loading: false,
       error: false,
-      success: true,
+      success_delete_product: true,
     };
   }
   if (action.type === "DELETE_PRODUCT_FAIL") {
@@ -147,7 +147,7 @@ const productsReducer = (state, action) => {
       ...state,
       loading: false,
       error: action.payload,
-      success: false,
+      success_delete_product: false,
     };
   }
   if (action.type === "RESET_DELETE_PRODUCT") {
@@ -156,6 +156,7 @@ const productsReducer = (state, action) => {
       success: false,
       error: false,
       loading: false,
+      success_delete_product: false,
     };
   }
   throw new Error(`no matching action type ${action.type}`);
